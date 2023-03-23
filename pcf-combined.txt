@@ -1,0 +1,1279 @@
+How to do DR
+`cf push` the application to both the prod and DR environments
+Add a shared domain to each foundation
+```cf create-shared-domain &lt;http://telmore.io|telmore.io&gt;```
+
+Map the application to the shared domain
+```cf map-route spring-music &lt;http://telmore.io|telmore.io&gt; -n spring-music```
+The `-n spring-music` is the _hostname_ but is actually treated as the subdomain.  Therefore, the url created above would be `&lt;http://spring-music.telmore.io|spring-music.telmore.io&gt;`
+The route is added to the application in both foundations - so they will have the same URL.  The route into the application would be controlled via DNS change.
+This can be tested by either changing DNS - or just editing /etc/hosts file
+The benefit of doing this is that consumers (users or other services) do not have to change the endpoint they are using.
+Helpful Link: &lt;https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html#shared-domains&gt;
+Pivotal CloudCache installation problem
+Having issues running the smoke test... following documentation here -&gt; <https://docs.pivotal.io/p-cloud-cache/1-9/prepare-TLS.html> and am not applying change to get the trusted certs installed.  Doing the apply change for all products and doing it manually.  If it works, I'll have to add it the automation.
+When there are a lot of queued bosh tasks
+When doing a `bosh tasks` and there are a lot of queued tasks and you want to remove them.
+
+Note: if this happens often, consider scaling up the size of the Director VM by increasing number of CPUs.
+There are a couple of options to remove the queued tasks.  Remember, that this puts the tasks into `cancelling` state and then bosh should take care of them.  If they do not go away, then you may have to ssh into the director and kill the tasks?
+1. Run a script
+```bosh tasks --column=ID --column=state --json | jq '.Tables[].Rows[].id' -Mr | xargs -n 1 bosh cancel-task```
+
+2. Cancel all the tasks from Director
+<https://community.pivotal.io/s/article/How-to-Cancel-All-Queued-BOSH-Tasks-Using-director-ctl>
+How to get credentials from command line
+Preferred method...
+```om credentials -p cf -c .uaa.admin_credentials -t json | jq .password -r```
+If you don't have jq...
+```bosh int &lt;(om credentials -p cf -c .uaa.admin_credentials -t json) --path /password```
+To get a list of all the available credentials...
+```om credential-references -p cf```
+Setting up RDS database in AWS
+Need a lot more detail here... but wanted to share this link...  <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html>
+DNS Commands
+To find if the DNS entries are set up, use nslookup
+`nslookup <http://www.tonyelmore.com|www.tonyelmore.com>`
+Since you can have many A records, nslookup for each of them
+`nslookup <http://tonyelmore.com|tonyelmore.com>`
+`nslookup <http://sys.sbx.tonyelmore.com|sys.sbx.tonyelmore.com>`
+You can add a TXT record to DNS and find it either using nslookup or dig
+`nslookup -type=txt <http://txtlabel.tonyelmore.com|txtlabel.tonyelmore.com>`
+`dig -t txt <http://txtlabel.tonyelmore.com|txtlabel.tonyelmore.com> +short`
+Where `txtlabel` is the TXT label on the DNS entry
+The `+short` option on dig command gets rid of all the cruft and just shows the value
+Difference between dig and nslookup...
+nslookup was the original tool and dig is a replacement
+dig +short will provide only the answer without all the extra output
+
+Seems like either can be used
+Downloading a file by unsigned developer
+`spctl --add /Path/To/om`
+When doing for `om` (and maybe others) would have to do a `chmod +x /Path/To/om`
+Script to check persistent disk free space on all VMs
+```for i in `bosh --ty deployments --json | jq -r '.Tables[].Rows[] | name'`; 
+  do echo -e "\033[1;32mDeployment Name: \033[0m" $i;
+  DEPLOYMENT=$i;
+  bosh --tty -d $DEPLOYMENT instances --vitals --json | jq -r '.Tables[].Rows[] | select(.persistent_disk_usage != "") | select((.persistent_disk_usage | split("%") | .[0] | tonumber) &gt;=70 | "Instance: " + .instance + ", Persistent Disk Usage: " + .persistent_disk_usage' | column -t;
+  echo ;
+  done```
+
+Excessive audit logs being sent to splunk
+look at `/etc/audit/audit.rules` and there is a `/etc/audit/audit.rules.prev` to show what previous rules were
+Apparently - OMS has an agent running on each VM and that talks back to the microsoft servers for the rules.  Microsoft can change the rules on the server which will then get applied to the VM via the agent.
+How to find and delete bosh queued tasks
+`for row in $(bosh tasks --json | jq -r '.Tables[].Rows[] | select(.state=="queued").id'); do bosh cancel-task $row -n; done`
+Look thru VMs and show disk usage
+```s_inst="service-instance_xxxxx"; bosh -d "${s_inst}" vms | awk '{print $1}' | while read instance; do bosh -d "${s_inst}" ssh "${instance}" -c "sudo df -h /" | grep ": stdout "; done```
+Enable / Disable opsman validators
+We were having issues with Azure VM creation timing out.  So, we disabled the validators until there was a fix in opsman.
+```om curl -p /api/v0/staged/director/verifiers/install_time/IaasConfigurationVerifier -x PUT -d '{ "enabled": true }'```
+
+To see the current status of the validators...
+```om curl -p /api/v0/staged/director/verifiers/install_time```
+
+How to debug a java app running on TAS from IntelliJ
+How to use the opsman api to get credentials
+```https://&lt;&lt;opsman-uri&gt;&gt;/api/v0/deployed/director/credentials/bbr_ssh_credentials```
+
+When you have a cert or private key in a string with `\n` - how to fix in vi
+```:%s/\\n/\r/g```
+To display bash messages in different color
+Error with omsagent not starting
+Instead of using Microsoft's installation of omsagent, NFCU was using the bosh release for the oms agent
+This is done because MS was putting the files in the `/` partition which was filling that partition because it is only 2.9Gig
+Changing the root partition size would mean a change to the stemcells which we didn't want to do, so we decided to go with the bosh deployment instead.
+For one server, the omsagent service was failing.  We tracked through the pre-start script which indicated there were errors but there didn't seem to really be an error in that script.  Running `monit start` would try to run a process and it was looking for a particular file - which is actually a symlink - that was missing.  We created the symlink and it passed.
+<https://github.com/Azure/oms-agent-for-linux-boshrelease/blob/master/jobs/omsagent/templates/install.erb>
+Getting the services from the cloud controller
+NFCU has a mysql plan that was used to create a service instance.  But, we didn't have that plan defined in our code so the pipeline was failing.  Our answer is going to be adding that plan.
+However, if we wanted to query the services within the CF databases... follow these steps:
+1. bosh -d cf-xxxxx ssh database/0
+2. sudo mysql --defaults-file=/var/vcap/jobs/pxc-mysql/config/mylogin.cnf
+3. use ccdb;
+4. SELECT service_plans.name AS service_plan, organizations.name AS organization_name       , spaces.name AS space_name, service_instances.name AS service_instance_name FROM service_instances JOIN service_plans ON (service_instances.service_plan_id = service_plans.id) JOIN services ON (service_plans.service_id = services.id) JOIN spaces ON (service_instances.space_id = spaces.id) JOIN organizations ON (spaces.organization_id = organizations.id) WHERE services.label = 'p.mysql' AND service_plans.name = 'PLAN_NAME'
+Instead of creating the symlink... we can delete the `/etc/opt/microsoft/omsagent/&lt;&lt;subscriptionid&gt;&gt;/conf/service_registered` file instead and it will then recreate the symlink
+How to view director DB
+SSH into the director VM by first SSHing into Opsman
+Get the private key for the director from the "credentials" tab on the director tile in opsman
+Save the private key on the opsman VM and get rid of all the `\n` and set the file permission via `chmod 600 file.pem`
+`ssh -i file.pem bbr@&lt;director_ip&gt;`
+sudo to root `sudo -i`
+start psql `/var/vcap/packages/postgres-9.4/bin/psql -U vcap bosh -h 127.0.0.1`
+Now you can issue sql commands like `select * from vms;`
+Or issue psql commands like `\dt`
+How to delete an unresponsive VM
+We had an unresponsive VM and `bosh cck` and `bosh recreate` could not remove.  Support gave these instructions to remove the VM from the DB.
+These steps will need to be performed from the bish director vm itself. We're going to use the bosh console to manually remove the vm reference:
+ 
+• Turn off the bosh resurrector with *bosh update-resurrection off*
+• Log in to the director using <https://docs.pivotal.io/ops-manager/2-10/install/trouble-advanced.html>
+• credentials will be found in the opsman director tile under the credentials tab
+• Log in to the bosh console by executing "*/var/vcap/jobs/director/bin/console*"
+• Run the following command to get a list of job: diego_brain indices:
+• *Bosh::Director::Models::Instance.where(job: "diego_brain").<http://all.map|all.map>{ |n| "#{n.job} #{n.index}, #{n.uuid}" }*
+• Once you see the index and UID of the diego_brain in question, run the following command in order to save the vm reference to a variable. In the below example command I've used the diego brain UID from my environment, but yours will be different:
+• *vm_model = Bosh::Director::Models::Instance.where(job: "diego_brain", uuid: "dfad5127-15c6-48e5-81f9-020b355a7dc2").<http://first.active|first.active>_vm*
+• nil the active VM in memory for the instance:
+• *Bosh::Director::Models::Instance.where(job: "diego_brain", uuid: "dfad5127-15c6-48e5-81f9-020b355a7dc2").<http://first.active|first.active>_vm = nil*
+• destroy the active vm from the database:
+• *vm_model.destroy*
+• At this point, we should see the vm removed from the lsit of active vms (bosh vms). From the Opsman VM, run *bosh -d &lt;cf-...&gt; deploy /var/tempest/workspaces/default/deployments/cf-....yaml --fix --non-interactive*
+
+Installing Tanzu Service Broker for GCP
+The issues I had...
+Create a mysql instance in GCP - you will need the instance name (telmore-gcp-state) ... but that creates something that you then have databases in ... so create the servicebroker database
+Open it up by adding a network of `0.0.0.0/0` to the authorized networks
+You should see the services offered in `cf marketplace`
+Creating the service using `cf create-service csb-google-mysql small test-sql` but it failed with SERVICE_NETWORKING_NOT_ENABLED ... So enabled that with
+```gcloud services enable <http://servicenetworking.googleapis.com|servicenetworking.googleapis.com> \
+    --project=[PSM_PROJECT_NUMBER]```
+
+Tried to create service again and it failed with NETWORK_NOT_PEERED
+Issues with Rabbit MQ on demand smoke test failing
+Here are some of the commands I used to try to track down what I think is a cert issue
+All executed on the broker VM
+• dig <http://uaa.run.haas-424.pez.vmware.com|uaa.run.haas-424.pez.vmware.com> +short
+• nc -tvz <http://uaa.run.haas-424.pez.vmware.com|uaa.run.haas-424.pez.vmware.com> 443
+• ping  <http://uaa.run.haas-424.pez.vmware.com|uaa.run.haas-424.pez.vmware.com>
+• curl -v <https://uaa.run.haas-424.pez.vmware.com/info> &gt; external.out
+• curl -v <https://uaa.service.cf.internal:8443/info> &gt; internal.out
+• openssl s_client -showcerts -servername <http://uaa.run.haas-424.pez.vmware.com|uaa.run.haas-424.pez.vmware.com> -connect uaa..<http://run.haas-424.pez.vmware.com:443|run.haas-424.pez.vmware.com:443> &lt;/dev/null
+• openssl s_client -showcerts -servername <http://uaa.run.haas-424.pez.vmware.com|uaa.run.haas-424.pez.vmware.com> -connect <http://uaa.run.haas-424.pez.vmware.com:443|uaa.run.haas-424.pez.vmware.com:443> &lt;/dev/null
+• vi testcert
+    ◦ add the cert from above to this file
+• curl -v <https://uaa.run.haas-424.pez.vmware.com/info> --cacert testcert
+    ◦ This should now return a 200
+• openssl x509 -in testcert -noout -text
+<https://community.pivotal.io/s/article/5000e00001m8imf1603187548483?language=en_US>
+tekton.dev is a ci/cd product for cross-IaaS ... similar to concourse
+Code to create AWS cluster load balancer
+This was from Early Warning (Geordon Liban)
+```set -eux
+ 
+(echo "BEGIN_PRIVATE_KEY_HEADER"; echo $OPSMAN_SSH_KEY  | tr ' ' '\n' | tail -n +5 | tac | tail -n +5 |     tac;echo "END_RSA_PRIVATE_KEY_FOOTER") &gt; opsman.pem
+chmod 600 opsman.pem
+ 
+function create_cluster {
+  export SUBNET_ID=$(docker run --rm \
+          -v $PWD:/workspace \
+          -w /workspace \
+          -e "DOWNLOAD_CONFIG_FILE=${config_repo}/environments/${IAAS}/${FOUNDATION}/config-director/vars/director.yml" \
+          platform-automation-toolkit-image:${TOOLKIT_IMAGE_VERSION} \
+          /bin/bash -c 'bosh int ${DOWNLOAD_CONFIG_FILE} --path /pks_network_az1_network_id')
+ 
+  # Create load balancer
+  # TODO Create elb security group w/TF, add a tag so we can query it
+  DNS_JSON=$(aws elb create-load-balancer \
+    --load-balancer-name ${CLUSTER_NAME} \
+    --listeners "Protocol=TCP,LoadBalancerPort=8443,InstanceProtocol=TCP,InstancePort=8443" \
+    --subnets "${SUBNET_ID}" \
+    --security-groups sg-015612caea11ac600 \
+    --region us-west-2)
+ 
+  DNS_NAME=$(echo ${DNS_JSON} | jq -r '.DNSName')
+ 
+  pks login -k -a ${PKS_API_URL} -u ${PKS_USER} -p ${PKS_PASS}
+ 
+  pks create-cluster ${CLUSTER_NAME} -e ${DNS_NAME} --plan ${CLUSTER_PLAN} --num-nodes ${CLUSTER_NODES}
+}
+ 
+function add_master_lb {
+  export CLUSTER_ID=$(pks cluster "${CLUSTER_NAME}" --json | jq -r .uuid)
+  export VMS=$(docker run --rm \
+          -v $PWD:/workspace \
+          -w /workspace \
+          -e "CLUSTER_ID=${CLUSTER_ID}" \
+          -e "OM_CLIENT_ID=${OM_CLIENT_ID}" \
+          -e "OM_CLIENT_SECRET=${OM_CLIENT_SECRET}" \
+          -e "OM_TARGET=${OM_TARGET}" \
+          -e "OM_SKIP_SSL_VALIDATION=true" \
+          platform-automation-toolkit-image:${TOOLKIT_IMAGE_VERSION} \
+          /bin/bash -c 'eval "$(om -k bosh-env -i opsman.pem)" &amp;&amp; bosh -d service-instance_"${CLUSTER_ID}" vms &gt; vm_ids.txt')
+ 
+  MASTER_IDS=$(cat vm_ids.txt | grep master | awk '{print $5}')
+  WORKER_IDS=$(cat vm_ids.txt | grep worker | awk '{print $5}')
+ 
+  aws elb register-instances-with-load-balancer --load-balancer-name ${CLUSTER_NAME} --instances $MASTER_IDS
+ 
+  aws ec2 create-tags --tags Key=cluster,Value="${CLUSTER_NAME}" --resources $MASTER_IDS
+  aws ec2 create-tags --tags Key=cluster,Value="${CLUSTER_NAME}" --resources $WORKER_IDS
+}
+ 
+# create_cluster
+ 
+#TODO Check for cluster completion
+while true; do
+  sleep 10
+ 
+  CLUSTER_STATUS=$(pks cluster "${CLUSTER_NAME}" --json | jq -r .last_action_state)
+  echo "Cluster: ${CLUSTER_NAME} - Status: ${CLUSTER_STATUS}"
+ 
+  if [ "${CLUSTER_STATUS}" == "succeeded" ]; then
+    add_master_lb
+    exit 0;
+  elif [ "${CLUSTER_STATUS}" != "in progress" ]; then
+    echo "Error creating cluster ${CLUSTER_NAME}, Status: ${CLUSTER_STATUS}"
+    exit 1;
+  fi
+done```
+
+Autopatching code developed during NFCU engagement
+```#!/bin/bash
+
+set -eu
+
+function setup {
+
+  EMAIL_DIR=$(mktemp -d)
+
+  DIR=$(mktemp -d)
+  pushd ${DIR}
+
+  PIVNET_CLI="pivnet"
+  JQ_CMD="jq"
+  YQ_CMD="yq"
+  GIT_CMD="git"
+
+  echo "" &gt; ${EMAIL_DIR}/emailbody.txt
+  CONFIG="version-file-repository"
+  PRODUCT_FOUND="false"
+  PROCESSING_STEMCELLS=false
+
+  # $PIVNET_CLI --version
+  # $JQ_CMD --version
+  # $YQ_CMD --version
+  # $GIT_CMD --version
+
+  REPO="repository"
+  
+  $PIVNET_CLI login --api-token=$PIVNET_TOKEN  
+
+}
+
+function get-azure-file {
+  export azure_container="$(om interpolate -s --config ${REPO}/${product} --path /blobstore-bucket | head -n1)"
+  export blobfile="$(az storage blob list \
+                      --account-name ${AZURE_ACCOUNT_NAME} \
+                      --account-key ${AZURE_ACCOUNT_KEY} \
+                      -c ${azure_container} \
+                      | $JQ_CMD '.[] | select(.name | test("'${product_slug}','${patch_version}'")) | .name' -r)"
+}
+
+function put-azure-file {
+  echo "uploading ${full_filename} to ${azure_container}" 
+  az storage blob upload \
+    --account-name ${AZURE_ACCOUNT_NAME} \
+    --account-key ${AZURE_ACCOUNT_KEY} \
+    -c ${azure_container} \
+    -f ${full_filename} \
+    -n ${filename}
+}
+
+function get-gcp-file {
+  echo "Function not implemented"
+}
+
+function put-gcp-file {
+  echo "Function not implemented"
+}
+
+function get-aws-file {
+  echo "Function not implemented"
+}
+
+function put-aws-file {
+  echo "Function not implemented"
+}
+    
+function process-product {
+  product=$1
+
+  print-to-console "Processing ${product}"
+
+  product_version="$(om interpolate -s --config ${REPO}/${product} --path /product-version | head -n1)"
+  product_slug="$(om interpolate -s --config ${REPO}/${product} --path /pivnet-product-slug | head -n1)"
+  product_glob="$(om interpolate -s --config ${REPO}/${product} --path /pivnet-file-glob | head -n1)"
+  product_version_family=$product_version
+
+  if [ "$PROCESSING_STEMCELLS" = true ]; then
+    if [[ $product_version =~ ^[0-9]+\. ]]; then
+     product_version_family="${BASH_REMATCH[0]}"
+    fi
+  else
+    if [[ $product_version =~ ^[0-9]+\.[0-9]+ ]]; then
+     product_version_family="${BASH_REMATCH[0]}"
+    fi
+  fi
+  
+  print-to-console-debug "PIVNET_CLI COMMAND WITH THIS VERSION FAMILY -&gt;${product_version_family}"
+  patch_version="$( $PIVNET_CLI releases -p ${product_slug} --format json | $JQ_CMD '[.[] | select(.version | test("'${product_version_family}'"))] [0].version ' -r )"
+  #patch_version="$( $PIVNET_CLI releases -p ${product_name} --format json | $JQ_CMD '[.[] | select(.availability=="All Users") | select(.version | test("'${product_version_family}'"))] [0].version ' -r )"
+  
+  get-${IAAS}-file
+
+  if [ -z "$blobfile" ]; then
+    print-to-console "The product file for ${product_slug} version ${patch_version} is not found.  Downloading product now"
+
+    tmpdir=$(mktemp -d)
+    # om download-product --config secrets/${product} \
+    #   --product-version ${patch_version} \
+    #   --output-directory ${tmpdir}
+
+    # With the blobstore-bucket being set, the file name will be correct
+    om download-product \
+      --source=pivnet \
+      --pivnet-api-token ${PIVNET_TOKEN} \
+      --blobstore-bucket ${azure_container} \
+      --file-glob ${product_glob} \
+      --pivnet-product-slug ${product_slug} \
+      --product-version ${patch_version} \
+      --output-directory ${tmpdir}
+
+
+    full_filename=$(ls ${tmpdir}/\[*\]${product_glob})
+
+    if [ -z "$full_filename" ]; then
+      build-email-message "Something went wrong with the download - possibly EULA needs to be accepted"
+      return
+    fi
+
+    filename=$(basename $full_filename)
+
+    put-${IAAS}-file
+    
+    rm -r ${tmpdir}
+
+    build-email-message "New product uploaded to blobstore.  Product ${product} - Version ${patch_version}"
+
+  else
+    print-to-console "The product file for ${product_slug} version ${patch_version} is already in azure blob store... skipping."
+  fi
+  print-to-console-debug "PROCESSING STEMCELLS? - $PROCESSING_STEMCELLS"
+  if [ "$PROCESSING_STEMCELLS" = true ]; then
+    update-stemcell-version-file ${product} ${patch_version}
+  else
+    update-version-file ${product} ${patch_version}
+    #gen-validate ${product}
+  fi
+
+}
+
+function update-version-file {
+  print-to-console-debug "Process version file now $1 for patch version $2"
+
+  product=$1
+  PATCH_VERSION=$2
+  #product_name="$(om interpolate -s --config ${REPO}/${product} --path /name | head -n1)"
+  CURRENT_VERSION="$(om interpolate -s --config ${REPO}/${product} --path /product-version)"
+  print-to-console-debug "processing product ${product} for ${PATCH_VERSION}"
+
+  # Another Edit - make sure the major version is the same and the only change is the patch veersion number
+  #print-to-console-debug "Update the version file"
+  #sed -i "s/^product-version.*/product-version: ${PATCH_VERSION}/g"  ${REPO}/${product}
+  print-to-console-debug "Update the versions-available file"
+  if [[ ${CURRENT_VERSION} != ${PATCH_VERSION} ]]; then
+    echo "${product} - Current:${CURRENT_VERSION} - Available:${PATCH_VERSION}" &gt;&gt; ${REPO}/auto-patching/versions-available.txt
+  fi
+  print-to-console-debug "Handle Version File Updates -- End"
+}
+
+function build-email-message {
+  msg=$1
+  print-to-console ${msg}
+  echo ${msg} &gt;&gt; ${EMAIL_DIR}/emailbody.txt
+  echo " " &gt;&gt; ${EMAIL_DIR}/emailbody.txt
+}
+
+function print-to-console {
+  echo ${1}
+}
+function print-to-console-debug {
+  if [[ ${DEBUG} = true ]]; then
+	  echo "----$(tput setaf 2)DEBUG ${1} $(tput sgr0)----"
+  fi
+}
+
+function update-stemcell-version-file {
+  product=$1
+  STEMCELL_VERSION=$2
+  
+  print-to-console-debug "processing product ${product} for stemcell ${STEMCELL_VERSION}"
+    
+  PRODUCT_SUPPORTS_STEMCELL=false
+  check-stemcell-support ${product} ${STEMCELL_VERSION}
+
+  # Another Edit - make sure the major version is the same and the only change is the patch veersion number
+  if [[ ${PRODUCT_SUPPORTS_STEMCELL} = true ]]; then
+    print-to-console-debug "Update the version file - ${product}"
+    sed -i "s/^product-version.*/product-version: \"${STEMCELL_VERSION}\"/g"  ${REPO}/${product}
+    #sed -i -e "$ a product-version: \"${STEMCELL_VERSION}\""  ${REPO}/${PRODUCT_FILE_LOCATION}/${product_name}/version-stemcell.yml
+  fi
+
+  print-to-console-debug "Handle Stemcell Updates -- End"
+}
+
+function check-stemcell-support {
+  temp_product=${1/version-stemcell/version}
+  stemcell_version=$2
+  product_slug="$(om interpolate -s --config ${REPO}/${temp_product} --path /pivnet-product-slug | head -n1)"
+
+  # build output file that will update proper version file - but only if product supports it (for stemcells) 
+  # Get list of stemcells for product $product-name
+  PRODUCT_VERSION=$($YQ_CMD r ${REPO}/${temp_product} 'product-version')
+  print-to-console-debug "check-stemcell-support ${temp_product} - version is ${PRODUCT_VERSION}"
+  print-to-console-debug "product_slug is ${product_slug}"
+
+  PRODUCT_STEMCELLS=$( $PIVNET_CLI rds -p ${product_slug} -r ${PRODUCT_VERSION} --format json | \
+                        $JQ_CMD '.[] | select(.release.product.slug | test("stemcells-ubuntu-xenial")) | .release.version' -r)
+  print-to-console-debug "PRODUCT_STEMCELLS ==&gt; ${PRODUCT_STEMCELLS}"
+
+  if [[ "${PRODUCT_STEMCELLS[@]}" =~ "${stemcell_version}" ]]; then
+    PRODUCT_SUPPORTS_STEMCELL=true
+  fi
+}
+
+function gen-validate {
+  product_name=$1
+  env_name="eus-sdbx2"
+
+  ${REPO}/environments/scripts/generate-config.ps1 azure ${env_name} ${product_name}
+  VALIDATE_RESPONSE=${REPO}/environments/scripts/validate-config.ps1 azure ${env_name} ${product_name}
+  echo "THIS IS THE RESPONSE ----&gt; "$VALIDATE_RESPONSE
+}
+
+function clone-repo {
+  git clone https://${VSTS_USER_NAME}:${VSTS_PAT}@${AUTOMATION_GIT_URL} ${REPO} -q
+  pushd ${REPO} 
+  git checkout ${AUTOMATION_GIT_BRANCH} 
+  popd
+}
+
+function make-branch-and-commit {
+  
+  cd ${REPO}
+  git config user.name "Patching"
+  git config user.email "<mailto:test@navyfederal.org|test@navyfederal.org>"
+
+  TIME_ST=`date +%s` 
+  DATE_ST=`date +%D`
+  BRANCH_NAME=autopatch-${TIME_ST}
+
+  COMMIT_MESSAGE="Stemcell auto-patching - ${DATE_ST}"
+  
+  BRANCH_PUSHED=false
+  if [[ -n $(git status --porcelain) ]]; then
+    git checkout -b "$BRANCH_NAME" -q
+    git add -A
+    git commit -m "$COMMIT_MESSAGE" --allow-empty
+    B64_PAT=$(echo ":${VSTS_PAT}" | base64)
+    git -c http.extraHeader="Authorization: Basic ${B64_PAT}" push --set-upstream origin ${BRANCH_NAME} -q
+    BRANCH_PUSHED=true
+  fi
+}
+
+function create-pr {
+  if [[ ${BRANCH_PUSHED} == "false" ]]; then
+    return
+  fi
+
+  ORG="<https://dev.azure.com/nfcudevlabs>"
+  PROJECT_NAME="Cloud%20Platform%20Operations"
+  REPOSITORY="platform-automation"
+  SOURCE_BRANCH=${BRANCH_NAME}
+  TITLE="Weekly-auto"
+
+  # Get the Repository ID from the repository name
+  REPOSITORY_ID=$(curl -s -u ${VSTS_USER_NAME}:${VSTS_PAT} ${ORG}/${PROJECT_NAME}/_apis/git/repositories | \
+  $JQ_CMD '.value[] | select (.name == "'${REPOSITORY}'").id ' -r)
+
+  # Create the Pull Request
+  PR_DATA=$( $JQ_CMD -n \
+            --arg source "refs/heads/${SOURCE_BRANCH}" \
+            --arg target "refs/heads/master" \
+            --arg title "${TITLE}-patch" \
+            --arg description "Stemcell and Product Patching" \
+            '{sourceRefName: $source, targetRefName: $target, title: $title, reviewers:
+	    [{"id": "07f68f93-f903-6e81-8128-3e29ee1a461e"},{"id": "a5c0da7e-d280-6380-a82e-4aafcbbc5760"},{ "id": "2c21e0d0-4ed1-683e-97c4-28b1cfbb534c"}], description: $description}' )
+
+  print-to-console-debug "------------------- Pull Request Data ------------------- "
+  print-to-console-debug $PR_DATA | $JQ_CMD .
+
+  PR_CREATE_OUTPUT=$(curl -u ${VSTS_USER_NAME}:${VSTS_PAT} \
+                          -H 'Content-Type: application/json' \
+                          -X POST \
+                          -d "${PR_DATA}" \
+                          ${ORG}/${PROJECT_NAME}/_apis/git/repositories/${REPOSITORY_ID}/pullrequests?api-version=5.0)
+
+  print-to-console-debug "------------------- Pull Request Results ------------------- "
+  print-to-console-debug $PR_CREATE_OUTPUT | $JQ_CMD .
+
+  SOURCE_COMMIT=$(echo $PR_CREATE_OUTPUT | $JQ_CMD '.lastMergeSourceCommit.commitId' -r)
+  TARGET_COMMIT=$(echo $PR_CREATE_OUTPUT | $JQ_CMD '.lastMergeTargetCommit.commitId' -r)
+  print-to-console-debug "Source commit ${SOURCE_COMMIT}"
+  print-to-console-debug "Target commit ${TARGET_COMMIT}"
+}
+
+
+function process-products {
+  print-to-console "Processing products"
+
+  CONFIG_FILES=$(cd ${REPO} &amp;&amp; find $CONFIG_FILES_PATH -type f -name ${PRODUCT_FILE_PREFIX}.yml -follow)
+  for config_file in ${CONFIG_FILES}
+  do
+    print-to-console-debug "${config_file}"
+    process-product ${config_file}
+  done
+}
+
+function process-stemcells {
+  print-to-console "Processing stemcells"
+  PROCESSING_STEMCELLS=true
+  CONFIG_FILES=$(cd ${REPO} &amp;&amp; find $CONFIG_FILES_PATH -type f -name ${STEMCELL_FILE_PREFIX}.yml -follow)
+  for config_file in ${CONFIG_FILES}
+  do
+    print-to-console-debug ${config_file}
+    process-product ${config_file}
+  done
+}
+
+function cleanup-email {
+  if [ $PRODUCT_FOUND == "true" ]; then
+    cat ${REPO}/$INSTRUCTION_FILE &gt;&gt; ${EMAIL_DIR}/pivnet-upload-results.txt
+    echo " " &gt;&gt; ${EMAIL_DIR}/pivnet-upload-results.txt
+    cat  ${EMAIL_DIR}/emailbody.txt &gt;&gt; ${EMAIL_DIR}/pivnet-upload-results.txt
+  else
+    rm ${EMAIL_DIR}/pivnet-upload-results.txt &gt; /dev/null
+    touch ${EMAIL_DIR}/pivnet-upload-results.txt
+  fi
+}
+
+setup
+clone-repo
+echo "Available Products in Blobstore" &gt; ${REPO}/auto-patching/versions-available.txt
+process-products
+process-stemcells
+make-branch-and-commit
+# Add error checking to see if previous function was successful or not. If not, don't call create-pr
+create-pr
+# cleanup-email
+
+print-to-console-debug cleanup ${DIR}
+popd
+
+print-to-console "Autopatching complete"```
+
+Converted scripts from NFCU engagement
+```compare to old ps1
+#! /usr/bin/pwsh
+
+param ($environment, $product, $old_product)
+$iaas="azure"
+
+$cmd = "bosh int ../$iaas/$environment/config/$product/generated/template.yml --vars-file ../$iaas/$environment/config/$product/generated/defaults.yml --vars-file ../$iaas/common/$product.yml --vars-file ../$iaas/$environment/config/$product/vars.yml --vars-file ../$iaas/$environment/config/$product/secrets/secrets.yml"
+# Write-Host $cmd
+Invoke-Expression $cmd &gt; comparisons-output/compare-new-$environment-$product.yml
+
+
+$cmd = "bosh int ../../foundations/$environment/config/$old_product/config.yml --vars-file ../../foundations/$environment/vars/$old_product/vars.yml"
+Invoke-Expression $cmd &gt; comparisons-output/compare-old-$environment-$old_product.yml
+
+# Compare-Object -ReferenceObject (Get-Content -path "new.yml") -DifferenceObject (Get-Content -path old.yml)
+
+#Remove-Item -path "new.yml"
+#Remove-Item -path "old.yml"```
+
+```compare-to-other ps1
+#! /usr/bin/pwsh
+
+param ($region, $env, $other_region, $other_env, $product)
+$iaas="azure"
+
+$environment="$region-$env"
+$other_environment="$other_region-$other_env"
+
+$cmd = "bosh int ../$iaas/$environment/config/$product/generated/template.yml $(
+    ) --vars-file ../$iaas/$environment/config/$product/generated/defaults.yml $(
+    ) --vars-file ../$iaas/common/shared/$product.yml $(
+    ) --vars-file ../$iaas/common/$region/$product.yml $(
+    ) --vars-file ../$iaas/$environment/config/$product/vars.yml $(
+    ) --vars-file ../$iaas/$environment/config/$product/secrets/secrets.yml"
+# Write-Host $cmd
+Invoke-Expression $cmd &gt; comparisons-output/compare-$product-$environment.yml
+
+$cmd = "bosh int ../$iaas/$other_environment/config/$product/generated/template.yml $(
+    ) --vars-file ../$iaas/$other_environment/config/$product/generated/defaults.yml $(
+    ) --vars-file ../$iaas/common/shared/$product.yml $(
+    ) --vars-file ../$iaas/common/$other_region/$product.yml $(
+    ) --vars-file ../$iaas/$other_environment/config/$product/vars.yml $(
+    ) --vars-file ../$iaas/$other_environment/config/$product/secrets/secrets.yml"
+# Write-Host $cmd
+Invoke-Expression $cmd &gt; comparisons-output/compare-$product-$other_environment.yml```
+
+```generate-and-validate-all ps1
+#! /usr/bin/pwsh
+
+param ($region, $environment)
+$iaas = "azure"
+
+$PSDefaultParameterValues['Out-File:Encoding'] = 'ascii'
+
+# Check to make sure PIVNET_TOKEN is set
+if (-not (Test-Path env:PIVNET_TOKEN)) { 
+    Write-Host 'PIVNET_TOKEN must be set'
+    Exit 1 
+}
+
+if ($environment.contains("k8s")) {
+  . ./products-k8s.ps1
+} else {
+  . ./products.ps1
+}
+
+foreach ($product in $products) {
+  ./generate-config.ps1 $iaas $region $environment $product
+}
+
+foreach ($product in $products) {
+  .\validate-config.ps1 $iaas $region $environment $product
+}```
+
+```#! /usr/bin/pwsh
+
+param ($iaas, $region, $env, $product)
+
+$foundation="$region-$env"
+$PSDefaultParameterValues['Out-File:Encoding'] = 'ascii'
+
+function Create-Directory ($dirname) {
+    $OriginalErrorActionPreference = $ErrorActionPreference
+    $ErrorActionPreference = 'silentlycontinue'
+    New-Item -Path "$dirname" -ItemType Directory &gt; $null
+    $ErrorActionPreference = $OriginalErrorActionPreference
+}
+
+function Touch-File($filename) {
+    $OriginalErrorActionPreference = $ErrorActionPreference
+    $ErrorActionPreference = 'silentlycontinue'
+    $filename = "$filename" -replace ' ',''
+    New-Item -Path "$filename" -ItemType File &gt; $null
+    $ErrorActionPreference = $OriginalErrorActionPreference
+}
+
+function Remove-file($filename) {
+    $OriginalErrorActionPreference = $ErrorActionPreference
+    $ErrorActionPreference = 'silentlycontinue'
+    $filename = "$filename" -replace ' ',''
+    Remove-Item -path "$filename"
+    $ErrorActionPreference = $OriginalErrorActionPreference
+}
+
+function emptyfile ($filename) {
+    $firstline = get-content $filename -first 1
+    $returnvalue = if ($firstline -eq "{}") {0} else {1}
+    return $returnvalue
+}
+
+# Check to make sure PIVNET_TOKEN is set
+if (-not (Test-Path env:PIVNET_TOKEN)) { 
+    Write-Host 'PIVNET_TOKEN must be set'
+    Exit 1 
+}
+
+if ($iaas -eq "") {
+    Write-Host "Please check your parameters... must be iaas foundation product"
+}
+
+if ($foundation -eq "") {
+    Write-Host "Please check your parameters... must be iaas foundation product"
+}
+
+if ($product -eq "") {
+    Write-Host "Please check your parameters... must be iaas foundation product"
+}
+
+# $configfile = "config.yml"
+# if(Test-Path $configfile) {
+#     $foundation = (om interpolate -c ${configfile} --path /initial-foundation)
+# } else {
+#     Write-Host "Must create ${configfile} and specify initial-foundation"
+#     Exit 1
+# }
+
+Write-Host "Generating configuration for $product in $iaas/$foundation"
+
+$product_dir = "../$iaas/$foundation/config/$product" -replace ' ',''
+
+$versionfile = "$product_dir/version.yml" -replace ' ',''
+if(-not (Test-Path $versionfile)) {
+    Write-Host "Must create $versionfile"
+    Exit 1
+}
+
+$version = (om interpolate -s -c $versionfile --path /product-version)
+$glob = (om interpolate -s -c $versionfile --path /pivnet-file-glob)
+$slug = (om interpolate -s -c $versionfile --path /pivnet-product-slug)
+
+Write-Host "Searching for version $version with glob $glob and slug $slug"
+
+$tmpdir = "tile-configs/$product-config"
+Create-Directory("$tmpdir")
+om config-template --output-directory=$tmpdir --pivnet-api-token $env:PIVNET_TOKEN --pivnet-product-slug $slug --product-version $version --pivnet-file-glob $glob
+
+$searchversion = "$version*"  -replace ' ',''
+$wrkdir = (Get-ChildItem ./$tmpdir/$product -Filter $searchversion).name
+if( -not (Test-Path ./$tmpdir/$product/$wrkdir/product.yml)) {
+  Write-Host "Something wrong with configuration as expecting ${wrkdir}/product.yml to exist"
+  Exit 1
+}
+
+Create-Directory("../$iaas/opsfiles")
+
+$ops_file = "../$iaas/opsfiles/$product-operations" -replace ' ',''
+Touch-File($ops_file)
+
+$ops_files_args = ""
+foreach ($line in Get-Content $ops_file) {
+    $ops_files_args += " -o $tmpdir/$product/$wrkdir/$line"
+}
+
+$foundation_ops_file = "../$iaas/$foundation/opsfiles/$product-operations" -replace ' ',''
+Touch-File($foundation_ops_file)
+foreach ($line in Get-Content $foundation_ops_file){ 
+    if ($line.StartsWith("-")) {   ###### Over writing common ops files with starts with "-" character #####
+        $line = $line.SubString(1,$line.length-1)
+        $ops_files_args = $ops_files_args -replace " -o $tmpdir/$product/$wrkdir/$line"
+    } else {
+        $ops_files_args += " -o $tmpdir/$product/$wrkdir/$line"
+    }  
+}
+
+$generated_dir = "$product_dir/generated"
+Create-Directory("$generated_dir")
+
+$templatefile = "$generated_dir/template.yml" -replace ' ',''
+$cmd = "om interpolate -s -c $tmpdir/$product/$wrkdir/product.yml $ops_files_args &gt; $templatefile"
+# Calling this via Invoke-Expression to make it easier to debug by doing...
+# Write-Host $cmd
+Invoke-Expression $cmd
+
+$default_product_file = "$generated_dir/defaults.yml" -replace ' ',''
+Remove-File("$default_product_file")
+Touch-File("$default_product_file")
+
+$default_file = "$tmpdir/$product/$wrkdir/default-vars.yml"
+if(Test-Path $default_file) {
+    if (emptyfile("$default_file") -eq 1) {
+        type $default_file &gt;&gt; $default_product_file
+    }
+}
+
+$errands_file = "$tmpdir/$product/$wrkdir/errand-vars.yml"
+if(Test-Path $errands_file) {
+    if (emptyfile("$errands_file") -eq 1) {
+        type $errands_file &gt;&gt; $default_product_file
+    }
+}
+
+$resource_file = "$tmpdir/$product/$wrkdir/resource-vars.yml"
+if(Test-Path $resource_file) {
+    if (emptyfile("$resource_file") -eq 1) {
+        type $resource_file &gt;&gt; $default_product_file
+    }
+}
+
+$secrets_dir="$product_dir/secrets"
+Create-Directory("$secrets_dir")
+Touch-File("$secrets_dir/secrets.yml")
+
+Touch-file("${product_dir}/vars.yml")
+
+Touch-file("$product_dir/errands")
+
+$base_common_dir = "../${iaas}/common"
+Create-Directory("${base_common_dir}")
+
+$common_dir = "../${iaas}/common/shared"
+Create-Directory("${common_dir}")
+Touch-File("${common_dir}/${product}.yml")
+
+$eus_common_dir = "../${iaas}/common/eus"
+Create-Directory("${eus_common_dir}")
+Touch-File("${eus_common_dir}/${product}.yml")
+
+$scus_common_dir = "../${iaas}/common/scus"
+Create-Directory("${scus_common_dir}")
+Touch-File("${scus_common_dir}/${product}.yml")```
+
+```promote ps1
+#! /usr/bin/pwsh
+
+param ($fromRegion, $fromEnv, $toRegion, $toEnv)
+$environment_source = "$fromRegion-$fromEnv"
+$environment_target = "$toRegion-$toEnv"
+$iaas = "azure"
+
+$PSDefaultParameterValues['Out-File:Encoding'] = 'ascii'
+
+function Create-Directory ($dirname) {
+    $OriginalErrorActionPreference = $ErrorActionPreference
+    $ErrorActionPreference = 'silentlycontinue'
+    New-Item -Path "$dirname" -ItemType Directory &gt; $null
+    $ErrorActionPreference = $OriginalErrorActionPreference
+}
+
+function Touch-File($filename) {
+    $OriginalErrorActionPreference = $ErrorActionPreference
+    $ErrorActionPreference = 'silentlycontinue'
+    $filename = "$filename" -replace ' ',''
+    New-Item -Path "$filename" -ItemType File &gt; $null
+    $ErrorActionPreference = $OriginalErrorActionPreference
+}
+
+# Check to make sure PIVNET_TOKEN is set
+if (-not (Test-Path env:PIVNET_TOKEN)) { 
+    Write-Host 'PIVNET_TOKEN must be set'
+    Exit 1 
+}
+
+Write-Host "Promoting from $environment_source to $environment_target"
+
+if ($environment_target.contains("k8s")) {
+  . ./products-k8s.ps1
+} else {
+  . ./products.ps1
+}
+
+foreach ($product in $products) {
+  Write-Host "Copying files for $product"
+  Create-Directory("../$iaas/$environment_target/config/$product/generated")
+  Create-Directory("../$iaas/$environment_target/config/$product/secrets")
+  Create-Directory("../$iaas/$environment_target/config/common-secrets")
+  Create-Directory("../$iaas/$environment_target/opsfiles")
+  Touch-File("../$iaas/$environment_target/config/$product/vars.yml")
+  $foundation_ops_file = "../$iaas/$environment_target/opsfiles/$product-operations" -replace ' ',''
+  Touch-File($foundation_ops_file)
+
+  copy ../$iaas/$environment_source/pipeline.yml ../$iaas/$environment_target/pipeline.yml
+  copy ../$iaas/$environment_source/config/common-secrets/pivnet.yml  ../$iaas/$environment_target/config/common-secrets/pivnet.yml
+  
+  # Going to not copy secrets... since products can have different opsfiles, the secrets could be different
+  # However, the following two lines are helpful when creating a brand new foundation in order to create the file structures
+  # Only un-comment these if you are confident in what you are doing
+  # ------------------------------------
+  # copy ../$iaas/$environment_source/config/$product/secrets/* ../$iaas/$environment_target/config/$product/secrets/.
+  # copy ../$iaas/$environment_source/config/$product/vars.yml ../$iaas/$environment_target/config/$product/.
+  # $foundation_ops_file_source = "../$iaas/$environment_source/opsfiles/$product-operations" -replace ' ',''
+  # copy $foundation_ops_file_source  $foundation_ops_file
+  # ------------------------------------
+  
+  copy ../$iaas/$environment_source/config/$product/errands  ../$iaas/$environment_target/config/$product/.
+  copy ../$iaas/$environment_source/config/$product/version-stemcell.yml  ../$iaas/$environment_target/config/$product/.
+  copy ../$iaas/$environment_source/config/$product/version.yml  ../$iaas/$environment_target/config/$product/.
+  # Note: do not copy the env file when promoting from eus-sdbx2
+  # It has a different env file because it uses SAML authentication while all others use UAA local client
+  # Remove / Change this as other foundations start using SAML
+  if ($environment_source -ne "eus-sdbx2") {
+    copy ../$iaas/$environment_source/config/common-secrets/env.yml  ../$iaas/$environment_target/config/common-secrets/env.yml
+  }
+}
+
+# Since there are structural differences (specifically MySql) which require products to have their own
+# ops files, need to do a generate-config during the promotion
+# This will create the template and default files (not copied above)
+foreach ($product in $products) {
+  ./generate-config.ps1 $iaas $toRegion $toEnv $product
+}
+
+./validate-all.ps1 $toRegion $toEnv```
+
+```validate-config ps1
+#! /usr/bin/pwsh
+
+param ($iaas, $region, $env, $product) 
+
+$environment_name="$region-$env"
+
+Write-Host "Validating configuration for $product in $iaas/$environment_name"
+
+$deploy_type="tile"
+
+if ($product -eq "os-conf" ) {
+    $deploy_type="runtime-config"
+}
+if ($product -eq "clamav") {
+    $deploy_type="runtime-config"
+}
+
+$var_files_args = ""
+if ($deploy_type -eq "runtime-config") {
+    $var_files_args += " --vars-file ../$iaas/$environment_name/config/$product/version.yml"
+}
+
+if (Test-Path "../$iaas/common/shared/$product.yml") {
+  $var_files_args += " --vars-file ../$iaas/common/shared/$product.yml"  
+}
+
+if (Test-Path "../$iaas/common/$region/$product.yml") {
+  $var_files_args += " --vars-file ../$iaas/common/$region/$product.yml"  
+}
+
+if (Test-Path "../$iaas/$environment_name/config/$product/vars.yml") {
+    $var_files_args += " --vars-file ../$iaas/$environment_name/config/$product/vars.yml"
+}
+
+if (Test-Path "../$iaas/$environment_name/config/$product/secrets/secrets.yml") {
+    $var_files_args += " --vars-file ../$iaas/$environment_name/config/$product/secrets/secrets.yml"
+}
+
+if ($deploy_type -eq "tile") {
+    $cmd = "bosh int --var-errs-unused ../$iaas/$environment_name/config/$product/generated/template.yml $var_files_args"
+    # Write-Host $cmd
+    Invoke-Expression $cmd &gt; $null
+}
+
+if (Test-Path "../$iaas/$environment_name/config/$product/generated/defaults.yml") {
+    $var_files_args += " --vars-file ../$iaas/$environment_name/config/$product/generated/defaults.yml"
+}
+
+$cmd = "bosh int --var-errs ../$iaas/$environment_name/config/$product/generated/template.yml $var_files_args"
+# Write-Host $cmd
+Invoke-Expression $cmd &gt; $null```
+
+```run ps1
+#! /usr/bin/pwsh
+
+$iaas = "azure"
+
+function ShowMenu {
+    while ($true) {
+        Write-Host "What do you want to do?"
+        Write-Host "1. generate-config"
+        Write-Host "2. validate-config"
+        Write-Host "3. generate-and-validate-all"
+        Write-Host "4. compare-to-other"
+        Write-Host "5. promote"
+        Write-Host "6. trigger-all-products"
+        Write-Host "9. quit"
+        $action = Read-Host "Make a selection"
+
+        switch ($action) {
+            1 {
+                generate-config
+                return
+            }
+            2 {
+                validate-config
+                return
+            }
+            3 {
+                generate-and-validate-all
+                return
+            }
+            4 {
+                compareToOther
+                return
+            }
+            5 {
+                promote 
+                return
+            }
+            6 {
+                triggerAllProducts
+                return
+            }
+            9 {
+                return $action
+            }
+            default {
+                Write-Host "$action is not valid"
+            }
+        }
+    } 
+}
+
+function promptForRegion {
+    do {
+        try {
+            [ValidatePattern('eus|scus')] $region = Read-Host "Which Region? (eus/scus)"
+        } catch {}
+    } until ($?)
+    return $region
+}
+
+function promptForEnvironment($region) {
+    $dirname = "../azure"
+    $env_list = Get-ChildItem -path "$dirname" -Directory $region-*
+    
+    while ($true) {
+        Write-Host "Which Foundation?"
+        $counter = 1
+        foreach ($env in $env_list) {
+            Write-Host $counter  $env  
+            $counter++
+        }
+        $selection = Read-Host "Make a selection"
+        if ([int]$selection -le $env_list.count) {
+            $returnval = $env_list[$selection - 1]
+            $returnval = $returnval -replace "$region-", ""
+            return $returnval
+        }
+    } 
+
+}
+
+function getAllProducts($region, $env) {
+    $dirname = "../azure/$region-$env/config"
+    $products = Get-ChildItem -Path "$dirname" -Directory
+    return $products
+}
+
+function promptForProduct($region, $env) {
+    $products = getAllProducts $region $env
+
+    while ($true) {
+        Write-Host "Which Product?"
+        $counter = 1
+        foreach ($prod in $products) {
+            Write-Host $counter  $prod  
+            $counter++
+        }
+        $selection = Read-Host "Make a selection"
+        if ([int]$selection -le $products.count) {
+            return $products[$selection - 1]
+        }
+    } 
+}
+
+function generate-config {
+    Write-Host "You are about to do a generate config"
+    $iaas = "azure"
+    $region = promptForRegion
+    $env = promptForEnvironment $region
+    $product = promptForProduct $region $env
+    $cmd = "./generate-config.ps1 $iaas $region $env $product"
+    Write-Host $cmd
+    Invoke-Expression $cmd
+}
+
+function validate-config {
+    Write-Host "You are about to do a validate config"
+    $iaas = "azure"
+    $region = promptForRegion
+    $env = promptForEnvironment $region
+    $product = promptForProduct $region $env
+    $cmd = "./validate-config.ps1 $iaas $region $env $product"
+    Write-Host $cmd
+    Invoke-Expression $cmd
+}
+
+function generate-and-validate-all {
+    Write-Host "You are about to do a generate and validate all"
+    $iaas = "azure"
+    $region = promptForRegion
+    $env = promptForEnvironment $region
+    $cmd = "./generate-and-validate-all.ps1 $region $env"
+    Write-Host $cmd
+    Invoke-Expression $cmd
+}
+
+function compareToOther {
+    Write-Host "You are about to do a compareToOther"
+    $iaas = "azure"
+    $fromRegion = promptForRegion
+    $fromEnv = promptForEnvironment $fromRegion
+    $toRegion = promptForRegion
+    $toEnv = promptForEnvironment $toRegion
+    if (($fromEnv -eq $toEnv) -and ($fromRegion -eq $toRegion)) {
+        Write-Host "The source and target can not be the same"
+        return
+    }
+    $product = promptForProduct $fromRegion $fromEnv
+    $cmd = "./compare-to-other.ps1 $fromRegion $fromEnv $toRegion $toEnv $product"
+    Write-Host $cmd
+    Invoke-Expression $cmd
+}
+
+function promote {
+    Write-Host "You are about to do a promote"
+    $iaas = "azure"
+    $fromRegion = promptForRegion
+    $fromEnv = promptForEnvironment $fromRegion
+    $toRegion = promptForRegion
+    $toEnv = promptForEnvironment $toRegion
+    if (($fromEnv -eq $toEnv) -and ($fromRegion -eq $toRegion)) {
+        Write-Host "The source and target can not be the same"
+        return
+    }
+    $cmd = "./promote.ps1 $fromRegion $fromEnv $toRegion $toEnv"
+    Write-Host $cmd
+    Invoke-Expression $cmd
+}
+
+function triggerAllProducts {
+    Write-Host "You are about to change a file in all products to trigger pipeline"
+    $iaas = "azure"
+    $region = promptForRegion
+    $env = promptforEnvironment $region
+    $products = getAllProducts $region $env
+
+    $excluded = "common-secrets"
+
+    foreach ($prod in $products) {
+        if ($excluded.contains($prod)) {
+            continue
+        }
+        Get-Date | Out-File -FilePath ../$iaas/$region-$env/config/$prod/trigger-me 
+    }
+
+}
+
+$action = ShowMenu
+
+# How to call a function by dynamically building function name
+#     $funcName = "prompt-for-env-from-$region"
+#     $env = &amp;(Get-ChildItem "Function:$funcName")```
+
+```products ps1
+$products = @("appMetrics",
+              "azure-log-analytics-nozzle",
+              "azure-service-broker",
+              "cf",
+              "contrast-security-service-broker",
+              "credhub-service-broker",
+              "metric-store"
+              "p_spring-cloud-services",
+              "p-antivirus",
+              "p-antivirus-mirror",
+              "p-dataflow",
+              "p-event-alerts",
+              "p-healthwatch2",
+              "p-healthwatch2-pas-exporter",
+              "p-rabbitmq",
+              "p-scheduler",
+              "pivotal_single_sign-on_service",
+              "pivotal-mysql",
+              "pivotal-telemetry-om"
+            )```
+
+Handling certs with PEZ installation
+After running the opsman/director pipeline to create a new opsman - need to get the tls_ca from the opsman credhub (target the opsman credhub by commenting the last line in the target.sh script).  Concat that tls_ca cert along with the nsx-t cert (this is in a file in hidden/tls-certs).
+Add the nsx-t / tls_ca cert to the concourse credhub (uncomment last line and run target.sh)
+```credhub set -n concourse/main/director_trusted_cert -t certificate -c director_trusted_certs```
+
+After TAS tile is staged, generate new certs for `*.<http://run.haas-424.pez.vmware.com|run.haas-424.pez.vmware.com>, *.<http://cfapps.haas-424.pez.vmware.com|cfapps.haas-424.pez.vmware.com>, *.<http://uaa.run.haas-424.pez.vmware.com|uaa.run.haas-424.pez.vmware.com>, *.<http://login.run.haas-424.pez.vmware.com|login.run.haas-424.pez.vmware.com>` under the network tab (or uaa tab).  Capture the cert and private key and then add to concourse credhub
+```credhub set -n concourse/main/pas_network_cert -t certificate -c pas_network_cert.cer -p pas_network_cert.pem
+credhub set -n concourse/main/uaa_service_provider_key_credentials -t certificate -c pas_network_cert.cer -p pas_network_cert.pem```
+
+Of course, this is only needed to be done because of the use of self-signed certs.. if doing something like LetsEncrypt you would just use those certs
+The certs need to be regenerated because the cert is generated with the CA from opsman and since there is a new opsman the old cert would not be valid
+When using credhub service broker ... where are the credentials really stored?
+When you `create-service` using the broker, you don't really get anything like you expect
+The create-service actually takes the credentials in as parameters - see `<https://docs.pivotal.io/credhub-service-broker/using.html>`
+Those are stored in the credhub within TAS and you access them by going thru opsman (I guess you could also do this from your own machine since you are modifying /etc/hosts anyway - but the cert is on opsman so it is just easier).  The instructions are here: `<https://community.pivotal.io/s/article/How-to-access-Ops-Manager-s-CredHub-with-the-CredHub-CLI?language=en_US>`
+The difference in small footprint TAS is that credhub and uaa do not have their own VM - but are co-located on the Control VM - so use the Control VM IP addresses instead
+So, in the case of small footprint - the /etc/hosts entry looked like this (with the IP address being control vm)
+```192.168.2.13 credhub.service.cf.internal
+192.168.2.13 uaa.service.cf.internal```
+
+If you mess up your opsman security, you can put it into "rescue" mode which will bypass any authentication... Here is the link to explain how `<https://pvtl.force.com/s/article/How-to-put-Ops-Manager-into-Rescue-Mode?language=en_US>`
+With the new Tanzu Observability (which is based on Wavefront) ... there is a wavefront nozzle - but a better approach may be to use the HW2 exporter to get data to TO ... The HW2 team is working on enhancing their solution to follow this pattern - but in the meantime here are instructions -&gt; `<https://docs.google.com/document/d/10YG6sBDD-6nmGeMSkhKBcLvR-7Xq_I43q6ib8lBPVTM/edit#heading=h.6bemabx4l0zp>`
+HW2 - Alert Manager ... you can either look at the Prometheus Alert Manager UI or use amtool (which is on the tsdb VM)
+Here is the doc -&gt; `<https://docs.pivotal.io/healthwatch/2-1/configuring/optional-config/alerting.html>`
+When running the `amtool` commands, you will need to add the alertmanager.url param - so it will look like this:
+```./amtool --alertmanager.url <http://127.0.0.1:10401> -o extended alert
+./amtool --alertmanager.url <http://127.0.0.1:10401> -o extended silence
+./amtool --alertmanager.url <http://127.0.0.1:10401> silence add alertname=TASDiegoMemoryUsed -d 5m -c "test silencer"
+./amtool --alertmanager.url <http://127.0.0.1:10401> silence expire ba106a8a-facb-42e3-a8ba-f0c68a302545```
+To avoid having to add the alertmanager.url on every command...
+Create the /etc/amtool directory
+Create a config.yml file in that directory
+Add this configuration to that file...
+```# Define the path that `amtool` can find your `alertmanager` instance
+alertmanager.url: "<http://localhost:10401>"```
+
+Here are instructions on how to use the Prometheus UI ... it is unable to navigate thru the `Source` link because it redirects to a different port though...
+```<https://docs.pivotal.io/healthwatch/2-1/troubleshooting.html#viewing-the-alertmanager-ui>```
+
+Zipkin to Wavefront
+Zipkin requires code to be instrumented.
+When instrumented, it will allow for call paths to be correlated so you can see calls between services and the timings
+For an example NodeJS application, see <https://github.com/mjenk664/pcf-zipkin-nodejs-demo>
+Although we could send the data to a zipkin server (many ways to start that server, one of which is to deploy from <http://zipkin.io/quickstart|zipkin.io/quickstart> a jar file via cf push, we can also send the data directly to Wavefront.
+The advantage is that we don't have to worry about the zipkin server running, connecting to a persistence data store, cleaning out old data, where to run the server, etc...
+From the example source code above, we need to change the URL to point to the wavefront proxy AND port 9411.  It also can only be http (not https)
+To set up the port, need to set up wavefront nozzle custom config and add `traceZipkinListenerPorts=9411`
+Connect to TAS internal MySql DB
+<https://community.pivotal.io/s/article/How-to-Connect-to-the-Pivotal-Application-Service-Internal-MySQL-database?language=en_US>
+How to `cf ssh` into a container as root
+<https://community.pivotal.io/s/article/How-to-Login-an-Apps-Container-as-a-Root?language=en_US>
+CI/CD Tool ... tekton.dev
+SDKMAN ... tool to manage sdk's that are installed and to switch between versions
+<https://developer.okta.com/blog/2019/01/16/which-java-sdk>
+<https://sdkman.io/usage>
+<https://medium.com/@ajeesh2705/use-multiple-version-of-java-6219258bd8eb>
+<https://www.baeldung.com/java-sdkman-intro>
+There is a docker image that has all the carvel tools and kp and kubectl ... <https://hub.docker.com/r/kpack/kp>
+See your k8s stuff... with k9s!!!  <https://k9scli.io/topics/commands/>
+Docker Issues
+I'm trying to install Harbor as both a helm chart and as the tile ... when trying to push the image to harbor using `docker push`, I keep getting certificate errors
+The most common answer was to add the harbor registry to my docker desktop as an insecure-registry... but that didn't seem to fix the problem
+I got it working for the tile deployed harbor by downloading the cert from the harbor UI (was either on the project page download certificate button or in admin/config/system settings ... either will work)... Then adding that cert to the mac keychain via `sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ca.crt` ... Then had to `docker login &lt;&lt;harbor url&gt;&gt;`
+This is the link with the answer...
+```<https://blog.container-solutions.com/adding-self-signed-registry-certs-docker-mac>```
+
+The helm chart deployment is a different error... I get this on the docker login... `x509: cannot validate certificate for 51.143.54.86 because it doesn't contain any IP SANs`
+How to know what port a pod is listening on...
+`kubectl get pod &lt;&lt;pod-name&gt;&gt; --template='{{(index (index .spec.containers 0).ports 0).containerPort}}{{"\n"}}'`
+If your pod is listening on port 9080 - you could run a port-forward command on your local machine like this...
+```kubectl port-forward &lt;&lt;pod-name&gt;&gt; &lt;&lt;port&gt;&gt;:&lt;&lt;port&gt;&gt;```
+The first port is what you will use with `localhost:&lt;&lt;port&gt;&gt;`
+The second port is the target port that the pod is listening on (from command above)
+If you want to just get a random local port you can leave the first port off...
+```kubectl port-forward &lt;&lt;pod-name&gt;&gt; :&lt;&lt;port&gt;&gt;```
+Then you would access this with the port that is shown in the output
+But to expose it beyond the cluster, you would use a LoadBalancer
+```kubectl expose deployment liberty-spring-music --name=liberty-spring-music --port=80 --target-port=9080 --type=LoadBalancer```
+The important thing here seems to be that you have to supply *both* the port and target-port.  The target-port is the port that your application is listening on.
+Why minio `mc` command wasn't showing contents of buckets in the `mc ls` command ... When the minio alias is created, the "path" needs to be set to "off" and not "auto"
+To show metrics from a cluster in `lens`
+Lens is a graphical utility to browse clusters
+After installing prometheus, edit the cluster settings within Lens and select the `Metrics`
+The Prometheus installation type should be set to `helm`
+The Prometheus Service Address should be the namespace/service of the prometheus server.  There will likely already be a port-forward set up for that service which forwards port 80 to the prometheus port of 9090.
+Example:
+```tanzu-system-monitoring/prometheus-server:80```
+Now when you select certain objects (cluster, nodes, pods, etc...) you should see metrics within Lens
+Velero backup failed - but can't delete the backup
+This can happen when the failure doesn't create any artifacts.  An example could be when the target is unavailable.
+You can delete the velero backup (either using velero cli or through TMC) ... but it will hang up saying that it will be deleted once all of the associated resources are deleted.
+The problem is that there is a object in the cluster that is not being deleted.
+`kubectl delete <http://backups.velero.io|backups.velero.io> -n velero backup-name` will delete this object and the backup will continue to delete
+If deploy opsman using IP address ... how to change IP to hostname
+```<https://community.pivotal.io/s/article/Pivotal-Cloud-Foundry-Being-Associated-with-Internal-IP-Rather-than-FQDN?language=en_US>```
+Then had to change the host name and DNS name within vcenter
+Work with UAA from opsman to add pks admin/manage authority
+ssh into opsman
+`ssh -i ~/.ssh/opsman-ssh-private-file.pem ubuntu@&lt;opsman url&gt;`
+`uaac target https://&lt;pks api url&gt;:8443 --skip-ssl-validation`
+Then get the admin client token
+`uaac token client get admin`
+The password is from the TKGI tile credentials from "PKS Uaa Management Admin Client"
+`uaac group mappings`
+`uaac group map --name pks.clusters.admin "cn=xxx,ou=yyy"`  using the LDAP search
+Adding gitlab cert (CA + Intermediate) to concourse
+First: get the certificate ... we really only need the intermediate and the CA for Concourse to trust
+`openssl s_client -showcerts -connect &lt;git url&gt;:443`
+To test it locally (i.e. on your own laptop to avoid getting the SSL error) ...
+Put that cert(s) into a file with a `.crt` extension and put it in `/usr/local/share/ca-certificates/`
+Run `update-ca-certificates`
+Test by using a `git pull`
+Now add it to the configuration for concourse ... this is done in different ways (based on bosh deployed or helm chart)
+For the helm chart ... in the yaml add to the `secrets` section
+```workerAdditionalCerts: |-
+--- the cert```
+
+Or via opsman
+```https://&lt;&lt;opsman-uri&gt;&gt;/api/v0/deployed/director/credentials/bbr_ssh_credentials```
+How to add RBAC roles for Opsman
+<https://docs.vmware.com/en/VMware-Tanzu-Operations-Manager/3.0/vmware-tanzu-ops-manager/opsguide-config-rbac.html>
