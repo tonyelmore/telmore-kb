@@ -1,8 +1,9 @@
 Heading:
   Pivotal Cloud Foundry (PCF) tips
 
-Topic: 
-  How to do DR
+----------------------------------------------------------------
+
+Topic: How to do DR
 
 Answers:
 * `cf push` the application to both the prod and DR environments
@@ -22,14 +23,16 @@ Answers:
 
 * Helpful Link: &lt;https://docs.cloudfoundry.org/devguide/deploy-apps/routes-domains.html#shared-domains&gt;
 
-Topic:
-  Pivotal CloudCache installation problem
+----------------------------------------------------------------
+
+Topic: Pivotal CloudCache installation problem
 
 Answers:
 * Having issues running the smoke test... following documentation here -&gt; <https://docs.pivotal.io/p-cloud-cache/1-9/prepare-TLS.html> and am not applying change to get the trusted certs installed.  Doing the apply change for all products and doing it manually.  If it works, I'll have to add it the automation.
 
-Topic:
-  When there are a lot of queued bosh tasks
+----------------------------------------------------------------
+
+Topic: When there are a lot of queued bosh tasks
 
 Answers:
 * When doing a `bosh tasks` and there are a lot of queued tasks and you want to remove them.
@@ -43,8 +46,9 @@ Answers:
 
 * 2. Cancel all the tasks from Director <https://community.pivotal.io/s/article/How-to-Cancel-All-Queued-BOSH-Tasks-Using-director-ctl>
 
-Topic:
-  How to get credentials from command line
+----------------------------------------------------------------
+
+Topic: How to get credentials from command line
 
 Answers:
 * Preferred method...
@@ -56,14 +60,16 @@ Answers:
 * To get a list of all the available credentials...
   ```om credential-references -p cf```
 
-Topic:
-  Setting up RDS database in AWS
+----------------------------------------------------------------
+
+Topic: Setting up RDS database in AWS
 
 Answers:
 * Need a lot more detail here... but wanted to share this link...  <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html>
 
-Topic:
-  DNS Commands
+----------------------------------------------------------------
+
+Topic: DNS Commands
 
 Answers:
 * To find if the DNS entries are set up, use nslookup
@@ -85,16 +91,18 @@ Answers:
 
   Seems like either can be used
 
-Topic:
-  Downloading a file by unsigned developer
+----------------------------------------------------------------
+
+Topic: Downloading a file by unsigned developer
 
 Answers:
 * `spctl --add /Path/To/om`
 
 * When doing for `om` (and maybe others) would have to do a `chmod +x /Path/To/om`
 
-Topic:
-  Script to check persistent disk free space on all VMs
+----------------------------------------------------------------
+
+Topic: Script to check persistent disk free space on all VMs
 
 Answers:
 * ```for i in `bosh --ty deployments --json | jq -r '.Tables[].Rows[] | name'`; 
@@ -104,28 +112,32 @@ Answers:
     echo ;
     done```
 
-Topic:
-  Excessive audit logs being sent to splunk
+----------------------------------------------------------------
+
+Topic: Excessive audit logs being sent to splunk
 
 Answers:
 * look at `/etc/audit/audit.rules` and there is a `/etc/audit/audit.rules.prev` to show what previous rules were
 
 * Apparently - OMS has an agent running on each VM and that talks back to the microsoft servers for the rules.  Microsoft can change the rules on the server which will then get applied to the VM via the agent.
 
-Topic:
-  How to find and delete bosh queued tasks
+----------------------------------------------------------------
+
+Topic: How to find and delete bosh queued tasks
 
 Answers:
 * `for row in $(bosh tasks --json | jq -r '.Tables[].Rows[] | select(.state=="queued").id'); do bosh cancel-task $row -n; done`
 
-Topic:
-  Look thru VMs and show disk usage
+----------------------------------------------------------------
+
+Topic: Look thru VMs and show disk usage
 
 Answers:
 * ```s_inst="service-instance_xxxxx"; bosh -d "${s_inst}" vms | awk '{print $1}' | while read instance; do bosh -d "${s_inst}" ssh "${instance}" -c "sudo df -h /" | grep ": stdout "; done```
 
-Topic:
-  Enable / Disable opsman validators
+----------------------------------------------------------------
+
+Topic: Enable / Disable opsman validators
 
 Answers:
 * We were having issues with Azure VM creation timing out.  So, we disabled the validators until there was a fix in opsman.
