@@ -1,0 +1,453 @@
+[
+    {
+        "client_msg_id": "1de7e089-eab3-4d34-b2b1-d73b2cd6ecb6",
+        "type": "message",
+        "text": "How to view director DB",
+        "user": "U1APA4MFX",
+        "ts": "1609967989.000300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "HtJ",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "How to view director DB"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1609967989.000300",
+        "reply_count": 8,
+        "reply_users_count": 1,
+        "latest_reply": "1609968205.001800",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1609968035.000400"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1609968063.000600"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1609968105.000800"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1609968122.001000"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1609968149.001200"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1609968158.001400"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1609968182.001600"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1609968205.001800"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1609968205.001800"
+    },
+    {
+        "client_msg_id": "69848c53-6c0e-4353-a7a0-4afe9a4ecc9b",
+        "type": "message",
+        "text": "SSH into the director VM by first SSHing into Opsman",
+        "user": "U1APA4MFX",
+        "ts": "1609968035.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "9ix",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "SSH into the director VM by first SSHing into Opsman"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1609967989.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "f8df1a3b-d05a-47a2-834e-50dfc79cbbd7",
+        "type": "message",
+        "text": "Get the private key for the director from the \"credentials\" tab on the director tile in opsman",
+        "user": "U1APA4MFX",
+        "ts": "1609968063.000600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "\/GWBs",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Get the private key for the director from the \"credentials\" tab on the director tile in opsman"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1609967989.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "3127e78c-52df-401f-9d9a-9b9e910f79a1",
+        "type": "message",
+        "text": "Save the private key on the opsman VM and get rid of all the `\\n` and set the file permission via `chmod 600 file.pem`",
+        "user": "U1APA4MFX",
+        "ts": "1609968105.000800",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "wsRrd",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Save the private key on the opsman VM and get rid of all the "
+                            },
+                            {
+                                "type": "text",
+                                "text": "\\n",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " and set the file permission via "
+                            },
+                            {
+                                "type": "text",
+                                "text": "chmod 600 file.pem",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1609967989.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "a209d70e-a341-40a8-988b-358f9ff84afe",
+        "type": "message",
+        "text": "`ssh -i file.pem bbr@&lt;director_ip&gt;`",
+        "user": "U1APA4MFX",
+        "ts": "1609968122.001000",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "zg1dv",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "ssh -i file.pem bbr@<director_ip>",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1609967989.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "1142812d-d23f-425c-a978-7ae1c996e84d",
+        "type": "message",
+        "text": "sudo to root `sudo -i`",
+        "user": "U1APA4MFX",
+        "ts": "1609968149.001200",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "j+J",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "sudo to root "
+                            },
+                            {
+                                "type": "text",
+                                "text": "sudo -i",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1609967989.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "e2012e8a-7176-4ea9-8e23-1ffea1b71e65",
+        "type": "message",
+        "text": "start psql `\/var\/vcap\/packages\/postgres-9.4\/bin\/psql -U vcap bosh -h 127.0.0.1`",
+        "user": "U1APA4MFX",
+        "ts": "1609968158.001400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "DTlB",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "start psql "
+                            },
+                            {
+                                "type": "text",
+                                "text": "\/var\/vcap\/packages\/postgres-9.4\/bin\/psql -U vcap bosh -h 127.0.0.1",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1609967989.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "1df1a485-3cec-4cf3-b84d-db6412ad9c87",
+        "type": "message",
+        "text": "Now you can issue sql commands like `select * from vms;`",
+        "user": "U1APA4MFX",
+        "ts": "1609968182.001600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "t\/d",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Now you can issue sql commands like "
+                            },
+                            {
+                                "type": "text",
+                                "text": "select * from vms;",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1609967989.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "4ba606a5-9efb-4866-a86b-9aee2ac39b77",
+        "type": "message",
+        "text": "Or issue psql commands like `\\dt`",
+        "user": "U1APA4MFX",
+        "ts": "1609968205.001800",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "=i9Y",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Or issue psql commands like "
+                            },
+                            {
+                                "type": "text",
+                                "text": "\\dt",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1609967989.000300",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

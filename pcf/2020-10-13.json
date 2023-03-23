@@ -1,0 +1,96 @@
+[
+    {
+        "client_msg_id": "9afbeae9-7364-473e-9665-dd2b2160cec2",
+        "type": "message",
+        "text": "Look thru VMs and show disk usage",
+        "user": "U1APA4MFX",
+        "ts": "1602612894.000500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "tHXl9",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Look thru VMs and show disk usage"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1602612894.000500",
+        "reply_count": 1,
+        "reply_users_count": 1,
+        "latest_reply": "1602612965.000600",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1602612965.000600"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1602612965.000600"
+    },
+    {
+        "client_msg_id": "86999f61-6922-443f-9a0a-2eacbb3cb4c2",
+        "type": "message",
+        "text": "```s_inst=\"service-instance_xxxxx\"; bosh -d \"${s_inst}\" vms | awk '{print $1}' | while read instance; do bosh -d \"${s_inst}\" ssh \"${instance}\" -c \"sudo df -h \/\" | grep \": stdout \"; done```",
+        "user": "U1APA4MFX",
+        "ts": "1602612965.000600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "7L3k",
+                "elements": [
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "s_inst=\"service-instance_xxxxx\"; bosh -d \"${s_inst}\" vms | awk '{print $1}' | while read instance; do bosh -d \"${s_inst}\" ssh \"${instance}\" -c \"sudo df -h \/\" | grep \": stdout \"; done"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1602612894.000500",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

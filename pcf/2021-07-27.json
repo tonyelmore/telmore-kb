@@ -1,0 +1,362 @@
+[
+    {
+        "client_msg_id": "d416f562-03f2-4d51-ae95-2f293495b57c",
+        "type": "message",
+        "text": "Handling certs with PEZ installation",
+        "user": "U1APA4MFX",
+        "ts": "1627448446.000300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Jamu",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Handling certs with PEZ installation"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1627448446.000300",
+        "reply_count": 5,
+        "reply_users_count": 1,
+        "latest_reply": "1627450237.001200",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1627448699.000400"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1627448765.000600"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1627448897.000800"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1627450201.001000"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1627450237.001200"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1627450237.001200"
+    },
+    {
+        "client_msg_id": "b9266b04-cd16-4a8f-83a6-1e5d9ad87e47",
+        "type": "message",
+        "text": "After running the opsman\/director pipeline to create a new opsman - need to get the tls_ca from the opsman credhub (target the opsman credhub by commenting the last line in the target.sh script).  Concat that tls_ca cert along with the nsx-t cert (this is in a file in hidden\/tls-certs).",
+        "user": "U1APA4MFX",
+        "ts": "1627448699.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "LSFYs",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "After running the opsman\/director pipeline to create a new opsman - need to get the tls_ca from the opsman credhub (target the opsman credhub by commenting the last line in the target.sh script).  Concat that tls_ca cert along with the nsx-t cert (this is in a file in hidden\/tls-certs)."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1627448446.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "5a45a0e4-d1bd-439c-b6df-cd4a0877c062",
+        "type": "message",
+        "text": "Add the nsx-t \/ tls_ca cert to the concourse credhub (uncomment last line and run target.sh)\n```credhub set -n concourse\/main\/director_trusted_cert -t certificate -c director_trusted_certs```\n",
+        "user": "U1APA4MFX",
+        "ts": "1627448765.000600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "QC6",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Add the nsx-t \/ tls_ca cert to the concourse credhub (uncomment last line and run target.sh)\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "credhub set -n concourse\/main\/director_trusted_cert -t certificate -c director_trusted_certs"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1627448446.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "3ef779a4-0ea7-4776-8fd7-5a7b86307798",
+        "type": "message",
+        "text": "After TAS tile is staged, generate new certs for `*.<http:\/\/run.haas-424.pez.vmware.com|run.haas-424.pez.vmware.com>, *.<http:\/\/cfapps.haas-424.pez.vmware.com|cfapps.haas-424.pez.vmware.com>, *.<http:\/\/uaa.run.haas-424.pez.vmware.com|uaa.run.haas-424.pez.vmware.com>, *.<http:\/\/login.run.haas-424.pez.vmware.com|login.run.haas-424.pez.vmware.com>` under the network tab (or uaa tab).  Capture the cert and private key and then add to concourse credhub\n```credhub set -n concourse\/main\/pas_network_cert -t certificate -c pas_network_cert.cer -p pas_network_cert.pem\ncredhub set -n concourse\/main\/uaa_service_provider_key_credentials -t certificate -c pas_network_cert.cer -p pas_network_cert.pem```\n",
+        "user": "U1APA4MFX",
+        "ts": "1627448897.000800",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "b1i",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "After TAS tile is staged, generate new certs for "
+                            },
+                            {
+                                "type": "text",
+                                "text": "*.",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/run.haas-424.pez.vmware.com",
+                                "text": "run.haas-424.pez.vmware.com",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": ", *.",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/cfapps.haas-424.pez.vmware.com",
+                                "text": "cfapps.haas-424.pez.vmware.com",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": ", *.",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/uaa.run.haas-424.pez.vmware.com",
+                                "text": "uaa.run.haas-424.pez.vmware.com",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": ", *.",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/login.run.haas-424.pez.vmware.com",
+                                "text": "login.run.haas-424.pez.vmware.com",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " under the network tab (or uaa tab).  Capture the cert and private key and then add to concourse credhub\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "credhub set -n concourse\/main\/pas_network_cert -t certificate -c pas_network_cert.cer -p pas_network_cert.pem\ncredhub set -n concourse\/main\/uaa_service_provider_key_credentials -t certificate -c pas_network_cert.cer -p pas_network_cert.pem"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1627448446.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "92ae27ac-d287-413a-89de-0077219de162",
+        "type": "message",
+        "text": "Of course, this is only needed to be done because of the use of self-signed certs.. if doing something like LetsEncrypt you would just use those certs",
+        "user": "U1APA4MFX",
+        "ts": "1627450201.001000",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "BFXER",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Of course, this is only needed to be done because of the use of self-signed certs.. if doing something like LetsEncrypt you would just use those certs"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1627448446.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "44c7cb72-aa94-424e-ba00-23060a44d9c2",
+        "type": "message",
+        "text": "The certs need to be regenerated because the cert is generated with the CA from opsman and since there is a new opsman the old cert would not be valid",
+        "user": "U1APA4MFX",
+        "ts": "1627450237.001200",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "\/Oi22",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "The certs need to be regenerated because the cert is generated with the CA from opsman and since there is a new opsman the old cert would not be valid"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1627448446.000300",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

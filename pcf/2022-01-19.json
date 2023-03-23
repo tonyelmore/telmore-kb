@@ -1,0 +1,299 @@
+[
+    {
+        "client_msg_id": "e09391bb-208a-4e33-a8c2-ea764df782b0",
+        "type": "message",
+        "text": "Adding gitlab cert (CA + Intermediate) to concourse",
+        "user": "U1APA4MFX",
+        "ts": "1642620273.000600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "21r+",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Adding gitlab cert (CA + Intermediate) to concourse"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1642620273.000600",
+        "reply_count": 4,
+        "reply_users_count": 1,
+        "latest_reply": "1642620771.001300",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1642620336.000700"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1642620429.000900"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1642620478.001100"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1642620771.001300"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1642620771.001300"
+    },
+    {
+        "client_msg_id": "e8ef71c9-5f75-4ddd-a7c5-3542b59cb5d2",
+        "type": "message",
+        "text": "First: get the certificate ... we really only need the intermediate and the CA for Concourse to trust\n`openssl s_client -showcerts -connect &lt;git url&gt;:443`",
+        "user": "U1APA4MFX",
+        "ts": "1642620336.000700",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "HfcxA",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "First: get the certificate ... we really only need the intermediate and the CA for Concourse to trust\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "openssl s_client -showcerts -connect <git url>:443",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1642620273.000600",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "c0c595b6-9c47-4423-949d-80011ef56869",
+        "type": "message",
+        "text": "To test it locally (i.e. on your own laptop to avoid getting the SSL error) ...\nPut that cert(s) into a file with a `.crt` extension and put it in `\/usr\/local\/share\/ca-certificates\/`\nRun `update-ca-certificates`\nTest by using a `git pull`",
+        "user": "U1APA4MFX",
+        "ts": "1642620429.000900",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "JXJq",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "To test it locally (i.e. on your own laptop to avoid getting the SSL error) ...\nPut that cert(s) into a file with a "
+                            },
+                            {
+                                "type": "text",
+                                "text": ".crt",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " extension and put it in "
+                            },
+                            {
+                                "type": "text",
+                                "text": "\/usr\/local\/share\/ca-certificates\/",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\nRun "
+                            },
+                            {
+                                "type": "text",
+                                "text": "update-ca-certificates",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\nTest by using a "
+                            },
+                            {
+                                "type": "text",
+                                "text": "git pull",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1642620273.000600",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "e7c9ba34-e586-4009-82b8-20cd30986bee",
+        "type": "message",
+        "text": "Now add it to the configuration for concourse ... this is done in different ways (based on bosh deployed or helm chart)",
+        "user": "U1APA4MFX",
+        "ts": "1642620478.001100",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "spSV",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Now add it to the configuration for concourse ... this is done in different ways (based on bosh deployed or helm chart)"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1642620273.000600",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "8599af03-5b6a-483d-92ba-d62df9a09ac8",
+        "type": "message",
+        "text": "For the helm chart ... in the yaml add to the `secrets` section\n```workerAdditionalCerts: |-\n--- the cert```\n",
+        "user": "U1APA4MFX",
+        "ts": "1642620771.001300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "v5NhN",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "For the helm chart ... in the yaml add to the "
+                            },
+                            {
+                                "type": "text",
+                                "text": "secrets",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " section\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "workerAdditionalCerts: |-\n--- the cert"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1642620273.000600",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

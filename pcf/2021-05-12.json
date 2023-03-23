@@ -1,0 +1,444 @@
+[
+    {
+        "client_msg_id": "e96bab40-150c-43e6-be71-98854df85748",
+        "type": "message",
+        "text": "Issues with Rabbit MQ on demand smoke test failing",
+        "user": "U1APA4MFX",
+        "ts": "1620828573.000500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "5AYQ",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Issues with Rabbit MQ on demand smoke test failing"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1620828573.000500",
+        "reply_count": 4,
+        "reply_users_count": 1,
+        "latest_reply": "1620828985.001300",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1620828600.000600"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1620828620.000800"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1620828751.001000"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1620828985.001300"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1620828985.001300"
+    },
+    {
+        "client_msg_id": "2944deac-89de-404a-bfe1-60bef7876df7",
+        "type": "message",
+        "text": "Here are some of the commands I used to try to track down what I think is a cert issue",
+        "user": "U1APA4MFX",
+        "ts": "1620828600.000600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "9vIBJ",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Here are some of the commands I used to try to track down what I think is a cert issue"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1620828573.000500",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "743ae51f-b06b-4b29-97a1-2f12a79a890a",
+        "type": "message",
+        "text": "All executed on the broker VM",
+        "user": "U1APA4MFX",
+        "ts": "1620828620.000800",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "w8PYL",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "All executed on the broker VM"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1620828573.000500",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "d79579e3-e00b-467f-8335-6813b39d7251",
+        "type": "message",
+        "text": "• dig <http:\/\/uaa.run.haas-424.pez.vmware.com|uaa.run.haas-424.pez.vmware.com> +short\n• nc -tvz <http:\/\/uaa.run.haas-424.pez.vmware.com|uaa.run.haas-424.pez.vmware.com> 443\n• ping  <http:\/\/uaa.run.haas-424.pez.vmware.com|uaa.run.haas-424.pez.vmware.com>\n• curl -v <https:\/\/uaa.run.haas-424.pez.vmware.com\/info> &gt; external.out\n• curl -v <https:\/\/uaa.service.cf.internal:8443\/info> &gt; internal.out\n• openssl s_client -showcerts -servername <http:\/\/uaa.run.haas-424.pez.vmware.com|uaa.run.haas-424.pez.vmware.com> -connect uaa..<http:\/\/run.haas-424.pez.vmware.com:443|run.haas-424.pez.vmware.com:443> &lt;\/dev\/null\n• openssl s_client -showcerts -servername <http:\/\/uaa.run.haas-424.pez.vmware.com|uaa.run.haas-424.pez.vmware.com> -connect <http:\/\/uaa.run.haas-424.pez.vmware.com:443|uaa.run.haas-424.pez.vmware.com:443> &lt;\/dev\/null\n• vi testcert\n    ◦ add the cert from above to this file\n• curl -v <https:\/\/uaa.run.haas-424.pez.vmware.com\/info> --cacert testcert\n    ◦ This should now return a 200\n• openssl x509 -in testcert -noout -text",
+        "user": "U1APA4MFX",
+        "ts": "1620828751.001000",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Fct",
+                "elements": [
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "dig "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "http:\/\/uaa.run.haas-424.pez.vmware.com",
+                                        "text": "uaa.run.haas-424.pez.vmware.com"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " +short"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "nc -tvz "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "http:\/\/uaa.run.haas-424.pez.vmware.com",
+                                        "text": "uaa.run.haas-424.pez.vmware.com"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " 443"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "ping  "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "http:\/\/uaa.run.haas-424.pez.vmware.com",
+                                        "text": "uaa.run.haas-424.pez.vmware.com"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "curl -v "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/uaa.run.haas-424.pez.vmware.com\/info"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " > external.out"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "curl -v "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/uaa.service.cf.internal:8443\/info"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " > internal.out"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "openssl s_client -showcerts -servername "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "http:\/\/uaa.run.haas-424.pez.vmware.com",
+                                        "text": "uaa.run.haas-424.pez.vmware.com"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " -connect uaa..run.haas-424.pez.vmware.com:443 <\/dev\/null"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "openssl s_client -showcerts -servername "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "http:\/\/uaa.run.haas-424.pez.vmware.com",
+                                        "text": "uaa.run.haas-424.pez.vmware.com"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " -connect uaa.run.haas-424.pez.vmware.com:443 <\/dev\/null"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "vi testcert"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "bullet",
+                        "indent": 0
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "add the cert from above to this file"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "bullet",
+                        "indent": 1
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "curl -v "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/uaa.run.haas-424.pez.vmware.com\/info"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " --cacert testcert"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "bullet",
+                        "indent": 0
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "This should now return a 200"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "bullet",
+                        "indent": 1
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "openssl x509 -in testcert -noout -text"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "bullet",
+                        "indent": 0
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "edited": {
+            "user": "U1APA4MFX",
+            "ts": "1620828833.000000"
+        },
+        "thread_ts": "1620828573.000500",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "9f3a2ebf-da2b-4db8-b9ef-59796a2ac463",
+        "type": "message",
+        "text": "<https:\/\/community.pivotal.io\/s\/article\/5000e00001m8imf1603187548483?language=en_US>",
+        "user": "U1APA4MFX",
+        "ts": "1620828985.001300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "hqVy",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "link",
+                                "url": "https:\/\/community.pivotal.io\/s\/article\/5000e00001m8imf1603187548483?language=en_US"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "attachments": [
+            {
+                "title": "Upgrade of RabbitMQ\/REDIS\/MYSQL fails with error: failed to create uaa client",
+                "title_link": "https:\/\/community.pivotal.io\/s\/article\/5000e00001m8imf1603187548483?language=en_US",
+                "text": "Article Number: 9989 ■ Publication Date: October 22, 2020 ■ Author: Kalin Hadzhivelikov",
+                "fallback": "Upgrade of RabbitMQ\/REDIS\/MYSQL fails with error: failed to create uaa client",
+                "from_url": "https:\/\/community.pivotal.io\/s\/article\/5000e00001m8imf1603187548483?language=en_US",
+                "service_icon": "https:\/\/community.pivotal.io\/favicon.ico",
+                "service_name": "community.pivotal.io",
+                "id": 1,
+                "original_url": "https:\/\/community.pivotal.io\/s\/article\/5000e00001m8imf1603187548483?language=en_US"
+            }
+        ],
+        "thread_ts": "1620828573.000500",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

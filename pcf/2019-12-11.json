@@ -1,0 +1,282 @@
+[
+    {
+        "client_msg_id": "ff243347-665e-4296-858e-94be6f7fe796",
+        "type": "message",
+        "text": "When there are a lot of queued bosh tasks",
+        "user": "U1APA4MFX",
+        "ts": "1576098918.000300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "P\/AO",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "When there are a lot of queued bosh tasks"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1576098918.000300",
+        "reply_count": 4,
+        "reply_users_count": 1,
+        "latest_reply": "1576099014.001000",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1576098939.000400"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1576098946.000600"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1576098959.000800"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1576099014.001000"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1576099014.001000"
+    },
+    {
+        "client_msg_id": "6b7ab33a-8d47-4e56-8236-2aef3e6a909b",
+        "type": "message",
+        "text": "When doing a `bosh tasks` and there are a lot of queued tasks and you want to remove them.\n\nNote: if this happens often, consider scaling up the size of the Director VM by increasing number of CPUs.",
+        "user": "U1APA4MFX",
+        "ts": "1576098939.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "SRQJl",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "When doing a "
+                            },
+                            {
+                                "type": "text",
+                                "text": "bosh tasks",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " and there are a lot of queued tasks and you want to remove them.\n\nNote: if this happens often, consider scaling up the size of the Director VM by increasing number of CPUs."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "edited": {
+            "user": "U1APA4MFX",
+            "ts": "1576099085.000000"
+        },
+        "thread_ts": "1576098918.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "0ef95f66-171b-4b72-baa1-1a5955ab055c",
+        "type": "message",
+        "text": "There are a couple of options to remove the queued tasks.  Remember, that this puts the tasks into `cancelling` state and then bosh should take care of them.  If they do not go away, then you may have to ssh into the director and kill the tasks?",
+        "user": "U1APA4MFX",
+        "ts": "1576098946.000600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "6mL",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "There are a couple of options to remove the queued tasks.  Remember, that this puts the tasks into "
+                            },
+                            {
+                                "type": "text",
+                                "text": "cancelling",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " state and then bosh should take care of them.  If they do not go away, then you may have to ssh into the director and kill the tasks?"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "edited": {
+            "user": "U1APA4MFX",
+            "ts": "1576099190.000000"
+        },
+        "thread_ts": "1576098918.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "cd002f8b-395b-4289-9bc4-a9e354aefacf",
+        "type": "message",
+        "text": "1. Run a script\n```bosh tasks --column=ID --column=state --json | jq '.Tables[].Rows[].id' -Mr | xargs -n 1 bosh cancel-task```\n",
+        "user": "U1APA4MFX",
+        "ts": "1576098959.000800",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "XBIl",
+                "elements": [
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Run a script"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "ordered",
+                        "indent": 0
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "bosh tasks --column=ID --column=state --json | jq '.Tables[].Rows[].id' -Mr | xargs -n 1 bosh cancel-task"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1576098918.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "f957cdfb-2663-4899-9cae-ec59b059e983",
+        "type": "message",
+        "text": "2. Cancel all the tasks from Director\n<https:\/\/community.pivotal.io\/s\/article\/How-to-Cancel-All-Queued-BOSH-Tasks-Using-director-ctl>",
+        "user": "U1APA4MFX",
+        "ts": "1576099014.001000",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "vzf",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "2. Cancel all the tasks from Director\n"
+                            },
+                            {
+                                "type": "link",
+                                "url": "https:\/\/community.pivotal.io\/s\/article\/How-to-Cancel-All-Queued-BOSH-Tasks-Using-director-ctl"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1576098918.000300",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

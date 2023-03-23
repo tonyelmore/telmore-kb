@@ -1,0 +1,288 @@
+[
+    {
+        "client_msg_id": "52b6350a-5b07-4150-9546-256062ffc5ce",
+        "type": "message",
+        "text": "SDKMAN ... tool to manage sdk's that are installed and to switch between versions",
+        "user": "U1APA4MFX",
+        "ts": "1629137505.000500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "=gI3",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "SDKMAN ... tool to manage sdk's that are installed and to switch between versions"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1629137505.000500",
+        "reply_count": 4,
+        "reply_users_count": 1,
+        "latest_reply": "1629137544.001400",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1629137510.000600"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1629137533.000900"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1629137539.001100"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1629137544.001400"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1629137544.001400"
+    },
+    {
+        "client_msg_id": "9dc7ed23-7024-4a37-accc-b9eea178cfe8",
+        "type": "message",
+        "text": "<https:\/\/developer.okta.com\/blog\/2019\/01\/16\/which-java-sdk>",
+        "user": "U1APA4MFX",
+        "ts": "1629137510.000600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "baZ",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "link",
+                                "url": "https:\/\/developer.okta.com\/blog\/2019\/01\/16\/which-java-sdk"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "attachments": [
+            {
+                "service_name": "Okta Developer",
+                "title": "Which Java SDK Should You Use?",
+                "title_link": "https:\/\/developer.okta.com\/blog\/2019\/01\/16\/which-java-sdk",
+                "text": "Are you confused about the Java SDK (aka JDK) options available to you in 2019? This article shows you the options available and provides recommendations for development and production usage.",
+                "fallback": "Okta Developer: Which Java SDK Should You Use?",
+                "image_url": "https:\/\/developer.okta.com\/assets-jekyll\/blog\/which-java-sdk\/duke-which-java-sdk-should-you-use-2bf20018654e15beecd01529f8be1e82ebb9dc1908f082e817e95fbf9f0c0a4a.png",
+                "from_url": "https:\/\/developer.okta.com\/blog\/2019\/01\/16\/which-java-sdk",
+                "image_width": 625,
+                "image_height": 250,
+                "image_bytes": 109354,
+                "service_icon": "https:\/\/developer.okta.com\/assets-jekyll\/favicon\/apple-touch-icon.png",
+                "id": 1,
+                "original_url": "https:\/\/developer.okta.com\/blog\/2019\/01\/16\/which-java-sdk"
+            }
+        ],
+        "thread_ts": "1629137505.000500",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "1f002035-f06a-40ea-a2bd-0d76d425fef6",
+        "type": "message",
+        "text": "<https:\/\/sdkman.io\/usage>",
+        "user": "U1APA4MFX",
+        "ts": "1629137533.000900",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "EO6",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "link",
+                                "url": "https:\/\/sdkman.io\/usage"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1629137505.000500",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "9baf9b95-5984-4aeb-8c2a-26e8efee3b89",
+        "type": "message",
+        "text": "<https:\/\/medium.com\/@ajeesh2705\/use-multiple-version-of-java-6219258bd8eb>",
+        "user": "U1APA4MFX",
+        "ts": "1629137539.001100",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "sXZkI",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "link",
+                                "url": "https:\/\/medium.com\/@ajeesh2705\/use-multiple-version-of-java-6219258bd8eb"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "attachments": [
+            {
+                "service_name": "Medium",
+                "title": "Use Multiple Version of Java",
+                "title_link": "https:\/\/medium.com\/@ajeesh2705\/use-multiple-version-of-java-6219258bd8eb",
+                "text": "As you may have to work with multiple projects or modules with different version of java. You have to switch java version frequently to…",
+                "fallback": "Medium: Use Multiple Version of Java",
+                "image_url": "https:\/\/miro.medium.com\/max\/1200\/1*Hj0L8sYssW8_UeQWQk5-Zw.png",
+                "fields": [
+                    {
+                        "title": "Reading time",
+                        "value": "3 min read",
+                        "short": true
+                    }
+                ],
+                "ts": 1565184389,
+                "from_url": "https:\/\/medium.com\/@ajeesh2705\/use-multiple-version-of-java-6219258bd8eb",
+                "image_width": 965,
+                "image_height": 250,
+                "image_bytes": 104042,
+                "service_icon": "https:\/\/miro.medium.com\/fit\/c\/152\/152\/1*sHhtYhaCe2Uc3IU0IgKwIQ.png",
+                "id": 1,
+                "original_url": "https:\/\/medium.com\/@ajeesh2705\/use-multiple-version-of-java-6219258bd8eb"
+            }
+        ],
+        "thread_ts": "1629137505.000500",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "f1eb194e-49a3-476b-a297-e430f25164cd",
+        "type": "message",
+        "text": "<https:\/\/www.baeldung.com\/java-sdkman-intro>",
+        "user": "U1APA4MFX",
+        "ts": "1629137544.001400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "=+kCf",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "link",
+                                "url": "https:\/\/www.baeldung.com\/java-sdkman-intro"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "attachments": [
+            {
+                "service_name": "Baeldung",
+                "title": "Guide to SDKMAN! | Baeldung",
+                "title_link": "https:\/\/www.baeldung.com\/java-sdkman-intro",
+                "text": "Learn how to manage several versions of Java SDKs among other Java Ecosystem tools using SDKMAN!",
+                "fallback": "Baeldung: Guide to SDKMAN! | Baeldung",
+                "image_url": "https:\/\/www.baeldung.com\/wp-content\/uploads\/2017\/08\/Java-on-Baeldung-2.jpg",
+                "image_width": 478,
+                "image_height": 250,
+                "ts": 1596090613,
+                "from_url": "https:\/\/www.baeldung.com\/java-sdkman-intro",
+                "image_bytes": 137700,
+                "service_icon": "https:\/\/www.baeldung.com\/wp-content\/themes\/baeldung\/favicon\/apple-touch-icon-57x57.png",
+                "id": 1,
+                "original_url": "https:\/\/www.baeldung.com\/java-sdkman-intro"
+            }
+        ],
+        "thread_ts": "1629137505.000500",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

@@ -1,0 +1,52 @@
+[
+    {
+        "client_msg_id": "085c8ca5-aa92-49fc-9e07-cacc99202389",
+        "type": "message",
+        "text": "Or via opsman\n```https:\/\/&lt;&lt;opsman-uri&gt;&gt;\/api\/v0\/deployed\/director\/credentials\/bbr_ssh_credentials```",
+        "user": "U1APA4MFX",
+        "ts": "1679513650.952779",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "BU1",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Or via opsman\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "https:\/\/<<opsman-uri>>\/api\/v0\/deployed\/director\/credentials\/bbr_ssh_credentials"
+                            }
+                        ],
+                        "border": 0
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1576192688.000300",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

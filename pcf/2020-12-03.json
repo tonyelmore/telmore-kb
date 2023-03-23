@@ -1,0 +1,183 @@
+[
+    {
+        "client_msg_id": "9be16c5d-0a24-4528-9bba-8f75838fa6b3",
+        "type": "message",
+        "text": "Getting the services from the cloud controller",
+        "user": "U1APA4MFX",
+        "ts": "1607012351.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "mpxK",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Getting the services from the cloud controller"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1607012351.000400",
+        "reply_count": 2,
+        "reply_users_count": 1,
+        "latest_reply": "1607012499.000700",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1607012411.000500"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1607012499.000700"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1607012499.000700"
+    },
+    {
+        "client_msg_id": "8f382945-f8fa-42b6-a458-346b3e0aa855",
+        "type": "message",
+        "text": "NFCU has a mysql plan that was used to create a service instance.  But, we didn't have that plan defined in our code so the pipeline was failing.  Our answer is going to be adding that plan.",
+        "user": "U1APA4MFX",
+        "ts": "1607012411.000500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "nagSa",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "NFCU has a mysql plan that was used to create a service instance.  But, we didn't have that plan defined in our code so the pipeline was failing.  Our answer is going to be adding that plan."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1607012351.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "65229d42-6cd0-4534-becf-60a1614b595e",
+        "type": "message",
+        "text": "However, if we wanted to query the services within the CF databases... follow these steps:\n1. bosh -d cf-xxxxx ssh database\/0\n2. sudo mysql --defaults-file=\/var\/vcap\/jobs\/pxc-mysql\/config\/mylogin.cnf\n3. use ccdb;\n4. SELECT service_plans.name AS service_plan, organizations.name AS organization_name       , spaces.name AS space_name, service_instances.name AS service_instance_name FROM service_instances JOIN service_plans ON (service_instances.service_plan_id = service_plans.id) JOIN services ON (service_plans.service_id = services.id) JOIN spaces ON (service_instances.space_id = spaces.id) JOIN organizations ON (spaces.organization_id = organizations.id) WHERE services.label = 'p.mysql' AND service_plans.name = 'PLAN_NAME'",
+        "user": "U1APA4MFX",
+        "ts": "1607012499.000700",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "2Im",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "However, if we wanted to query the services within the CF databases... follow these steps:\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "bosh -d cf-xxxxx ssh database\/0"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "sudo mysql --defaults-file=\/var\/vcap\/jobs\/pxc-mysql\/config\/mylogin.cnf"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "use ccdb;"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "SELECT service_plans.name AS service_plan, organizations.name AS organization_name       , spaces.name AS space_name, service_instances.name AS service_instance_name FROM service_instances JOIN service_plans ON (service_instances.service_plan_id = service_plans.id) JOIN services ON (service_plans.service_id = services.id) JOIN spaces ON (service_instances.space_id = spaces.id) JOIN organizations ON (spaces.organization_id = organizations.id) WHERE services.label = 'p.mysql' AND service_plans.name = 'PLAN_NAME'"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "ordered",
+                        "indent": 0
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1607012351.000400",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

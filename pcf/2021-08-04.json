@@ -1,0 +1,634 @@
+[
+    {
+        "client_msg_id": "25d2a567-8511-4e11-90d2-78a0a6b5bee9",
+        "type": "message",
+        "text": "Zipkin to Wavefront",
+        "user": "U1APA4MFX",
+        "ts": "1628133178.000200",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "wp68E",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Zipkin to Wavefront"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1628133178.000200",
+        "reply_count": 7,
+        "reply_users_count": 1,
+        "latest_reply": "1628134054.001700",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1628133662.000300"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1628133735.000500"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1628133775.000700"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1628133857.001100"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1628133905.001300"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1628133955.001500"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1628134054.001700"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1628134054.001700"
+    },
+    {
+        "client_msg_id": "f204f1aa-2476-4497-9c7d-712d807b7041",
+        "type": "message",
+        "text": "Zipkin requires code to be instrumented.",
+        "user": "U1APA4MFX",
+        "ts": "1628133662.000300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "aHLE",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Zipkin requires code to be instrumented."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1628133178.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "9a9c4d34-086b-4709-ae38-50778b43e741",
+        "type": "message",
+        "text": "When instrumented, it will allow for call paths to be correlated so you can see calls between services and the timings",
+        "user": "U1APA4MFX",
+        "ts": "1628133735.000500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "ySSG",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "When instrumented, it will allow for call paths to be correlated so you can see calls between services and the timings"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1628133178.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "624c8807-ee0d-4aee-ba3a-e5642022de56",
+        "type": "message",
+        "text": "For an example NodeJS application, see <https:\/\/github.com\/mjenk664\/pcf-zipkin-nodejs-demo>",
+        "user": "U1APA4MFX",
+        "ts": "1628133775.000700",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Pk13",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "For an example NodeJS application, see "
+                            },
+                            {
+                                "type": "link",
+                                "url": "https:\/\/github.com\/mjenk664\/pcf-zipkin-nodejs-demo"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "GitHub - mjenk664\/pcf-zipkin-nodejs-demo: Zipkin Tracing Demo on VMWare Tanzu Application Service (TAS for VMs)",
+                "title_link": "https:\/\/github.com\/mjenk664\/pcf-zipkin-nodejs-demo",
+                "text": "Zipkin Tracing Demo on VMWare Tanzu Application Service (TAS for VMs) - GitHub - mjenk664\/pcf-zipkin-nodejs-demo: Zipkin Tracing Demo on VMWare Tanzu Application Service (TAS for VMs)",
+                "fallback": "GitHub: GitHub - mjenk664\/pcf-zipkin-nodejs-demo: Zipkin Tracing Demo on VMWare Tanzu Application Service (TAS for VMs)",
+                "image_url": "https:\/\/opengraph.githubassets.com\/b55ce399ea3bd48472b48c7db70db83c29f170c8412ddb6fff31eee53cbffb5f\/mjenk664\/pcf-zipkin-nodejs-demo",
+                "image_width": 500,
+                "image_height": 250,
+                "from_url": "https:\/\/github.com\/mjenk664\/pcf-zipkin-nodejs-demo",
+                "image_bytes": 51762,
+                "service_icon": "https:\/\/a.slack-edge.com\/80588\/img\/unfurl_icons\/github.png",
+                "id": 1,
+                "original_url": "https:\/\/github.com\/mjenk664\/pcf-zipkin-nodejs-demo"
+            }
+        ],
+        "thread_ts": "1628133178.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "cffa020d-d38b-4b15-ad41-d491fd9ac642",
+        "type": "message",
+        "text": "Although we could send the data to a zipkin server (many ways to start that server, one of which is to deploy from <http:\/\/zipkin.io\/quickstart|zipkin.io\/quickstart> a jar file via cf push, we can also send the data directly to Wavefront.",
+        "user": "U1APA4MFX",
+        "ts": "1628133857.001100",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "01m6",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Although we could send the data to a zipkin server (many ways to start that server, one of which is to deploy from "
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/zipkin.io\/quickstart",
+                                "text": "zipkin.io\/quickstart"
+                            },
+                            {
+                                "type": "text",
+                                "text": " a jar file via cf push, we can also send the data directly to Wavefront."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1628133178.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "68228824-1994-4248-a112-445e5e14d85c",
+        "type": "message",
+        "text": "The advantage is that we don't have to worry about the zipkin server running, connecting to a persistence data store, cleaning out old data, where to run the server, etc...",
+        "user": "U1APA4MFX",
+        "ts": "1628133905.001300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "mNdTu",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "The advantage is that we don't have to worry about the zipkin server running, connecting to a persistence data store, cleaning out old data, where to run the server, etc..."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1628133178.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "13878312-75f8-4291-8e67-2a4214e2b3f7",
+        "type": "message",
+        "text": "From the example source code above, we need to change the URL to point to the wavefront proxy AND port 9411.  It also can only be http (not https)",
+        "user": "U1APA4MFX",
+        "ts": "1628133955.001500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "qzk",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "From the example source code above, we need to change the URL to point to the wavefront proxy AND port 9411.  It also can only be http (not https)"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1628133178.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "f365dbd1-3d35-41bb-93ed-b39b383a1193",
+        "type": "message",
+        "text": "To set up the port, need to set up wavefront nozzle custom config and add `traceZipkinListenerPorts=9411`",
+        "user": "U1APA4MFX",
+        "ts": "1628134054.001700",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "aQs",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "To set up the port, need to set up wavefront nozzle custom config and add "
+                            },
+                            {
+                                "type": "text",
+                                "text": "traceZipkinListenerPorts=9411",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1628133178.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "d1be23f6-e883-4d6d-9100-a5666cbf8126",
+        "type": "message",
+        "text": "Connect to TAS internal MySql DB",
+        "user": "U1APA4MFX",
+        "ts": "1628135552.002100",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "2MF4",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Connect to TAS internal MySql DB"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1628135552.002100",
+        "reply_count": 1,
+        "reply_users_count": 1,
+        "latest_reply": "1628135570.002200",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1628135570.002200"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1628135570.002200"
+    },
+    {
+        "client_msg_id": "3a5722f8-8943-42b5-8447-972c4f182d8d",
+        "type": "message",
+        "text": "<https:\/\/community.pivotal.io\/s\/article\/How-to-Connect-to-the-Pivotal-Application-Service-Internal-MySQL-database?language=en_US>",
+        "user": "U1APA4MFX",
+        "ts": "1628135570.002200",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "i=Hd\/",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "link",
+                                "url": "https:\/\/community.pivotal.io\/s\/article\/How-to-Connect-to-the-Pivotal-Application-Service-Internal-MySQL-database?language=en_US"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1628135552.002100",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "7a5d72bc-9e05-40ca-a09e-39b48a51d6ec",
+        "type": "message",
+        "text": "How to `cf ssh` into a container as root",
+        "user": "U1APA4MFX",
+        "ts": "1628135623.002800",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Cm2Xm",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "How to "
+                            },
+                            {
+                                "type": "text",
+                                "text": "cf ssh",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " into a container as root"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1628135623.002800",
+        "reply_count": 1,
+        "reply_users_count": 1,
+        "latest_reply": "1628135630.002900",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1628135630.002900"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1628135630.002900"
+    },
+    {
+        "client_msg_id": "c7c3c40d-3e2a-43b8-aa4a-e3369ceaaf19",
+        "type": "message",
+        "text": "<https:\/\/community.pivotal.io\/s\/article\/How-to-Login-an-Apps-Container-as-a-Root?language=en_US>",
+        "user": "U1APA4MFX",
+        "ts": "1628135630.002900",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "RJdUX",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "link",
+                                "url": "https:\/\/community.pivotal.io\/s\/article\/How-to-Login-an-Apps-Container-as-a-Root?language=en_US"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1628135623.002800",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "d4415fd4-d91e-47ad-ad10-58e0dea7c288",
+        "type": "message",
+        "text": "CI\/CD Tool ... tekton.dev",
+        "user": "U1APA4MFX",
+        "ts": "1628139710.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "vzN",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "CI\/CD Tool ... tekton.dev"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    }
+]

@@ -1,0 +1,264 @@
+[
+    {
+        "client_msg_id": "e7167653-8468-4747-a7ca-736e75ea7894",
+        "type": "message",
+        "text": "Script to check persistent disk free space on all VMs",
+        "user": "U1APA4MFX",
+        "ts": "1596549784.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Se0",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Script to check persistent disk free space on all VMs"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1596549784.000400",
+        "reply_count": 1,
+        "reply_users_count": 1,
+        "latest_reply": "1596549842.000500",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1596549842.000500"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1596549842.000500"
+    },
+    {
+        "client_msg_id": "a421969f-6975-4e69-a018-4eb8486f43ea",
+        "type": "message",
+        "text": "```for i in `bosh --ty deployments --json | jq -r '.Tables[].Rows[] | name'`; \n  do echo -e \"\\033[1;32mDeployment Name: \\033[0m\" $i;\n  DEPLOYMENT=$i;\n  bosh --tty -d $DEPLOYMENT instances --vitals --json | jq -r '.Tables[].Rows[] | select(.persistent_disk_usage != \"\") | select((.persistent_disk_usage | split(\"%\") | .[0] | tonumber) &gt;=70 | \"Instance: \" + .instance + \", Persistent Disk Usage: \" + .persistent_disk_usage' | column -t;\n  echo ;\n  done```\n",
+        "user": "U1APA4MFX",
+        "ts": "1596549842.000500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "pbli",
+                "elements": [
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "for i in `bosh --ty deployments --json | jq -r '.Tables[].Rows[] | name'`; \n  do echo -e \"\\033[1;32mDeployment Name: \\033[0m\" $i;\n  DEPLOYMENT=$i;\n  bosh --tty -d $DEPLOYMENT instances --vitals --json | jq -r '.Tables[].Rows[] | select(.persistent_disk_usage != \"\") | select((.persistent_disk_usage | split(\"%\") | .[0] | tonumber) >=70 | \"Instance: \" + .instance + \", Persistent Disk Usage: \" + .persistent_disk_usage' | column -t;\n  echo ;\n  done"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "edited": {
+            "user": "U1APA4MFX",
+            "ts": "1596550367.000000"
+        },
+        "thread_ts": "1596549784.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "3c219717-be44-4b46-a8e1-176819f2ae5c",
+        "type": "message",
+        "text": "Excessive audit logs being sent to splunk",
+        "user": "U1APA4MFX",
+        "ts": "1596556394.001100",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "4qg",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Excessive audit logs being sent to splunk"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1596556394.001100",
+        "reply_count": 2,
+        "reply_users_count": 1,
+        "latest_reply": "1596556533.001400",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1596556439.001200"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1596556533.001400"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1596556533.001400"
+    },
+    {
+        "client_msg_id": "02115cc9-2d97-48f0-9acc-91d2afbcd0d1",
+        "type": "message",
+        "text": "look at `\/etc\/audit\/audit.rules` and there is a `\/etc\/audit\/audit.rules.prev` to show what previous rules were",
+        "user": "U1APA4MFX",
+        "ts": "1596556439.001200",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "5f2",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "look at "
+                            },
+                            {
+                                "type": "text",
+                                "text": "\/etc\/audit\/audit.rules",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " and there is a "
+                            },
+                            {
+                                "type": "text",
+                                "text": "\/etc\/audit\/audit.rules.prev",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " to show what previous rules were"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1596556394.001100",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "bd5f61e1-27f7-43ab-9ed2-6ca30a059b4e",
+        "type": "message",
+        "text": "Apparently - OMS has an agent running on each VM and that talks back to the microsoft servers for the rules.  Microsoft can change the rules on the server which will then get applied to the VM via the agent.",
+        "user": "U1APA4MFX",
+        "ts": "1596556533.001400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "5nd",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Apparently - OMS has an agent running on each VM and that talks back to the microsoft servers for the rules.  Microsoft can change the rules on the server which will then get applied to the VM via the agent."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1596556394.001100",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

@@ -1,0 +1,684 @@
+[
+    {
+        "client_msg_id": "d0003a03-33c7-4ef5-8662-3936f74c2e7e",
+        "type": "message",
+        "text": "Code to create AWS cluster load balancer",
+        "user": "U1APA4MFX",
+        "ts": "1624294342.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "AR+f",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Code to create AWS cluster load balancer"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1624294342.000400",
+        "reply_count": 2,
+        "reply_users_count": 1,
+        "latest_reply": "1624294379.000700",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1624294372.000500"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1624294379.000700"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1624294379.000700"
+    },
+    {
+        "client_msg_id": "ed631dfd-9403-4ffe-a6e5-1ad2ad5322d1",
+        "type": "message",
+        "text": "This was from Early Warning (Geordon Liban)",
+        "user": "U1APA4MFX",
+        "ts": "1624294372.000500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "wc1",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "This was from Early Warning (Geordon Liban)"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1624294342.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "9c7e9926-8d1a-4f76-84f4-36c6c61b278f",
+        "type": "message",
+        "text": "```set -eux\n \n(echo \"-----BEGIN RSA PRIVATE KEY-----\"; echo $OPSMAN_SSH_KEY  | tr ' ' '\\n' | tail -n +5 | tac | tail -n +5 |     tac;echo \"-----END RSA PRIVATE KEY-----\") &gt; opsman.pem\nchmod 600 opsman.pem\n \nfunction create_cluster {\n  export SUBNET_ID=$(docker run --rm \\\n          -v $PWD:\/workspace \\\n          -w \/workspace \\\n          -e \"DOWNLOAD_CONFIG_FILE=${config_repo}\/environments\/${IAAS}\/${FOUNDATION}\/config-director\/vars\/director.yml\" \\\n          platform-automation-toolkit-image:${TOOLKIT_IMAGE_VERSION} \\\n          \/bin\/bash -c 'bosh int ${DOWNLOAD_CONFIG_FILE} --path \/pks_network_az1_network_id')\n \n  # Create load balancer\n  # TODO Create elb security group w\/TF, add a tag so we can query it\n  DNS_JSON=$(aws elb create-load-balancer \\\n    --load-balancer-name ${CLUSTER_NAME} \\\n    --listeners \"Protocol=TCP,LoadBalancerPort=8443,InstanceProtocol=TCP,InstancePort=8443\" \\\n    --subnets \"${SUBNET_ID}\" \\\n    --security-groups sg-015612caea11ac600 \\\n    --region us-west-2)\n \n  DNS_NAME=$(echo ${DNS_JSON} | jq -r '.DNSName')\n \n  pks login -k -a ${PKS_API_URL} -u ${PKS_USER} -p ${PKS_PASS}\n \n  pks create-cluster ${CLUSTER_NAME} -e ${DNS_NAME} --plan ${CLUSTER_PLAN} --num-nodes ${CLUSTER_NODES}\n}\n \nfunction add_master_lb {\n  export CLUSTER_ID=$(pks cluster \"${CLUSTER_NAME}\" --json | jq -r .uuid)\n  export VMS=$(docker run --rm \\\n          -v $PWD:\/workspace \\\n          -w \/workspace \\\n          -e \"CLUSTER_ID=${CLUSTER_ID}\" \\\n          -e \"OM_CLIENT_ID=${OM_CLIENT_ID}\" \\\n          -e \"OM_CLIENT_SECRET=${OM_CLIENT_SECRET}\" \\\n          -e \"OM_TARGET=${OM_TARGET}\" \\\n          -e \"OM_SKIP_SSL_VALIDATION=true\" \\\n          platform-automation-toolkit-image:${TOOLKIT_IMAGE_VERSION} \\\n          \/bin\/bash -c 'eval \"$(om -k bosh-env -i opsman.pem)\" &amp;&amp; bosh -d service-instance_\"${CLUSTER_ID}\" vms &gt; vm_ids.txt')\n \n  MASTER_IDS=$(cat vm_ids.txt | grep master | awk '{print $5}')\n  WORKER_IDS=$(cat vm_ids.txt | grep worker | awk '{print $5}')\n \n  aws elb register-instances-with-load-balancer --load-balancer-name ${CLUSTER_NAME} --instances $MASTER_IDS\n \n  aws ec2 create-tags --tags Key=cluster,Value=\"${CLUSTER_NAME}\" --resources $MASTER_IDS\n  aws ec2 create-tags --tags Key=cluster,Value=\"${CLUSTER_NAME}\" --resources $WORKER_IDS\n}\n \n# create_cluster\n \n#TODO Check for cluster completion\nwhile true; do\n  sleep 10\n \n  CLUSTER_STATUS=$(pks cluster \"${CLUSTER_NAME}\" --json | jq -r .last_action_state)\n  echo \"Cluster: ${CLUSTER_NAME} - Status: ${CLUSTER_STATUS}\"\n \n  if [ \"${CLUSTER_STATUS}\" == \"succeeded\" ]; then\n    add_master_lb\n    exit 0;\n  elif [ \"${CLUSTER_STATUS}\" != \"in progress\" ]; then\n    echo \"Error creating cluster ${CLUSTER_NAME}, Status: ${CLUSTER_STATUS}\"\n    exit 1;\n  fi\ndone```\n",
+        "user": "U1APA4MFX",
+        "ts": "1624294379.000700",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "1rJM\/",
+                "elements": [
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "set -eux\n \n(echo \"-----BEGIN RSA PRIVATE KEY-----\"; echo $OPSMAN_SSH_KEY  | tr ' ' '\\n' | tail -n +5 | tac | tail -n +5 |     tac;echo \"-----END RSA PRIVATE KEY-----\") > opsman.pem\nchmod 600 opsman.pem\n \nfunction create_cluster {\n  export SUBNET_ID=$(docker run --rm \\\n          -v $PWD:\/workspace \\\n          -w \/workspace \\\n          -e \"DOWNLOAD_CONFIG_FILE=${config_repo}\/environments\/${IAAS}\/${FOUNDATION}\/config-director\/vars\/director.yml\" \\\n          platform-automation-toolkit-image:${TOOLKIT_IMAGE_VERSION} \\\n          \/bin\/bash -c 'bosh int ${DOWNLOAD_CONFIG_FILE} --path \/pks_network_az1_network_id')\n \n  # Create load balancer\n  # TODO Create elb security group w\/TF, add a tag so we can query it\n  DNS_JSON=$(aws elb create-load-balancer \\\n    --load-balancer-name ${CLUSTER_NAME} \\\n    --listeners \"Protocol=TCP,LoadBalancerPort=8443,InstanceProtocol=TCP,InstancePort=8443\" \\\n    --subnets \"${SUBNET_ID}\" \\\n    --security-groups sg-015612caea11ac600 \\\n    --region us-west-2)\n \n  DNS_NAME=$(echo ${DNS_JSON} | jq -r '.DNSName')\n \n  pks login -k -a ${PKS_API_URL} -u ${PKS_USER} -p ${PKS_PASS}\n \n  pks create-cluster ${CLUSTER_NAME} -e ${DNS_NAME} --plan ${CLUSTER_PLAN} --num-nodes ${CLUSTER_NODES}\n}\n \nfunction add_master_lb {\n  export CLUSTER_ID=$(pks cluster \"${CLUSTER_NAME}\" --json | jq -r .uuid)\n  export VMS=$(docker run --rm \\\n          -v $PWD:\/workspace \\\n          -w \/workspace \\\n          -e \"CLUSTER_ID=${CLUSTER_ID}\" \\\n          -e \"OM_CLIENT_ID=${OM_CLIENT_ID}\" \\\n          -e \"OM_CLIENT_SECRET=${OM_CLIENT_SECRET}\" \\\n          -e \"OM_TARGET=${OM_TARGET}\" \\\n          -e \"OM_SKIP_SSL_VALIDATION=true\" \\\n          platform-automation-toolkit-image:${TOOLKIT_IMAGE_VERSION} \\\n          \/bin\/bash -c 'eval \"$(om -k bosh-env -i opsman.pem)\" && bosh -d service-instance_\"${CLUSTER_ID}\" vms > vm_ids.txt')\n \n  MASTER_IDS=$(cat vm_ids.txt | grep master | awk '{print $5}')\n  WORKER_IDS=$(cat vm_ids.txt | grep worker | awk '{print $5}')\n \n  aws elb register-instances-with-load-balancer --load-balancer-name ${CLUSTER_NAME} --instances $MASTER_IDS\n \n  aws ec2 create-tags --tags Key=cluster,Value=\"${CLUSTER_NAME}\" --resources $MASTER_IDS\n  aws ec2 create-tags --tags Key=cluster,Value=\"${CLUSTER_NAME}\" --resources $WORKER_IDS\n}\n \n# create_cluster\n \n#TODO Check for cluster completion\nwhile true; do\n  sleep 10\n \n  CLUSTER_STATUS=$(pks cluster \"${CLUSTER_NAME}\" --json | jq -r .last_action_state)\n  echo \"Cluster: ${CLUSTER_NAME} - Status: ${CLUSTER_STATUS}\"\n \n  if [ \"${CLUSTER_STATUS}\" == \"succeeded\" ]; then\n    add_master_lb\n    exit 0;\n  elif [ \"${CLUSTER_STATUS}\" != \"in progress\" ]; then\n    echo \"Error creating cluster ${CLUSTER_NAME}, Status: ${CLUSTER_STATUS}\"\n    exit 1;\n  fi\ndone"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1624294342.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "96dc610d-83b2-4770-a7ab-ed708c605708",
+        "type": "message",
+        "text": "Autopatching code developed during NFCU engagement",
+        "user": "U1APA4MFX",
+        "ts": "1624294575.001200",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "pkO",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Autopatching code developed during NFCU engagement"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1624294575.001200",
+        "reply_count": 1,
+        "reply_users_count": 1,
+        "latest_reply": "1624294586.001300",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1624294586.001300"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1624294586.001300"
+    },
+    {
+        "client_msg_id": "3e722bf6-97cd-4e62-8e68-bbc8d6a32615",
+        "type": "message",
+        "text": "```#!\/bin\/bash\n\nset -eu\n\nfunction setup {\n\n  EMAIL_DIR=$(mktemp -d)\n\n  DIR=$(mktemp -d)\n  pushd ${DIR}\n\n  PIVNET_CLI=\"pivnet\"\n  JQ_CMD=\"jq\"\n  YQ_CMD=\"yq\"\n  GIT_CMD=\"git\"\n\n  echo \"\" &gt; ${EMAIL_DIR}\/emailbody.txt\n  CONFIG=\"version-file-repository\"\n  PRODUCT_FOUND=\"false\"\n  PROCESSING_STEMCELLS=false\n\n  # $PIVNET_CLI --version\n  # $JQ_CMD --version\n  # $YQ_CMD --version\n  # $GIT_CMD --version\n\n  REPO=\"repository\"\n  \n  $PIVNET_CLI login --api-token=$PIVNET_TOKEN  \n\n}\n\nfunction get-azure-file {\n  export azure_container=\"$(om interpolate -s --config ${REPO}\/${product} --path \/blobstore-bucket | head -n1)\"\n  export blobfile=\"$(az storage blob list \\\n                      --account-name ${AZURE_ACCOUNT_NAME} \\\n                      --account-key ${AZURE_ACCOUNT_KEY} \\\n                      -c ${azure_container} \\\n                      | $JQ_CMD '.[] | select(.name | test(\"'${product_slug}','${patch_version}'\")) | .name' -r)\"\n}\n\nfunction put-azure-file {\n  echo \"uploading ${full_filename} to ${azure_container}\" \n  az storage blob upload \\\n    --account-name ${AZURE_ACCOUNT_NAME} \\\n    --account-key ${AZURE_ACCOUNT_KEY} \\\n    -c ${azure_container} \\\n    -f ${full_filename} \\\n    -n ${filename}\n}\n\nfunction get-gcp-file {\n  echo \"Function not implemented\"\n}\n\nfunction put-gcp-file {\n  echo \"Function not implemented\"\n}\n\nfunction get-aws-file {\n  echo \"Function not implemented\"\n}\n\nfunction put-aws-file {\n  echo \"Function not implemented\"\n}\n    \nfunction process-product {\n  product=$1\n\n  print-to-console \"Processing ${product}\"\n\n  product_version=\"$(om interpolate -s --config ${REPO}\/${product} --path \/product-version | head -n1)\"\n  product_slug=\"$(om interpolate -s --config ${REPO}\/${product} --path \/pivnet-product-slug | head -n1)\"\n  product_glob=\"$(om interpolate -s --config ${REPO}\/${product} --path \/pivnet-file-glob | head -n1)\"\n  product_version_family=$product_version\n\n  if [ \"$PROCESSING_STEMCELLS\" = true ]; then\n    if [[ $product_version =~ ^[0-9]+\\. ]]; then\n     product_version_family=\"${BASH_REMATCH[0]}\"\n    fi\n  else\n    if [[ $product_version =~ ^[0-9]+\\.[0-9]+ ]]; then\n     product_version_family=\"${BASH_REMATCH[0]}\"\n    fi\n  fi\n  \n  print-to-console-debug \"PIVNET_CLI COMMAND WITH THIS VERSION FAMILY -&gt;${product_version_family}\"\n  patch_version=\"$( $PIVNET_CLI releases -p ${product_slug} --format json | $JQ_CMD '[.[] | select(.version | test(\"'${product_version_family}'\"))] [0].version ' -r )\"\n  #patch_version=\"$( $PIVNET_CLI releases -p ${product_name} --format json | $JQ_CMD '[.[] | select(.availability==\"All Users\") | select(.version | test(\"'${product_version_family}'\"))] [0].version ' -r )\"\n  \n  get-${IAAS}-file\n\n  if [ -z \"$blobfile\" ]; then\n    print-to-console \"The product file for ${product_slug} version ${patch_version} is not found.  Downloading product now\"\n\n    tmpdir=$(mktemp -d)\n    # om download-product --config secrets\/${product} \\\n    #   --product-version ${patch_version} \\\n    #   --output-directory ${tmpdir}\n\n    # With the blobstore-bucket being set, the file name will be correct\n    om download-product \\\n      --source=pivnet \\\n      --pivnet-api-token ${PIVNET_TOKEN} \\\n      --blobstore-bucket ${azure_container} \\\n      --file-glob ${product_glob} \\\n      --pivnet-product-slug ${product_slug} \\\n      --product-version ${patch_version} \\\n      --output-directory ${tmpdir}\n\n\n    full_filename=$(ls ${tmpdir}\/\\[*\\]${product_glob})\n\n    if [ -z \"$full_filename\" ]; then\n      build-email-message \"Something went wrong with the download - possibly EULA needs to be accepted\"\n      return\n    fi\n\n    filename=$(basename $full_filename)\n\n    put-${IAAS}-file\n    \n    rm -r ${tmpdir}\n\n    build-email-message \"New product uploaded to blobstore.  Product ${product} - Version ${patch_version}\"\n\n  else\n    print-to-console \"The product file for ${product_slug} version ${patch_version} is already in azure blob store... skipping.\"\n  fi\n  print-to-console-debug \"PROCESSING STEMCELLS? - $PROCESSING_STEMCELLS\"\n  if [ \"$PROCESSING_STEMCELLS\" = true ]; then\n    update-stemcell-version-file ${product} ${patch_version}\n  else\n    update-version-file ${product} ${patch_version}\n    #gen-validate ${product}\n  fi\n\n}\n\nfunction update-version-file {\n  print-to-console-debug \"Process version file now $1 for patch version $2\"\n\n  product=$1\n  PATCH_VERSION=$2\n  #product_name=\"$(om interpolate -s --config ${REPO}\/${product} --path \/name | head -n1)\"\n  CURRENT_VERSION=\"$(om interpolate -s --config ${REPO}\/${product} --path \/product-version)\"\n  print-to-console-debug \"processing product ${product} for ${PATCH_VERSION}\"\n\n  # Another Edit - make sure the major version is the same and the only change is the patch veersion number\n  #print-to-console-debug \"Update the version file\"\n  #sed -i \"s\/^product-version.*\/product-version: ${PATCH_VERSION}\/g\"  ${REPO}\/${product}\n  print-to-console-debug \"Update the versions-available file\"\n  if [[ ${CURRENT_VERSION} != ${PATCH_VERSION} ]]; then\n    echo \"${product} - Current:${CURRENT_VERSION} - Available:${PATCH_VERSION}\" &gt;&gt; ${REPO}\/auto-patching\/versions-available.txt\n  fi\n  print-to-console-debug \"Handle Version File Updates -- End\"\n}\n\nfunction build-email-message {\n  msg=$1\n  print-to-console ${msg}\n  echo ${msg} &gt;&gt; ${EMAIL_DIR}\/emailbody.txt\n  echo \" \" &gt;&gt; ${EMAIL_DIR}\/emailbody.txt\n}\n\nfunction print-to-console {\n  echo ${1}\n}\nfunction print-to-console-debug {\n  if [[ ${DEBUG} = true ]]; then\n\t  echo \"----$(tput setaf 2)DEBUG ${1} $(tput sgr0)----\"\n  fi\n}\n\nfunction update-stemcell-version-file {\n  product=$1\n  STEMCELL_VERSION=$2\n  \n  print-to-console-debug \"processing product ${product} for stemcell ${STEMCELL_VERSION}\"\n    \n  PRODUCT_SUPPORTS_STEMCELL=false\n  check-stemcell-support ${product} ${STEMCELL_VERSION}\n\n  # Another Edit - make sure the major version is the same and the only change is the patch veersion number\n  if [[ ${PRODUCT_SUPPORTS_STEMCELL} = true ]]; then\n    print-to-console-debug \"Update the version file - ${product}\"\n    sed -i \"s\/^product-version.*\/product-version: \\\"${STEMCELL_VERSION}\\\"\/g\"  ${REPO}\/${product}\n    #sed -i -e \"$ a product-version: \\\"${STEMCELL_VERSION}\\\"\"  ${REPO}\/${PRODUCT_FILE_LOCATION}\/${product_name}\/version-stemcell.yml\n  fi\n\n  print-to-console-debug \"Handle Stemcell Updates -- End\"\n}\n\nfunction check-stemcell-support {\n  temp_product=${1\/version-stemcell\/version}\n  stemcell_version=$2\n  product_slug=\"$(om interpolate -s --config ${REPO}\/${temp_product} --path \/pivnet-product-slug | head -n1)\"\n\n  # build output file that will update proper version file - but only if product supports it (for stemcells) \n  # Get list of stemcells for product $product-name\n  PRODUCT_VERSION=$($YQ_CMD r ${REPO}\/${temp_product} 'product-version')\n  print-to-console-debug \"check-stemcell-support ${temp_product} - version is ${PRODUCT_VERSION}\"\n  print-to-console-debug \"product_slug is ${product_slug}\"\n\n  PRODUCT_STEMCELLS=$( $PIVNET_CLI rds -p ${product_slug} -r ${PRODUCT_VERSION} --format json | \\\n                        $JQ_CMD '.[] | select(.release.product.slug | test(\"stemcells-ubuntu-xenial\")) | .release.version' -r)\n  print-to-console-debug \"PRODUCT_STEMCELLS ==&gt; ${PRODUCT_STEMCELLS}\"\n\n  if [[ \"${PRODUCT_STEMCELLS[@]}\" =~ \"${stemcell_version}\" ]]; then\n    PRODUCT_SUPPORTS_STEMCELL=true\n  fi\n}\n\nfunction gen-validate {\n  product_name=$1\n  env_name=\"eus-sdbx2\"\n\n  ${REPO}\/environments\/scripts\/generate-config.ps1 azure ${env_name} ${product_name}\n  VALIDATE_RESPONSE=${REPO}\/environments\/scripts\/validate-config.ps1 azure ${env_name} ${product_name}\n  echo \"THIS IS THE RESPONSE ----&gt; \"$VALIDATE_RESPONSE\n}\n\nfunction clone-repo {\n  git clone https:\/\/${VSTS_USER_NAME}:${VSTS_PAT}@${AUTOMATION_GIT_URL} ${REPO} -q\n  pushd ${REPO} \n  git checkout ${AUTOMATION_GIT_BRANCH} \n  popd\n}\n\nfunction make-branch-and-commit {\n  \n  cd ${REPO}\n  git config user.name \"Patching\"\n  git config user.email \"<mailto:test@navyfederal.org|test@navyfederal.org>\"\n\n  TIME_ST=`date +%s` \n  DATE_ST=`date +%D`\n  BRANCH_NAME=autopatch-${TIME_ST}\n\n  COMMIT_MESSAGE=\"Stemcell auto-patching - ${DATE_ST}\"\n  \n  BRANCH_PUSHED=false\n  if [[ -n $(git status --porcelain) ]]; then\n    git checkout -b \"$BRANCH_NAME\" -q\n    git add -A\n    git commit -m \"$COMMIT_MESSAGE\" --allow-empty\n    B64_PAT=$(echo \":${VSTS_PAT}\" | base64)\n    git -c http.extraHeader=\"Authorization: Basic ${B64_PAT}\" push --set-upstream origin ${BRANCH_NAME} -q\n    BRANCH_PUSHED=true\n  fi\n}\n\nfunction create-pr {\n  if [[ ${BRANCH_PUSHED} == \"false\" ]]; then\n    return\n  fi\n\n  ORG=\"<https:\/\/dev.azure.com\/nfcudevlabs>\"\n  PROJECT_NAME=\"Cloud%20Platform%20Operations\"\n  REPOSITORY=\"platform-automation\"\n  SOURCE_BRANCH=${BRANCH_NAME}\n  TITLE=\"Weekly-auto\"\n\n  # Get the Repository ID from the repository name\n  REPOSITORY_ID=$(curl -s -u ${VSTS_USER_NAME}:${VSTS_PAT} ${ORG}\/${PROJECT_NAME}\/_apis\/git\/repositories | \\\n  $JQ_CMD '.value[] | select (.name == \"'${REPOSITORY}'\").id ' -r)\n\n  # Create the Pull Request\n  PR_DATA=$( $JQ_CMD -n \\\n            --arg source \"refs\/heads\/${SOURCE_BRANCH}\" \\\n            --arg target \"refs\/heads\/master\" \\\n            --arg title \"${TITLE}-patch\" \\\n            --arg description \"Stemcell and Product Patching\" \\\n            '{sourceRefName: $source, targetRefName: $target, title: $title, reviewers:\n\t    [{\"id\": \"07f68f93-f903-6e81-8128-3e29ee1a461e\"},{\"id\": \"a5c0da7e-d280-6380-a82e-4aafcbbc5760\"},{ \"id\": \"2c21e0d0-4ed1-683e-97c4-28b1cfbb534c\"}], description: $description}' )\n\n  print-to-console-debug \"------------------- Pull Request Data ------------------- \"\n  print-to-console-debug $PR_DATA | $JQ_CMD .\n\n  PR_CREATE_OUTPUT=$(curl -u ${VSTS_USER_NAME}:${VSTS_PAT} \\\n                          -H 'Content-Type: application\/json' \\\n                          -X POST \\\n                          -d \"${PR_DATA}\" \\\n                          ${ORG}\/${PROJECT_NAME}\/_apis\/git\/repositories\/${REPOSITORY_ID}\/pullrequests?api-version=5.0)\n\n  print-to-console-debug \"------------------- Pull Request Results ------------------- \"\n  print-to-console-debug $PR_CREATE_OUTPUT | $JQ_CMD .\n\n  SOURCE_COMMIT=$(echo $PR_CREATE_OUTPUT | $JQ_CMD '.lastMergeSourceCommit.commitId' -r)\n  TARGET_COMMIT=$(echo $PR_CREATE_OUTPUT | $JQ_CMD '.lastMergeTargetCommit.commitId' -r)\n  print-to-console-debug \"Source commit ${SOURCE_COMMIT}\"\n  print-to-console-debug \"Target commit ${TARGET_COMMIT}\"\n}\n\n\nfunction process-products {\n  print-to-console \"Processing products\"\n\n  CONFIG_FILES=$(cd ${REPO} &amp;&amp; find $CONFIG_FILES_PATH -type f -name ${PRODUCT_FILE_PREFIX}.yml -follow)\n  for config_file in ${CONFIG_FILES}\n  do\n    print-to-console-debug \"${config_file}\"\n    process-product ${config_file}\n  done\n}\n\nfunction process-stemcells {\n  print-to-console \"Processing stemcells\"\n  PROCESSING_STEMCELLS=true\n  CONFIG_FILES=$(cd ${REPO} &amp;&amp; find $CONFIG_FILES_PATH -type f -name ${STEMCELL_FILE_PREFIX}.yml -follow)\n  for config_file in ${CONFIG_FILES}\n  do\n    print-to-console-debug ${config_file}\n    process-product ${config_file}\n  done\n}\n\nfunction cleanup-email {\n  if [ $PRODUCT_FOUND == \"true\" ]; then\n    cat ${REPO}\/$INSTRUCTION_FILE &gt;&gt; ${EMAIL_DIR}\/pivnet-upload-results.txt\n    echo \" \" &gt;&gt; ${EMAIL_DIR}\/pivnet-upload-results.txt\n    cat  ${EMAIL_DIR}\/emailbody.txt &gt;&gt; ${EMAIL_DIR}\/pivnet-upload-results.txt\n  else\n    rm ${EMAIL_DIR}\/pivnet-upload-results.txt &gt; \/dev\/null\n    touch ${EMAIL_DIR}\/pivnet-upload-results.txt\n  fi\n}\n\nsetup\nclone-repo\necho \"Available Products in Blobstore\" &gt; ${REPO}\/auto-patching\/versions-available.txt\nprocess-products\nprocess-stemcells\nmake-branch-and-commit\n# Add error checking to see if previous function was successful or not. If not, don't call create-pr\ncreate-pr\n# cleanup-email\n\nprint-to-console-debug cleanup ${DIR}\npopd\n\nprint-to-console \"Autopatching complete\"```\n",
+        "user": "U1APA4MFX",
+        "ts": "1624294586.001300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "ZGq+",
+                "elements": [
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "#!\/bin\/bash\n\nset -eu\n\nfunction setup {\n\n  EMAIL_DIR=$(mktemp -d)\n\n  DIR=$(mktemp -d)\n  pushd ${DIR}\n\n  PIVNET_CLI=\"pivnet\"\n  JQ_CMD=\"jq\"\n  YQ_CMD=\"yq\"\n  GIT_CMD=\"git\"\n\n  echo \"\" > ${EMAIL_DIR}\/emailbody.txt\n  CONFIG=\"version-file-repository\"\n  PRODUCT_FOUND=\"false\"\n  PROCESSING_STEMCELLS=false\n\n  # $PIVNET_CLI --version\n  # $JQ_CMD --version\n  # $YQ_CMD --version\n  # $GIT_CMD --version\n\n  REPO=\"repository\"\n  \n  $PIVNET_CLI login --api-token=$PIVNET_TOKEN  \n\n}\n\nfunction get-azure-file {\n  export azure_container=\"$(om interpolate -s --config ${REPO}\/${product} --path \/blobstore-bucket | head -n1)\"\n  export blobfile=\"$(az storage blob list \\\n                      --account-name ${AZURE_ACCOUNT_NAME} \\\n                      --account-key ${AZURE_ACCOUNT_KEY} \\\n                      -c ${azure_container} \\\n                      | $JQ_CMD '.[] | select(.name | test(\"'${product_slug}','${patch_version}'\")) | .name' -r)\"\n}\n\nfunction put-azure-file {\n  echo \"uploading ${full_filename} to ${azure_container}\" \n  az storage blob upload \\\n    --account-name ${AZURE_ACCOUNT_NAME} \\\n    --account-key ${AZURE_ACCOUNT_KEY} \\\n    -c ${azure_container} \\\n    -f ${full_filename} \\\n    -n ${filename}\n}\n\nfunction get-gcp-file {\n  echo \"Function not implemented\"\n}\n\nfunction put-gcp-file {\n  echo \"Function not implemented\"\n}\n\nfunction get-aws-file {\n  echo \"Function not implemented\"\n}\n\nfunction put-aws-file {\n  echo \"Function not implemented\"\n}\n    \nfunction process-product {\n  product=$1\n\n  print-to-console \"Processing ${product}\"\n\n  product_version=\"$(om interpolate -s --config ${REPO}\/${product} --path \/product-version | head -n1)\"\n  product_slug=\"$(om interpolate -s --config ${REPO}\/${product} --path \/pivnet-product-slug | head -n1)\"\n  product_glob=\"$(om interpolate -s --config ${REPO}\/${product} --path \/pivnet-file-glob | head -n1)\"\n  product_version_family=$product_version\n\n  if [ \"$PROCESSING_STEMCELLS\" = true ]; then\n    if [[ $product_version =~ ^[0-9]+\\. ]]; then\n     product_version_family=\"${BASH_REMATCH[0]}\"\n    fi\n  else\n    if [[ $product_version =~ ^[0-9]+\\.[0-9]+ ]]; then\n     product_version_family=\"${BASH_REMATCH[0]}\"\n    fi\n  fi\n  \n  print-to-console-debug \"PIVNET_CLI COMMAND WITH THIS VERSION FAMILY ->${product_version_family}\"\n  patch_version=\"$( $PIVNET_CLI releases -p ${product_slug} --format json | $JQ_CMD '[.[] | select(.version | test(\"'${product_version_family}'\"))] [0].version ' -r )\"\n  #patch_version=\"$( $PIVNET_CLI releases -p ${product_name} --format json | $JQ_CMD '[.[] | select(.availability==\"All Users\") | select(.version | test(\"'${product_version_family}'\"))] [0].version ' -r )\"\n  \n  get-${IAAS}-file\n\n  if [ -z \"$blobfile\" ]; then\n    print-to-console \"The product file for ${product_slug} version ${patch_version} is not found.  Downloading product now\"\n\n    tmpdir=$(mktemp -d)\n    # om download-product --config secrets\/${product} \\\n    #   --product-version ${patch_version} \\\n    #   --output-directory ${tmpdir}\n\n    # With the blobstore-bucket being set, the file name will be correct\n    om download-product \\\n      --source=pivnet \\\n      --pivnet-api-token ${PIVNET_TOKEN} \\\n      --blobstore-bucket ${azure_container} \\\n      --file-glob ${product_glob} \\\n      --pivnet-product-slug ${product_slug} \\\n      --product-version ${patch_version} \\\n      --output-directory ${tmpdir}\n\n\n    full_filename=$(ls ${tmpdir}\/\\[*\\]${product_glob})\n\n    if [ -z \"$full_filename\" ]; then\n      build-email-message \"Something went wrong with the download - possibly EULA needs to be accepted\"\n      return\n    fi\n\n    filename=$(basename $full_filename)\n\n    put-${IAAS}-file\n    \n    rm -r ${tmpdir}\n\n    build-email-message \"New product uploaded to blobstore.  Product ${product} - Version ${patch_version}\"\n\n  else\n    print-to-console \"The product file for ${product_slug} version ${patch_version} is already in azure blob store... skipping.\"\n  fi\n  print-to-console-debug \"PROCESSING STEMCELLS? - $PROCESSING_STEMCELLS\"\n  if [ \"$PROCESSING_STEMCELLS\" = true ]; then\n    update-stemcell-version-file ${product} ${patch_version}\n  else\n    update-version-file ${product} ${patch_version}\n    #gen-validate ${product}\n  fi\n\n}\n\nfunction update-version-file {\n  print-to-console-debug \"Process version file now $1 for patch version $2\"\n\n  product=$1\n  PATCH_VERSION=$2\n  #product_name=\"$(om interpolate -s --config ${REPO}\/${product} --path \/name | head -n1)\"\n  CURRENT_VERSION=\"$(om interpolate -s --config ${REPO}\/${product} --path \/product-version)\"\n  print-to-console-debug \"processing product ${product} for ${PATCH_VERSION}\"\n\n  # Another Edit - make sure the major version is the same and the only change is the patch veersion number\n  #print-to-console-debug \"Update the version file\"\n  #sed -i \"s\/^product-version.*\/product-version: ${PATCH_VERSION}\/g\"  ${REPO}\/${product}\n  print-to-console-debug \"Update the versions-available file\"\n  if [[ ${CURRENT_VERSION} != ${PATCH_VERSION} ]]; then\n    echo \"${product} - Current:${CURRENT_VERSION} - Available:${PATCH_VERSION}\" >> ${REPO}\/auto-patching\/versions-available.txt\n  fi\n  print-to-console-debug \"Handle Version File Updates -- End\"\n}\n\nfunction build-email-message {\n  msg=$1\n  print-to-console ${msg}\n  echo ${msg} >> ${EMAIL_DIR}\/emailbody.txt\n  echo \" \" >> ${EMAIL_DIR}\/emailbody.txt\n}\n\nfunction print-to-console {\n  echo ${1}\n}\nfunction print-to-console-debug {\n  if [[ ${DEBUG} = true ]]; then\n\t  echo \"----$(tput setaf 2)DEBUG ${1} $(tput sgr0)----\"\n  fi\n}\n\nfunction update-stemcell-version-file {\n  product=$1\n  STEMCELL_VERSION=$2\n  \n  print-to-console-debug \"processing product ${product} for stemcell ${STEMCELL_VERSION}\"\n    \n  PRODUCT_SUPPORTS_STEMCELL=false\n  check-stemcell-support ${product} ${STEMCELL_VERSION}\n\n  # Another Edit - make sure the major version is the same and the only change is the patch veersion number\n  if [[ ${PRODUCT_SUPPORTS_STEMCELL} = true ]]; then\n    print-to-console-debug \"Update the version file - ${product}\"\n    sed -i \"s\/^product-version.*\/product-version: \\\"${STEMCELL_VERSION}\\\"\/g\"  ${REPO}\/${product}\n    #sed -i -e \"$ a product-version: \\\"${STEMCELL_VERSION}\\\"\"  ${REPO}\/${PRODUCT_FILE_LOCATION}\/${product_name}\/version-stemcell.yml\n  fi\n\n  print-to-console-debug \"Handle Stemcell Updates -- End\"\n}\n\nfunction check-stemcell-support {\n  temp_product=${1\/version-stemcell\/version}\n  stemcell_version=$2\n  product_slug=\"$(om interpolate -s --config ${REPO}\/${temp_product} --path \/pivnet-product-slug | head -n1)\"\n\n  # build output file that will update proper version file - but only if product supports it (for stemcells) \n  # Get list of stemcells for product $product-name\n  PRODUCT_VERSION=$($YQ_CMD r ${REPO}\/${temp_product} 'product-version')\n  print-to-console-debug \"check-stemcell-support ${temp_product} - version is ${PRODUCT_VERSION}\"\n  print-to-console-debug \"product_slug is ${product_slug}\"\n\n  PRODUCT_STEMCELLS=$( $PIVNET_CLI rds -p ${product_slug} -r ${PRODUCT_VERSION} --format json | \\\n                        $JQ_CMD '.[] | select(.release.product.slug | test(\"stemcells-ubuntu-xenial\")) | .release.version' -r)\n  print-to-console-debug \"PRODUCT_STEMCELLS ==> ${PRODUCT_STEMCELLS}\"\n\n  if [[ \"${PRODUCT_STEMCELLS[@]}\" =~ \"${stemcell_version}\" ]]; then\n    PRODUCT_SUPPORTS_STEMCELL=true\n  fi\n}\n\nfunction gen-validate {\n  product_name=$1\n  env_name=\"eus-sdbx2\"\n\n  ${REPO}\/environments\/scripts\/generate-config.ps1 azure ${env_name} ${product_name}\n  VALIDATE_RESPONSE=${REPO}\/environments\/scripts\/validate-config.ps1 azure ${env_name} ${product_name}\n  echo \"THIS IS THE RESPONSE ----> \"$VALIDATE_RESPONSE\n}\n\nfunction clone-repo {\n  git clone https:\/\/${VSTS_USER_NAME}:${VSTS_PAT}@${AUTOMATION_GIT_URL} ${REPO} -q\n  pushd ${REPO} \n  git checkout ${AUTOMATION_GIT_BRANCH} \n  popd\n}\n\nfunction make-branch-and-commit {\n  \n  cd ${REPO}\n  git config user.name \"Patching\"\n  git config user.email \"test@navyfederal.org\"\n\n  TIME_ST=`date +%s` \n  DATE_ST=`date +%D`\n  BRANCH_NAME=autopatch-${TIME_ST}\n\n  COMMIT_MESSAGE=\"Stemcell auto-patching - ${DATE_ST}\"\n  \n  BRANCH_PUSHED=false\n  if [[ -n $(git status --porcelain) ]]; then\n    git checkout -b \"$BRANCH_NAME\" -q\n    git add -A\n    git commit -m \"$COMMIT_MESSAGE\" --allow-empty\n    B64_PAT=$(echo \":${VSTS_PAT}\" | base64)\n    git -c http.extraHeader=\"Authorization: Basic ${B64_PAT}\" push --set-upstream origin ${BRANCH_NAME} -q\n    BRANCH_PUSHED=true\n  fi\n}\n\nfunction create-pr {\n  if [[ ${BRANCH_PUSHED} == \"false\" ]]; then\n    return\n  fi\n\n  ORG=\""
+                            },
+                            {
+                                "type": "link",
+                                "url": "https:\/\/dev.azure.com\/nfcudevlabs"
+                            },
+                            {
+                                "type": "text",
+                                "text": "\"\n  PROJECT_NAME=\"Cloud%20Platform%20Operations\"\n  REPOSITORY=\"platform-automation\"\n  SOURCE_BRANCH=${BRANCH_NAME}\n  TITLE=\"Weekly-auto\"\n\n  # Get the Repository ID from the repository name\n  REPOSITORY_ID=$(curl -s -u ${VSTS_USER_NAME}:${VSTS_PAT} ${ORG}\/${PROJECT_NAME}\/_apis\/git\/repositories | \\\n  $JQ_CMD '.value[] | select (.name == \"'${REPOSITORY}'\").id ' -r)\n\n  # Create the Pull Request\n  PR_DATA=$( $JQ_CMD -n \\\n            --arg source \"refs\/heads\/${SOURCE_BRANCH}\" \\\n            --arg target \"refs\/heads\/master\" \\\n            --arg title \"${TITLE}-patch\" \\\n            --arg description \"Stemcell and Product Patching\" \\\n            '{sourceRefName: $source, targetRefName: $target, title: $title, reviewers:\n\t    [{\"id\": \"07f68f93-f903-6e81-8128-3e29ee1a461e\"},{\"id\": \"a5c0da7e-d280-6380-a82e-4aafcbbc5760\"},{ \"id\": \"2c21e0d0-4ed1-683e-97c4-28b1cfbb534c\"}], description: $description}' )\n\n  print-to-console-debug \"------------------- Pull Request Data ------------------- \"\n  print-to-console-debug $PR_DATA | $JQ_CMD .\n\n  PR_CREATE_OUTPUT=$(curl -u ${VSTS_USER_NAME}:${VSTS_PAT} \\\n                          -H 'Content-Type: application\/json' \\\n                          -X POST \\\n                          -d \"${PR_DATA}\" \\\n                          ${ORG}\/${PROJECT_NAME}\/_apis\/git\/repositories\/${REPOSITORY_ID}\/pullrequests?api-version=5.0)\n\n  print-to-console-debug \"------------------- Pull Request Results ------------------- \"\n  print-to-console-debug $PR_CREATE_OUTPUT | $JQ_CMD .\n\n  SOURCE_COMMIT=$(echo $PR_CREATE_OUTPUT | $JQ_CMD '.lastMergeSourceCommit.commitId' -r)\n  TARGET_COMMIT=$(echo $PR_CREATE_OUTPUT | $JQ_CMD '.lastMergeTargetCommit.commitId' -r)\n  print-to-console-debug \"Source commit ${SOURCE_COMMIT}\"\n  print-to-console-debug \"Target commit ${TARGET_COMMIT}\"\n}\n\n\nfunction process-products {\n  print-to-console \"Processing products\"\n\n  CONFIG_FILES=$(cd ${REPO} && find $CONFIG_FILES_PATH -type f -name ${PRODUCT_FILE_PREFIX}.yml -follow)\n  for config_file in ${CONFIG_FILES}\n  do\n    print-to-console-debug \"${config_file}\"\n    process-product ${config_file}\n  done\n}\n\nfunction process-stemcells {\n  print-to-console \"Processing stemcells\"\n  PROCESSING_STEMCELLS=true\n  CONFIG_FILES=$(cd ${REPO} && find $CONFIG_FILES_PATH -type f -name ${STEMCELL_FILE_PREFIX}.yml -follow)\n  for config_file in ${CONFIG_FILES}\n  do\n    print-to-console-debug ${config_file}\n    process-product ${config_file}\n  done\n}\n\nfunction cleanup-email {\n  if [ $PRODUCT_FOUND == \"true\" ]; then\n    cat ${REPO}\/$INSTRUCTION_FILE >> ${EMAIL_DIR}\/pivnet-upload-results.txt\n    echo \" \" >> ${EMAIL_DIR}\/pivnet-upload-results.txt\n    cat  ${EMAIL_DIR}\/emailbody.txt >> ${EMAIL_DIR}\/pivnet-upload-results.txt\n  else\n    rm ${EMAIL_DIR}\/pivnet-upload-results.txt > \/dev\/null\n    touch ${EMAIL_DIR}\/pivnet-upload-results.txt\n  fi\n}\n\nsetup\nclone-repo\necho \"Available Products in Blobstore\" > ${REPO}\/auto-patching\/versions-available.txt\nprocess-products\nprocess-stemcells\nmake-branch-and-commit\n# Add error checking to see if previous function was successful or not. If not, don't call create-pr\ncreate-pr\n# cleanup-email\n\nprint-to-console-debug cleanup ${DIR}\npopd\n\nprint-to-console \"Autopatching complete\""
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1624294575.001200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "c221c747-4950-4ec5-a75b-ff1bf6141cc4",
+        "type": "message",
+        "text": "Converted scripts from NFCU engagement",
+        "user": "U1APA4MFX",
+        "ts": "1624294626.001700",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "YOc=j",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Converted scripts from NFCU engagement"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1624294626.001700",
+        "reply_count": 8,
+        "reply_users_count": 1,
+        "latest_reply": "1624294854.003200",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1624294690.001800"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1624294714.002000"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1624294739.002200"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1624294768.002400"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1624294788.002600"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1624294806.002800"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1624294838.003000"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1624294854.003200"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1624294854.003200"
+    },
+    {
+        "client_msg_id": "bd4bf0d4-9b1a-44dd-8199-3a474406e218",
+        "type": "message",
+        "text": "```compare to old ps1\n#! \/usr\/bin\/pwsh\n\nparam ($environment, $product, $old_product)\n$iaas=\"azure\"\n\n$cmd = \"bosh int ..\/$iaas\/$environment\/config\/$product\/generated\/template.yml --vars-file ..\/$iaas\/$environment\/config\/$product\/generated\/defaults.yml --vars-file ..\/$iaas\/common\/$product.yml --vars-file ..\/$iaas\/$environment\/config\/$product\/vars.yml --vars-file ..\/$iaas\/$environment\/config\/$product\/secrets\/secrets.yml\"\n# Write-Host $cmd\nInvoke-Expression $cmd &gt; comparisons-output\/compare-new-$environment-$product.yml\n\n\n$cmd = \"bosh int ..\/..\/foundations\/$environment\/config\/$old_product\/config.yml --vars-file ..\/..\/foundations\/$environment\/vars\/$old_product\/vars.yml\"\nInvoke-Expression $cmd &gt; comparisons-output\/compare-old-$environment-$old_product.yml\n\n# Compare-Object -ReferenceObject (Get-Content -path \"new.yml\") -DifferenceObject (Get-Content -path old.yml)\n\n#Remove-Item -path \"new.yml\"\n#Remove-Item -path \"old.yml\"```\n",
+        "user": "U1APA4MFX",
+        "ts": "1624294690.001800",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "=3uq",
+                "elements": [
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "compare to old ps1\n#! \/usr\/bin\/pwsh\n\nparam ($environment, $product, $old_product)\n$iaas=\"azure\"\n\n$cmd = \"bosh int ..\/$iaas\/$environment\/config\/$product\/generated\/template.yml --vars-file ..\/$iaas\/$environment\/config\/$product\/generated\/defaults.yml --vars-file ..\/$iaas\/common\/$product.yml --vars-file ..\/$iaas\/$environment\/config\/$product\/vars.yml --vars-file ..\/$iaas\/$environment\/config\/$product\/secrets\/secrets.yml\"\n# Write-Host $cmd\nInvoke-Expression $cmd > comparisons-output\/compare-new-$environment-$product.yml\n\n\n$cmd = \"bosh int ..\/..\/foundations\/$environment\/config\/$old_product\/config.yml --vars-file ..\/..\/foundations\/$environment\/vars\/$old_product\/vars.yml\"\nInvoke-Expression $cmd > comparisons-output\/compare-old-$environment-$old_product.yml\n\n# Compare-Object -ReferenceObject (Get-Content -path \"new.yml\") -DifferenceObject (Get-Content -path old.yml)\n\n#Remove-Item -path \"new.yml\"\n#Remove-Item -path \"old.yml\""
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1624294626.001700",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "5e442439-6fdb-4422-acad-949e2e75333e",
+        "type": "message",
+        "text": "```compare-to-other ps1\n#! \/usr\/bin\/pwsh\n\nparam ($region, $env, $other_region, $other_env, $product)\n$iaas=\"azure\"\n\n$environment=\"$region-$env\"\n$other_environment=\"$other_region-$other_env\"\n\n$cmd = \"bosh int ..\/$iaas\/$environment\/config\/$product\/generated\/template.yml $(\n    ) --vars-file ..\/$iaas\/$environment\/config\/$product\/generated\/defaults.yml $(\n    ) --vars-file ..\/$iaas\/common\/shared\/$product.yml $(\n    ) --vars-file ..\/$iaas\/common\/$region\/$product.yml $(\n    ) --vars-file ..\/$iaas\/$environment\/config\/$product\/vars.yml $(\n    ) --vars-file ..\/$iaas\/$environment\/config\/$product\/secrets\/secrets.yml\"\n# Write-Host $cmd\nInvoke-Expression $cmd &gt; comparisons-output\/compare-$product-$environment.yml\n\n$cmd = \"bosh int ..\/$iaas\/$other_environment\/config\/$product\/generated\/template.yml $(\n    ) --vars-file ..\/$iaas\/$other_environment\/config\/$product\/generated\/defaults.yml $(\n    ) --vars-file ..\/$iaas\/common\/shared\/$product.yml $(\n    ) --vars-file ..\/$iaas\/common\/$other_region\/$product.yml $(\n    ) --vars-file ..\/$iaas\/$other_environment\/config\/$product\/vars.yml $(\n    ) --vars-file ..\/$iaas\/$other_environment\/config\/$product\/secrets\/secrets.yml\"\n# Write-Host $cmd\nInvoke-Expression $cmd &gt; comparisons-output\/compare-$product-$other_environment.yml```\n",
+        "user": "U1APA4MFX",
+        "ts": "1624294714.002000",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "iGMU=",
+                "elements": [
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "compare-to-other ps1\n#! \/usr\/bin\/pwsh\n\nparam ($region, $env, $other_region, $other_env, $product)\n$iaas=\"azure\"\n\n$environment=\"$region-$env\"\n$other_environment=\"$other_region-$other_env\"\n\n$cmd = \"bosh int ..\/$iaas\/$environment\/config\/$product\/generated\/template.yml $(\n    ) --vars-file ..\/$iaas\/$environment\/config\/$product\/generated\/defaults.yml $(\n    ) --vars-file ..\/$iaas\/common\/shared\/$product.yml $(\n    ) --vars-file ..\/$iaas\/common\/$region\/$product.yml $(\n    ) --vars-file ..\/$iaas\/$environment\/config\/$product\/vars.yml $(\n    ) --vars-file ..\/$iaas\/$environment\/config\/$product\/secrets\/secrets.yml\"\n# Write-Host $cmd\nInvoke-Expression $cmd > comparisons-output\/compare-$product-$environment.yml\n\n$cmd = \"bosh int ..\/$iaas\/$other_environment\/config\/$product\/generated\/template.yml $(\n    ) --vars-file ..\/$iaas\/$other_environment\/config\/$product\/generated\/defaults.yml $(\n    ) --vars-file ..\/$iaas\/common\/shared\/$product.yml $(\n    ) --vars-file ..\/$iaas\/common\/$other_region\/$product.yml $(\n    ) --vars-file ..\/$iaas\/$other_environment\/config\/$product\/vars.yml $(\n    ) --vars-file ..\/$iaas\/$other_environment\/config\/$product\/secrets\/secrets.yml\"\n# Write-Host $cmd\nInvoke-Expression $cmd > comparisons-output\/compare-$product-$other_environment.yml"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1624294626.001700",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "ca5c39b3-3913-4c5d-9c18-5d123ab08ff8",
+        "type": "message",
+        "text": "```generate-and-validate-all ps1\n#! \/usr\/bin\/pwsh\n\nparam ($region, $environment)\n$iaas = \"azure\"\n\n$PSDefaultParameterValues['Out-File:Encoding'] = 'ascii'\n\n# Check to make sure PIVNET_TOKEN is set\nif (-not (Test-Path env:PIVNET_TOKEN)) { \n    Write-Host 'PIVNET_TOKEN must be set'\n    Exit 1 \n}\n\nif ($environment.contains(\"k8s\")) {\n  . .\/products-k8s.ps1\n} else {\n  . .\/products.ps1\n}\n\nforeach ($product in $products) {\n  .\/generate-config.ps1 $iaas $region $environment $product\n}\n\nforeach ($product in $products) {\n  .\\validate-config.ps1 $iaas $region $environment $product\n}```\n",
+        "user": "U1APA4MFX",
+        "ts": "1624294739.002200",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "T\/M",
+                "elements": [
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "generate-and-validate-all ps1\n#! \/usr\/bin\/pwsh\n\nparam ($region, $environment)\n$iaas = \"azure\"\n\n$PSDefaultParameterValues['Out-File:Encoding'] = 'ascii'\n\n# Check to make sure PIVNET_TOKEN is set\nif (-not (Test-Path env:PIVNET_TOKEN)) { \n    Write-Host 'PIVNET_TOKEN must be set'\n    Exit 1 \n}\n\nif ($environment.contains(\"k8s\")) {\n  . .\/products-k8s.ps1\n} else {\n  . .\/products.ps1\n}\n\nforeach ($product in $products) {\n  .\/generate-config.ps1 $iaas $region $environment $product\n}\n\nforeach ($product in $products) {\n  .\\validate-config.ps1 $iaas $region $environment $product\n}"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1624294626.001700",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "48074a49-0a10-477a-9849-e872bac0234b",
+        "type": "message",
+        "text": "```#! \/usr\/bin\/pwsh\n\nparam ($iaas, $region, $env, $product)\n\n$foundation=\"$region-$env\"\n$PSDefaultParameterValues['Out-File:Encoding'] = 'ascii'\n\nfunction Create-Directory ($dirname) {\n    $OriginalErrorActionPreference = $ErrorActionPreference\n    $ErrorActionPreference = 'silentlycontinue'\n    New-Item -Path \"$dirname\" -ItemType Directory &gt; $null\n    $ErrorActionPreference = $OriginalErrorActionPreference\n}\n\nfunction Touch-File($filename) {\n    $OriginalErrorActionPreference = $ErrorActionPreference\n    $ErrorActionPreference = 'silentlycontinue'\n    $filename = \"$filename\" -replace ' ',''\n    New-Item -Path \"$filename\" -ItemType File &gt; $null\n    $ErrorActionPreference = $OriginalErrorActionPreference\n}\n\nfunction Remove-file($filename) {\n    $OriginalErrorActionPreference = $ErrorActionPreference\n    $ErrorActionPreference = 'silentlycontinue'\n    $filename = \"$filename\" -replace ' ',''\n    Remove-Item -path \"$filename\"\n    $ErrorActionPreference = $OriginalErrorActionPreference\n}\n\nfunction emptyfile ($filename) {\n    $firstline = get-content $filename -first 1\n    $returnvalue = if ($firstline -eq \"{}\") {0} else {1}\n    return $returnvalue\n}\n\n# Check to make sure PIVNET_TOKEN is set\nif (-not (Test-Path env:PIVNET_TOKEN)) { \n    Write-Host 'PIVNET_TOKEN must be set'\n    Exit 1 \n}\n\nif ($iaas -eq \"\") {\n    Write-Host \"Please check your parameters... must be iaas foundation product\"\n}\n\nif ($foundation -eq \"\") {\n    Write-Host \"Please check your parameters... must be iaas foundation product\"\n}\n\nif ($product -eq \"\") {\n    Write-Host \"Please check your parameters... must be iaas foundation product\"\n}\n\n# $configfile = \"config.yml\"\n# if(Test-Path $configfile) {\n#     $foundation = (om interpolate -c ${configfile} --path \/initial-foundation)\n# } else {\n#     Write-Host \"Must create ${configfile} and specify initial-foundation\"\n#     Exit 1\n# }\n\nWrite-Host \"Generating configuration for $product in $iaas\/$foundation\"\n\n$product_dir = \"..\/$iaas\/$foundation\/config\/$product\" -replace ' ',''\n\n$versionfile = \"$product_dir\/version.yml\" -replace ' ',''\nif(-not (Test-Path $versionfile)) {\n    Write-Host \"Must create $versionfile\"\n    Exit 1\n}\n\n$version = (om interpolate -s -c $versionfile --path \/product-version)\n$glob = (om interpolate -s -c $versionfile --path \/pivnet-file-glob)\n$slug = (om interpolate -s -c $versionfile --path \/pivnet-product-slug)\n\nWrite-Host \"Searching for version $version with glob $glob and slug $slug\"\n\n$tmpdir = \"tile-configs\/$product-config\"\nCreate-Directory(\"$tmpdir\")\nom config-template --output-directory=$tmpdir --pivnet-api-token $env:PIVNET_TOKEN --pivnet-product-slug $slug --product-version $version --pivnet-file-glob $glob\n\n$searchversion = \"$version*\"  -replace ' ',''\n$wrkdir = (Get-ChildItem .\/$tmpdir\/$product -Filter $searchversion).name\nif( -not (Test-Path .\/$tmpdir\/$product\/$wrkdir\/product.yml)) {\n  Write-Host \"Something wrong with configuration as expecting ${wrkdir}\/product.yml to exist\"\n  Exit 1\n}\n\nCreate-Directory(\"..\/$iaas\/opsfiles\")\n\n$ops_file = \"..\/$iaas\/opsfiles\/$product-operations\" -replace ' ',''\nTouch-File($ops_file)\n\n$ops_files_args = \"\"\nforeach ($line in Get-Content $ops_file) {\n    $ops_files_args += \" -o $tmpdir\/$product\/$wrkdir\/$line\"\n}\n\n$foundation_ops_file = \"..\/$iaas\/$foundation\/opsfiles\/$product-operations\" -replace ' ',''\nTouch-File($foundation_ops_file)\nforeach ($line in Get-Content $foundation_ops_file){ \n    if ($line.StartsWith(\"-\")) {   ###### Over writing common ops files with starts with \"-\" character #####\n        $line = $line.SubString(1,$line.length-1)\n        $ops_files_args = $ops_files_args -replace \" -o $tmpdir\/$product\/$wrkdir\/$line\"\n    } else {\n        $ops_files_args += \" -o $tmpdir\/$product\/$wrkdir\/$line\"\n    }  \n}\n\n$generated_dir = \"$product_dir\/generated\"\nCreate-Directory(\"$generated_dir\")\n\n$templatefile = \"$generated_dir\/template.yml\" -replace ' ',''\n$cmd = \"om interpolate -s -c $tmpdir\/$product\/$wrkdir\/product.yml $ops_files_args &gt; $templatefile\"\n# Calling this via Invoke-Expression to make it easier to debug by doing...\n# Write-Host $cmd\nInvoke-Expression $cmd\n\n$default_product_file = \"$generated_dir\/defaults.yml\" -replace ' ',''\nRemove-File(\"$default_product_file\")\nTouch-File(\"$default_product_file\")\n\n$default_file = \"$tmpdir\/$product\/$wrkdir\/default-vars.yml\"\nif(Test-Path $default_file) {\n    if (emptyfile(\"$default_file\") -eq 1) {\n        type $default_file &gt;&gt; $default_product_file\n    }\n}\n\n$errands_file = \"$tmpdir\/$product\/$wrkdir\/errand-vars.yml\"\nif(Test-Path $errands_file) {\n    if (emptyfile(\"$errands_file\") -eq 1) {\n        type $errands_file &gt;&gt; $default_product_file\n    }\n}\n\n$resource_file = \"$tmpdir\/$product\/$wrkdir\/resource-vars.yml\"\nif(Test-Path $resource_file) {\n    if (emptyfile(\"$resource_file\") -eq 1) {\n        type $resource_file &gt;&gt; $default_product_file\n    }\n}\n\n$secrets_dir=\"$product_dir\/secrets\"\nCreate-Directory(\"$secrets_dir\")\nTouch-File(\"$secrets_dir\/secrets.yml\")\n\nTouch-file(\"${product_dir}\/vars.yml\")\n\nTouch-file(\"$product_dir\/errands\")\n\n$base_common_dir = \"..\/${iaas}\/common\"\nCreate-Directory(\"${base_common_dir}\")\n\n$common_dir = \"..\/${iaas}\/common\/shared\"\nCreate-Directory(\"${common_dir}\")\nTouch-File(\"${common_dir}\/${product}.yml\")\n\n$eus_common_dir = \"..\/${iaas}\/common\/eus\"\nCreate-Directory(\"${eus_common_dir}\")\nTouch-File(\"${eus_common_dir}\/${product}.yml\")\n\n$scus_common_dir = \"..\/${iaas}\/common\/scus\"\nCreate-Directory(\"${scus_common_dir}\")\nTouch-File(\"${scus_common_dir}\/${product}.yml\")```\n",
+        "user": "U1APA4MFX",
+        "ts": "1624294768.002400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "2A7",
+                "elements": [
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "#! \/usr\/bin\/pwsh\n\nparam ($iaas, $region, $env, $product)\n\n$foundation=\"$region-$env\"\n$PSDefaultParameterValues['Out-File:Encoding'] = 'ascii'\n\nfunction Create-Directory ($dirname) {\n    $OriginalErrorActionPreference = $ErrorActionPreference\n    $ErrorActionPreference = 'silentlycontinue'\n    New-Item -Path \"$dirname\" -ItemType Directory > $null\n    $ErrorActionPreference = $OriginalErrorActionPreference\n}\n\nfunction Touch-File($filename) {\n    $OriginalErrorActionPreference = $ErrorActionPreference\n    $ErrorActionPreference = 'silentlycontinue'\n    $filename = \"$filename\" -replace ' ',''\n    New-Item -Path \"$filename\" -ItemType File > $null\n    $ErrorActionPreference = $OriginalErrorActionPreference\n}\n\nfunction Remove-file($filename) {\n    $OriginalErrorActionPreference = $ErrorActionPreference\n    $ErrorActionPreference = 'silentlycontinue'\n    $filename = \"$filename\" -replace ' ',''\n    Remove-Item -path \"$filename\"\n    $ErrorActionPreference = $OriginalErrorActionPreference\n}\n\nfunction emptyfile ($filename) {\n    $firstline = get-content $filename -first 1\n    $returnvalue = if ($firstline -eq \"{}\") {0} else {1}\n    return $returnvalue\n}\n\n# Check to make sure PIVNET_TOKEN is set\nif (-not (Test-Path env:PIVNET_TOKEN)) { \n    Write-Host 'PIVNET_TOKEN must be set'\n    Exit 1 \n}\n\nif ($iaas -eq \"\") {\n    Write-Host \"Please check your parameters... must be iaas foundation product\"\n}\n\nif ($foundation -eq \"\") {\n    Write-Host \"Please check your parameters... must be iaas foundation product\"\n}\n\nif ($product -eq \"\") {\n    Write-Host \"Please check your parameters... must be iaas foundation product\"\n}\n\n# $configfile = \"config.yml\"\n# if(Test-Path $configfile) {\n#     $foundation = (om interpolate -c ${configfile} --path \/initial-foundation)\n# } else {\n#     Write-Host \"Must create ${configfile} and specify initial-foundation\"\n#     Exit 1\n# }\n\nWrite-Host \"Generating configuration for $product in $iaas\/$foundation\"\n\n$product_dir = \"..\/$iaas\/$foundation\/config\/$product\" -replace ' ',''\n\n$versionfile = \"$product_dir\/version.yml\" -replace ' ',''\nif(-not (Test-Path $versionfile)) {\n    Write-Host \"Must create $versionfile\"\n    Exit 1\n}\n\n$version = (om interpolate -s -c $versionfile --path \/product-version)\n$glob = (om interpolate -s -c $versionfile --path \/pivnet-file-glob)\n$slug = (om interpolate -s -c $versionfile --path \/pivnet-product-slug)\n\nWrite-Host \"Searching for version $version with glob $glob and slug $slug\"\n\n$tmpdir = \"tile-configs\/$product-config\"\nCreate-Directory(\"$tmpdir\")\nom config-template --output-directory=$tmpdir --pivnet-api-token $env:PIVNET_TOKEN --pivnet-product-slug $slug --product-version $version --pivnet-file-glob $glob\n\n$searchversion = \"$version*\"  -replace ' ',''\n$wrkdir = (Get-ChildItem .\/$tmpdir\/$product -Filter $searchversion).name\nif( -not (Test-Path .\/$tmpdir\/$product\/$wrkdir\/product.yml)) {\n  Write-Host \"Something wrong with configuration as expecting ${wrkdir}\/product.yml to exist\"\n  Exit 1\n}\n\nCreate-Directory(\"..\/$iaas\/opsfiles\")\n\n$ops_file = \"..\/$iaas\/opsfiles\/$product-operations\" -replace ' ',''\nTouch-File($ops_file)\n\n$ops_files_args = \"\"\nforeach ($line in Get-Content $ops_file) {\n    $ops_files_args += \" -o $tmpdir\/$product\/$wrkdir\/$line\"\n}\n\n$foundation_ops_file = \"..\/$iaas\/$foundation\/opsfiles\/$product-operations\" -replace ' ',''\nTouch-File($foundation_ops_file)\nforeach ($line in Get-Content $foundation_ops_file){ \n    if ($line.StartsWith(\"-\")) {   ###### Over writing common ops files with starts with \"-\" character #####\n        $line = $line.SubString(1,$line.length-1)\n        $ops_files_args = $ops_files_args -replace \" -o $tmpdir\/$product\/$wrkdir\/$line\"\n    } else {\n        $ops_files_args += \" -o $tmpdir\/$product\/$wrkdir\/$line\"\n    }  \n}\n\n$generated_dir = \"$product_dir\/generated\"\nCreate-Directory(\"$generated_dir\")\n\n$templatefile = \"$generated_dir\/template.yml\" -replace ' ',''\n$cmd = \"om interpolate -s -c $tmpdir\/$product\/$wrkdir\/product.yml $ops_files_args > $templatefile\"\n# Calling this via Invoke-Expression to make it easier to debug by doing...\n# Write-Host $cmd\nInvoke-Expression $cmd\n\n$default_product_file = \"$generated_dir\/defaults.yml\" -replace ' ',''\nRemove-File(\"$default_product_file\")\nTouch-File(\"$default_product_file\")\n\n$default_file = \"$tmpdir\/$product\/$wrkdir\/default-vars.yml\"\nif(Test-Path $default_file) {\n    if (emptyfile(\"$default_file\") -eq 1) {\n        type $default_file >> $default_product_file\n    }\n}\n\n$errands_file = \"$tmpdir\/$product\/$wrkdir\/errand-vars.yml\"\nif(Test-Path $errands_file) {\n    if (emptyfile(\"$errands_file\") -eq 1) {\n        type $errands_file >> $default_product_file\n    }\n}\n\n$resource_file = \"$tmpdir\/$product\/$wrkdir\/resource-vars.yml\"\nif(Test-Path $resource_file) {\n    if (emptyfile(\"$resource_file\") -eq 1) {\n        type $resource_file >> $default_product_file\n    }\n}\n\n$secrets_dir=\"$product_dir\/secrets\"\nCreate-Directory(\"$secrets_dir\")\nTouch-File(\"$secrets_dir\/secrets.yml\")\n\nTouch-file(\"${product_dir}\/vars.yml\")\n\nTouch-file(\"$product_dir\/errands\")\n\n$base_common_dir = \"..\/${iaas}\/common\"\nCreate-Directory(\"${base_common_dir}\")\n\n$common_dir = \"..\/${iaas}\/common\/shared\"\nCreate-Directory(\"${common_dir}\")\nTouch-File(\"${common_dir}\/${product}.yml\")\n\n$eus_common_dir = \"..\/${iaas}\/common\/eus\"\nCreate-Directory(\"${eus_common_dir}\")\nTouch-File(\"${eus_common_dir}\/${product}.yml\")\n\n$scus_common_dir = \"..\/${iaas}\/common\/scus\"\nCreate-Directory(\"${scus_common_dir}\")\nTouch-File(\"${scus_common_dir}\/${product}.yml\")"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1624294626.001700",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "2bdd6ef5-2ff0-4e2d-b19e-be5ddfb1db0e",
+        "type": "message",
+        "text": "```promote ps1\n#! \/usr\/bin\/pwsh\n\nparam ($fromRegion, $fromEnv, $toRegion, $toEnv)\n$environment_source = \"$fromRegion-$fromEnv\"\n$environment_target = \"$toRegion-$toEnv\"\n$iaas = \"azure\"\n\n$PSDefaultParameterValues['Out-File:Encoding'] = 'ascii'\n\nfunction Create-Directory ($dirname) {\n    $OriginalErrorActionPreference = $ErrorActionPreference\n    $ErrorActionPreference = 'silentlycontinue'\n    New-Item -Path \"$dirname\" -ItemType Directory &gt; $null\n    $ErrorActionPreference = $OriginalErrorActionPreference\n}\n\nfunction Touch-File($filename) {\n    $OriginalErrorActionPreference = $ErrorActionPreference\n    $ErrorActionPreference = 'silentlycontinue'\n    $filename = \"$filename\" -replace ' ',''\n    New-Item -Path \"$filename\" -ItemType File &gt; $null\n    $ErrorActionPreference = $OriginalErrorActionPreference\n}\n\n# Check to make sure PIVNET_TOKEN is set\nif (-not (Test-Path env:PIVNET_TOKEN)) { \n    Write-Host 'PIVNET_TOKEN must be set'\n    Exit 1 \n}\n\nWrite-Host \"Promoting from $environment_source to $environment_target\"\n\nif ($environment_target.contains(\"k8s\")) {\n  . .\/products-k8s.ps1\n} else {\n  . .\/products.ps1\n}\n\nforeach ($product in $products) {\n  Write-Host \"Copying files for $product\"\n  Create-Directory(\"..\/$iaas\/$environment_target\/config\/$product\/generated\")\n  Create-Directory(\"..\/$iaas\/$environment_target\/config\/$product\/secrets\")\n  Create-Directory(\"..\/$iaas\/$environment_target\/config\/common-secrets\")\n  Create-Directory(\"..\/$iaas\/$environment_target\/opsfiles\")\n  Touch-File(\"..\/$iaas\/$environment_target\/config\/$product\/vars.yml\")\n  $foundation_ops_file = \"..\/$iaas\/$environment_target\/opsfiles\/$product-operations\" -replace ' ',''\n  Touch-File($foundation_ops_file)\n\n  copy ..\/$iaas\/$environment_source\/pipeline.yml ..\/$iaas\/$environment_target\/pipeline.yml\n  copy ..\/$iaas\/$environment_source\/config\/common-secrets\/pivnet.yml  ..\/$iaas\/$environment_target\/config\/common-secrets\/pivnet.yml\n  \n  # Going to not copy secrets... since products can have different opsfiles, the secrets could be different\n  # However, the following two lines are helpful when creating a brand new foundation in order to create the file structures\n  # Only un-comment these if you are confident in what you are doing\n  # ------------------------------------\n  # copy ..\/$iaas\/$environment_source\/config\/$product\/secrets\/* ..\/$iaas\/$environment_target\/config\/$product\/secrets\/.\n  # copy ..\/$iaas\/$environment_source\/config\/$product\/vars.yml ..\/$iaas\/$environment_target\/config\/$product\/.\n  # $foundation_ops_file_source = \"..\/$iaas\/$environment_source\/opsfiles\/$product-operations\" -replace ' ',''\n  # copy $foundation_ops_file_source  $foundation_ops_file\n  # ------------------------------------\n  \n  copy ..\/$iaas\/$environment_source\/config\/$product\/errands  ..\/$iaas\/$environment_target\/config\/$product\/.\n  copy ..\/$iaas\/$environment_source\/config\/$product\/version-stemcell.yml  ..\/$iaas\/$environment_target\/config\/$product\/.\n  copy ..\/$iaas\/$environment_source\/config\/$product\/version.yml  ..\/$iaas\/$environment_target\/config\/$product\/.\n  # Note: do not copy the env file when promoting from eus-sdbx2\n  # It has a different env file because it uses SAML authentication while all others use UAA local client\n  # Remove \/ Change this as other foundations start using SAML\n  if ($environment_source -ne \"eus-sdbx2\") {\n    copy ..\/$iaas\/$environment_source\/config\/common-secrets\/env.yml  ..\/$iaas\/$environment_target\/config\/common-secrets\/env.yml\n  }\n}\n\n# Since there are structural differences (specifically MySql) which require products to have their own\n# ops files, need to do a generate-config during the promotion\n# This will create the template and default files (not copied above)\nforeach ($product in $products) {\n  .\/generate-config.ps1 $iaas $toRegion $toEnv $product\n}\n\n.\/validate-all.ps1 $toRegion $toEnv```\n",
+        "user": "U1APA4MFX",
+        "ts": "1624294788.002600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "wLa",
+                "elements": [
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "promote ps1\n#! \/usr\/bin\/pwsh\n\nparam ($fromRegion, $fromEnv, $toRegion, $toEnv)\n$environment_source = \"$fromRegion-$fromEnv\"\n$environment_target = \"$toRegion-$toEnv\"\n$iaas = \"azure\"\n\n$PSDefaultParameterValues['Out-File:Encoding'] = 'ascii'\n\nfunction Create-Directory ($dirname) {\n    $OriginalErrorActionPreference = $ErrorActionPreference\n    $ErrorActionPreference = 'silentlycontinue'\n    New-Item -Path \"$dirname\" -ItemType Directory > $null\n    $ErrorActionPreference = $OriginalErrorActionPreference\n}\n\nfunction Touch-File($filename) {\n    $OriginalErrorActionPreference = $ErrorActionPreference\n    $ErrorActionPreference = 'silentlycontinue'\n    $filename = \"$filename\" -replace ' ',''\n    New-Item -Path \"$filename\" -ItemType File > $null\n    $ErrorActionPreference = $OriginalErrorActionPreference\n}\n\n# Check to make sure PIVNET_TOKEN is set\nif (-not (Test-Path env:PIVNET_TOKEN)) { \n    Write-Host 'PIVNET_TOKEN must be set'\n    Exit 1 \n}\n\nWrite-Host \"Promoting from $environment_source to $environment_target\"\n\nif ($environment_target.contains(\"k8s\")) {\n  . .\/products-k8s.ps1\n} else {\n  . .\/products.ps1\n}\n\nforeach ($product in $products) {\n  Write-Host \"Copying files for $product\"\n  Create-Directory(\"..\/$iaas\/$environment_target\/config\/$product\/generated\")\n  Create-Directory(\"..\/$iaas\/$environment_target\/config\/$product\/secrets\")\n  Create-Directory(\"..\/$iaas\/$environment_target\/config\/common-secrets\")\n  Create-Directory(\"..\/$iaas\/$environment_target\/opsfiles\")\n  Touch-File(\"..\/$iaas\/$environment_target\/config\/$product\/vars.yml\")\n  $foundation_ops_file = \"..\/$iaas\/$environment_target\/opsfiles\/$product-operations\" -replace ' ',''\n  Touch-File($foundation_ops_file)\n\n  copy ..\/$iaas\/$environment_source\/pipeline.yml ..\/$iaas\/$environment_target\/pipeline.yml\n  copy ..\/$iaas\/$environment_source\/config\/common-secrets\/pivnet.yml  ..\/$iaas\/$environment_target\/config\/common-secrets\/pivnet.yml\n  \n  # Going to not copy secrets... since products can have different opsfiles, the secrets could be different\n  # However, the following two lines are helpful when creating a brand new foundation in order to create the file structures\n  # Only un-comment these if you are confident in what you are doing\n  # ------------------------------------\n  # copy ..\/$iaas\/$environment_source\/config\/$product\/secrets\/* ..\/$iaas\/$environment_target\/config\/$product\/secrets\/.\n  # copy ..\/$iaas\/$environment_source\/config\/$product\/vars.yml ..\/$iaas\/$environment_target\/config\/$product\/.\n  # $foundation_ops_file_source = \"..\/$iaas\/$environment_source\/opsfiles\/$product-operations\" -replace ' ',''\n  # copy $foundation_ops_file_source  $foundation_ops_file\n  # ------------------------------------\n  \n  copy ..\/$iaas\/$environment_source\/config\/$product\/errands  ..\/$iaas\/$environment_target\/config\/$product\/.\n  copy ..\/$iaas\/$environment_source\/config\/$product\/version-stemcell.yml  ..\/$iaas\/$environment_target\/config\/$product\/.\n  copy ..\/$iaas\/$environment_source\/config\/$product\/version.yml  ..\/$iaas\/$environment_target\/config\/$product\/.\n  # Note: do not copy the env file when promoting from eus-sdbx2\n  # It has a different env file because it uses SAML authentication while all others use UAA local client\n  # Remove \/ Change this as other foundations start using SAML\n  if ($environment_source -ne \"eus-sdbx2\") {\n    copy ..\/$iaas\/$environment_source\/config\/common-secrets\/env.yml  ..\/$iaas\/$environment_target\/config\/common-secrets\/env.yml\n  }\n}\n\n# Since there are structural differences (specifically MySql) which require products to have their own\n# ops files, need to do a generate-config during the promotion\n# This will create the template and default files (not copied above)\nforeach ($product in $products) {\n  .\/generate-config.ps1 $iaas $toRegion $toEnv $product\n}\n\n.\/validate-all.ps1 $toRegion $toEnv"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1624294626.001700",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "cd68a9fe-3f9a-417b-ba54-a32b5c40f7ce",
+        "type": "message",
+        "text": "```validate-config ps1\n#! \/usr\/bin\/pwsh\n\nparam ($iaas, $region, $env, $product) \n\n$environment_name=\"$region-$env\"\n\nWrite-Host \"Validating configuration for $product in $iaas\/$environment_name\"\n\n$deploy_type=\"tile\"\n\nif ($product -eq \"os-conf\" ) {\n    $deploy_type=\"runtime-config\"\n}\nif ($product -eq \"clamav\") {\n    $deploy_type=\"runtime-config\"\n}\n\n$var_files_args = \"\"\nif ($deploy_type -eq \"runtime-config\") {\n    $var_files_args += \" --vars-file ..\/$iaas\/$environment_name\/config\/$product\/version.yml\"\n}\n\nif (Test-Path \"..\/$iaas\/common\/shared\/$product.yml\") {\n  $var_files_args += \" --vars-file ..\/$iaas\/common\/shared\/$product.yml\"  \n}\n\nif (Test-Path \"..\/$iaas\/common\/$region\/$product.yml\") {\n  $var_files_args += \" --vars-file ..\/$iaas\/common\/$region\/$product.yml\"  \n}\n\nif (Test-Path \"..\/$iaas\/$environment_name\/config\/$product\/vars.yml\") {\n    $var_files_args += \" --vars-file ..\/$iaas\/$environment_name\/config\/$product\/vars.yml\"\n}\n\nif (Test-Path \"..\/$iaas\/$environment_name\/config\/$product\/secrets\/secrets.yml\") {\n    $var_files_args += \" --vars-file ..\/$iaas\/$environment_name\/config\/$product\/secrets\/secrets.yml\"\n}\n\nif ($deploy_type -eq \"tile\") {\n    $cmd = \"bosh int --var-errs-unused ..\/$iaas\/$environment_name\/config\/$product\/generated\/template.yml $var_files_args\"\n    # Write-Host $cmd\n    Invoke-Expression $cmd &gt; $null\n}\n\nif (Test-Path \"..\/$iaas\/$environment_name\/config\/$product\/generated\/defaults.yml\") {\n    $var_files_args += \" --vars-file ..\/$iaas\/$environment_name\/config\/$product\/generated\/defaults.yml\"\n}\n\n$cmd = \"bosh int --var-errs ..\/$iaas\/$environment_name\/config\/$product\/generated\/template.yml $var_files_args\"\n# Write-Host $cmd\nInvoke-Expression $cmd &gt; $null```\n",
+        "user": "U1APA4MFX",
+        "ts": "1624294806.002800",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Y5piF",
+                "elements": [
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "validate-config ps1\n#! \/usr\/bin\/pwsh\n\nparam ($iaas, $region, $env, $product) \n\n$environment_name=\"$region-$env\"\n\nWrite-Host \"Validating configuration for $product in $iaas\/$environment_name\"\n\n$deploy_type=\"tile\"\n\nif ($product -eq \"os-conf\" ) {\n    $deploy_type=\"runtime-config\"\n}\nif ($product -eq \"clamav\") {\n    $deploy_type=\"runtime-config\"\n}\n\n$var_files_args = \"\"\nif ($deploy_type -eq \"runtime-config\") {\n    $var_files_args += \" --vars-file ..\/$iaas\/$environment_name\/config\/$product\/version.yml\"\n}\n\nif (Test-Path \"..\/$iaas\/common\/shared\/$product.yml\") {\n  $var_files_args += \" --vars-file ..\/$iaas\/common\/shared\/$product.yml\"  \n}\n\nif (Test-Path \"..\/$iaas\/common\/$region\/$product.yml\") {\n  $var_files_args += \" --vars-file ..\/$iaas\/common\/$region\/$product.yml\"  \n}\n\nif (Test-Path \"..\/$iaas\/$environment_name\/config\/$product\/vars.yml\") {\n    $var_files_args += \" --vars-file ..\/$iaas\/$environment_name\/config\/$product\/vars.yml\"\n}\n\nif (Test-Path \"..\/$iaas\/$environment_name\/config\/$product\/secrets\/secrets.yml\") {\n    $var_files_args += \" --vars-file ..\/$iaas\/$environment_name\/config\/$product\/secrets\/secrets.yml\"\n}\n\nif ($deploy_type -eq \"tile\") {\n    $cmd = \"bosh int --var-errs-unused ..\/$iaas\/$environment_name\/config\/$product\/generated\/template.yml $var_files_args\"\n    # Write-Host $cmd\n    Invoke-Expression $cmd > $null\n}\n\nif (Test-Path \"..\/$iaas\/$environment_name\/config\/$product\/generated\/defaults.yml\") {\n    $var_files_args += \" --vars-file ..\/$iaas\/$environment_name\/config\/$product\/generated\/defaults.yml\"\n}\n\n$cmd = \"bosh int --var-errs ..\/$iaas\/$environment_name\/config\/$product\/generated\/template.yml $var_files_args\"\n# Write-Host $cmd\nInvoke-Expression $cmd > $null"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1624294626.001700",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "ea753e15-e9a3-42fd-93e4-f3ab58fa17f4",
+        "type": "message",
+        "text": "```run ps1\n#! \/usr\/bin\/pwsh\n\n$iaas = \"azure\"\n\nfunction ShowMenu {\n    while ($true) {\n        Write-Host \"What do you want to do?\"\n        Write-Host \"1. generate-config\"\n        Write-Host \"2. validate-config\"\n        Write-Host \"3. generate-and-validate-all\"\n        Write-Host \"4. compare-to-other\"\n        Write-Host \"5. promote\"\n        Write-Host \"6. trigger-all-products\"\n        Write-Host \"9. quit\"\n        $action = Read-Host \"Make a selection\"\n\n        switch ($action) {\n            1 {\n                generate-config\n                return\n            }\n            2 {\n                validate-config\n                return\n            }\n            3 {\n                generate-and-validate-all\n                return\n            }\n            4 {\n                compareToOther\n                return\n            }\n            5 {\n                promote \n                return\n            }\n            6 {\n                triggerAllProducts\n                return\n            }\n            9 {\n                return $action\n            }\n            default {\n                Write-Host \"$action is not valid\"\n            }\n        }\n    } \n}\n\nfunction promptForRegion {\n    do {\n        try {\n            [ValidatePattern('eus|scus')] $region = Read-Host \"Which Region? (eus\/scus)\"\n        } catch {}\n    } until ($?)\n    return $region\n}\n\nfunction promptForEnvironment($region) {\n    $dirname = \"..\/azure\"\n    $env_list = Get-ChildItem -path \"$dirname\" -Directory $region-*\n    \n    while ($true) {\n        Write-Host \"Which Foundation?\"\n        $counter = 1\n        foreach ($env in $env_list) {\n            Write-Host $counter  $env  \n            $counter++\n        }\n        $selection = Read-Host \"Make a selection\"\n        if ([int]$selection -le $env_list.count) {\n            $returnval = $env_list[$selection - 1]\n            $returnval = $returnval -replace \"$region-\", \"\"\n            return $returnval\n        }\n    } \n\n}\n\nfunction getAllProducts($region, $env) {\n    $dirname = \"..\/azure\/$region-$env\/config\"\n    $products = Get-ChildItem -Path \"$dirname\" -Directory\n    return $products\n}\n\nfunction promptForProduct($region, $env) {\n    $products = getAllProducts $region $env\n\n    while ($true) {\n        Write-Host \"Which Product?\"\n        $counter = 1\n        foreach ($prod in $products) {\n            Write-Host $counter  $prod  \n            $counter++\n        }\n        $selection = Read-Host \"Make a selection\"\n        if ([int]$selection -le $products.count) {\n            return $products[$selection - 1]\n        }\n    } \n}\n\nfunction generate-config {\n    Write-Host \"You are about to do a generate config\"\n    $iaas = \"azure\"\n    $region = promptForRegion\n    $env = promptForEnvironment $region\n    $product = promptForProduct $region $env\n    $cmd = \".\/generate-config.ps1 $iaas $region $env $product\"\n    Write-Host $cmd\n    Invoke-Expression $cmd\n}\n\nfunction validate-config {\n    Write-Host \"You are about to do a validate config\"\n    $iaas = \"azure\"\n    $region = promptForRegion\n    $env = promptForEnvironment $region\n    $product = promptForProduct $region $env\n    $cmd = \".\/validate-config.ps1 $iaas $region $env $product\"\n    Write-Host $cmd\n    Invoke-Expression $cmd\n}\n\nfunction generate-and-validate-all {\n    Write-Host \"You are about to do a generate and validate all\"\n    $iaas = \"azure\"\n    $region = promptForRegion\n    $env = promptForEnvironment $region\n    $cmd = \".\/generate-and-validate-all.ps1 $region $env\"\n    Write-Host $cmd\n    Invoke-Expression $cmd\n}\n\nfunction compareToOther {\n    Write-Host \"You are about to do a compareToOther\"\n    $iaas = \"azure\"\n    $fromRegion = promptForRegion\n    $fromEnv = promptForEnvironment $fromRegion\n    $toRegion = promptForRegion\n    $toEnv = promptForEnvironment $toRegion\n    if (($fromEnv -eq $toEnv) -and ($fromRegion -eq $toRegion)) {\n        Write-Host \"The source and target can not be the same\"\n        return\n    }\n    $product = promptForProduct $fromRegion $fromEnv\n    $cmd = \".\/compare-to-other.ps1 $fromRegion $fromEnv $toRegion $toEnv $product\"\n    Write-Host $cmd\n    Invoke-Expression $cmd\n}\n\nfunction promote {\n    Write-Host \"You are about to do a promote\"\n    $iaas = \"azure\"\n    $fromRegion = promptForRegion\n    $fromEnv = promptForEnvironment $fromRegion\n    $toRegion = promptForRegion\n    $toEnv = promptForEnvironment $toRegion\n    if (($fromEnv -eq $toEnv) -and ($fromRegion -eq $toRegion)) {\n        Write-Host \"The source and target can not be the same\"\n        return\n    }\n    $cmd = \".\/promote.ps1 $fromRegion $fromEnv $toRegion $toEnv\"\n    Write-Host $cmd\n    Invoke-Expression $cmd\n}\n\nfunction triggerAllProducts {\n    Write-Host \"You are about to change a file in all products to trigger pipeline\"\n    $iaas = \"azure\"\n    $region = promptForRegion\n    $env = promptforEnvironment $region\n    $products = getAllProducts $region $env\n\n    $excluded = \"common-secrets\"\n\n    foreach ($prod in $products) {\n        if ($excluded.contains($prod)) {\n            continue\n        }\n        Get-Date | Out-File -FilePath ..\/$iaas\/$region-$env\/config\/$prod\/trigger-me \n    }\n\n}\n\n$action = ShowMenu\n\n# How to call a function by dynamically building function name\n#     $funcName = \"prompt-for-env-from-$region\"\n#     $env = &amp;(Get-ChildItem \"Function:$funcName\")```\n",
+        "user": "U1APA4MFX",
+        "ts": "1624294838.003000",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "cOWA",
+                "elements": [
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "run ps1\n#! \/usr\/bin\/pwsh\n\n$iaas = \"azure\"\n\nfunction ShowMenu {\n    while ($true) {\n        Write-Host \"What do you want to do?\"\n        Write-Host \"1. generate-config\"\n        Write-Host \"2. validate-config\"\n        Write-Host \"3. generate-and-validate-all\"\n        Write-Host \"4. compare-to-other\"\n        Write-Host \"5. promote\"\n        Write-Host \"6. trigger-all-products\"\n        Write-Host \"9. quit\"\n        $action = Read-Host \"Make a selection\"\n\n        switch ($action) {\n            1 {\n                generate-config\n                return\n            }\n            2 {\n                validate-config\n                return\n            }\n            3 {\n                generate-and-validate-all\n                return\n            }\n            4 {\n                compareToOther\n                return\n            }\n            5 {\n                promote \n                return\n            }\n            6 {\n                triggerAllProducts\n                return\n            }\n            9 {\n                return $action\n            }\n            default {\n                Write-Host \"$action is not valid\"\n            }\n        }\n    } \n}\n\nfunction promptForRegion {\n    do {\n        try {\n            [ValidatePattern('eus|scus')] $region = Read-Host \"Which Region? (eus\/scus)\"\n        } catch {}\n    } until ($?)\n    return $region\n}\n\nfunction promptForEnvironment($region) {\n    $dirname = \"..\/azure\"\n    $env_list = Get-ChildItem -path \"$dirname\" -Directory $region-*\n    \n    while ($true) {\n        Write-Host \"Which Foundation?\"\n        $counter = 1\n        foreach ($env in $env_list) {\n            Write-Host $counter  $env  \n            $counter++\n        }\n        $selection = Read-Host \"Make a selection\"\n        if ([int]$selection -le $env_list.count) {\n            $returnval = $env_list[$selection - 1]\n            $returnval = $returnval -replace \"$region-\", \"\"\n            return $returnval\n        }\n    } \n\n}\n\nfunction getAllProducts($region, $env) {\n    $dirname = \"..\/azure\/$region-$env\/config\"\n    $products = Get-ChildItem -Path \"$dirname\" -Directory\n    return $products\n}\n\nfunction promptForProduct($region, $env) {\n    $products = getAllProducts $region $env\n\n    while ($true) {\n        Write-Host \"Which Product?\"\n        $counter = 1\n        foreach ($prod in $products) {\n            Write-Host $counter  $prod  \n            $counter++\n        }\n        $selection = Read-Host \"Make a selection\"\n        if ([int]$selection -le $products.count) {\n            return $products[$selection - 1]\n        }\n    } \n}\n\nfunction generate-config {\n    Write-Host \"You are about to do a generate config\"\n    $iaas = \"azure\"\n    $region = promptForRegion\n    $env = promptForEnvironment $region\n    $product = promptForProduct $region $env\n    $cmd = \".\/generate-config.ps1 $iaas $region $env $product\"\n    Write-Host $cmd\n    Invoke-Expression $cmd\n}\n\nfunction validate-config {\n    Write-Host \"You are about to do a validate config\"\n    $iaas = \"azure\"\n    $region = promptForRegion\n    $env = promptForEnvironment $region\n    $product = promptForProduct $region $env\n    $cmd = \".\/validate-config.ps1 $iaas $region $env $product\"\n    Write-Host $cmd\n    Invoke-Expression $cmd\n}\n\nfunction generate-and-validate-all {\n    Write-Host \"You are about to do a generate and validate all\"\n    $iaas = \"azure\"\n    $region = promptForRegion\n    $env = promptForEnvironment $region\n    $cmd = \".\/generate-and-validate-all.ps1 $region $env\"\n    Write-Host $cmd\n    Invoke-Expression $cmd\n}\n\nfunction compareToOther {\n    Write-Host \"You are about to do a compareToOther\"\n    $iaas = \"azure\"\n    $fromRegion = promptForRegion\n    $fromEnv = promptForEnvironment $fromRegion\n    $toRegion = promptForRegion\n    $toEnv = promptForEnvironment $toRegion\n    if (($fromEnv -eq $toEnv) -and ($fromRegion -eq $toRegion)) {\n        Write-Host \"The source and target can not be the same\"\n        return\n    }\n    $product = promptForProduct $fromRegion $fromEnv\n    $cmd = \".\/compare-to-other.ps1 $fromRegion $fromEnv $toRegion $toEnv $product\"\n    Write-Host $cmd\n    Invoke-Expression $cmd\n}\n\nfunction promote {\n    Write-Host \"You are about to do a promote\"\n    $iaas = \"azure\"\n    $fromRegion = promptForRegion\n    $fromEnv = promptForEnvironment $fromRegion\n    $toRegion = promptForRegion\n    $toEnv = promptForEnvironment $toRegion\n    if (($fromEnv -eq $toEnv) -and ($fromRegion -eq $toRegion)) {\n        Write-Host \"The source and target can not be the same\"\n        return\n    }\n    $cmd = \".\/promote.ps1 $fromRegion $fromEnv $toRegion $toEnv\"\n    Write-Host $cmd\n    Invoke-Expression $cmd\n}\n\nfunction triggerAllProducts {\n    Write-Host \"You are about to change a file in all products to trigger pipeline\"\n    $iaas = \"azure\"\n    $region = promptForRegion\n    $env = promptforEnvironment $region\n    $products = getAllProducts $region $env\n\n    $excluded = \"common-secrets\"\n\n    foreach ($prod in $products) {\n        if ($excluded.contains($prod)) {\n            continue\n        }\n        Get-Date | Out-File -FilePath ..\/$iaas\/$region-$env\/config\/$prod\/trigger-me \n    }\n\n}\n\n$action = ShowMenu\n\n# How to call a function by dynamically building function name\n#     $funcName = \"prompt-for-env-from-$region\"\n#     $env = &(Get-ChildItem \"Function:$funcName\")"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1624294626.001700",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "c85c2d57-1cda-405e-8882-3c09af7f3f03",
+        "type": "message",
+        "text": "```products ps1\n$products = @(\"appMetrics\",\n              \"azure-log-analytics-nozzle\",\n              \"azure-service-broker\",\n              \"cf\",\n              \"contrast-security-service-broker\",\n              \"credhub-service-broker\",\n              \"metric-store\"\n              \"p_spring-cloud-services\",\n              \"p-antivirus\",\n              \"p-antivirus-mirror\",\n              \"p-dataflow\",\n              \"p-event-alerts\",\n              \"p-healthwatch2\",\n              \"p-healthwatch2-pas-exporter\",\n              \"p-rabbitmq\",\n              \"p-scheduler\",\n              \"pivotal_single_sign-on_service\",\n              \"pivotal-mysql\",\n              \"pivotal-telemetry-om\"\n            )```\n",
+        "user": "U1APA4MFX",
+        "ts": "1624294854.003200",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "9kQuJ",
+                "elements": [
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "products ps1\n$products = @(\"appMetrics\",\n              \"azure-log-analytics-nozzle\",\n              \"azure-service-broker\",\n              \"cf\",\n              \"contrast-security-service-broker\",\n              \"credhub-service-broker\",\n              \"metric-store\"\n              \"p_spring-cloud-services\",\n              \"p-antivirus\",\n              \"p-antivirus-mirror\",\n              \"p-dataflow\",\n              \"p-event-alerts\",\n              \"p-healthwatch2\",\n              \"p-healthwatch2-pas-exporter\",\n              \"p-rabbitmq\",\n              \"p-scheduler\",\n              \"pivotal_single_sign-on_service\",\n              \"pivotal-mysql\",\n              \"pivotal-telemetry-om\"\n            )"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1624294626.001700",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

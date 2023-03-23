@@ -1,0 +1,118 @@
+[
+    {
+        "client_msg_id": "7c2b5f41-f278-4cff-9780-198643dc2d31",
+        "type": "message",
+        "text": "Instead of creating the symlink... we can delete the `\/etc\/opt\/microsoft\/omsagent\/&lt;&lt;subscriptionid&gt;&gt;\/conf\/service_registered` file instead and it will then recreate the symlink",
+        "user": "U1APA4MFX",
+        "ts": "1607371399.000100",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "zizxD",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Instead of creating the symlink... we can delete the "
+                            },
+                            {
+                                "type": "text",
+                                "text": "\/etc\/opt\/microsoft\/omsagent\/<<subscriptionid>>\/conf\/service_registered",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " file instead and it will then recreate the symlink"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1606856156.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "type": "message",
+        "text": "",
+        "files": [
+            {
+                "id": "F01GQNEAKSM",
+                "created": 1607371409,
+                "timestamp": 1607371409,
+                "name": "Screen Shot 2020-12-07 at 1.01.11 PM.png",
+                "title": "Screen Shot 2020-12-07 at 1.01.11 PM.png",
+                "mimetype": "image\/png",
+                "filetype": "png",
+                "pretty_type": "PNG",
+                "user": "U1APA4MFX",
+                "user_team": "T1APFPELR",
+                "editable": false,
+                "size": 489513,
+                "mode": "hosted",
+                "is_external": false,
+                "external_type": "",
+                "is_public": true,
+                "public_url_shared": false,
+                "display_as_bot": false,
+                "username": "",
+                "url_private": "https:\/\/files.slack.com\/files-pri\/T1APFPELR-F01GQNEAKSM\/screen_shot_2020-12-07_at_1.01.11_pm.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "url_private_download": "https:\/\/files.slack.com\/files-pri\/T1APFPELR-F01GQNEAKSM\/download\/screen_shot_2020-12-07_at_1.01.11_pm.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "media_display_type": "unknown",
+                "thumb_64": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01GQNEAKSM-4234e6bce5\/screen_shot_2020-12-07_at_1.01.11_pm_64.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_80": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01GQNEAKSM-4234e6bce5\/screen_shot_2020-12-07_at_1.01.11_pm_80.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_360": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01GQNEAKSM-4234e6bce5\/screen_shot_2020-12-07_at_1.01.11_pm_360.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_360_w": 360,
+                "thumb_360_h": 54,
+                "thumb_480": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01GQNEAKSM-4234e6bce5\/screen_shot_2020-12-07_at_1.01.11_pm_480.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_480_w": 480,
+                "thumb_480_h": 72,
+                "thumb_160": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01GQNEAKSM-4234e6bce5\/screen_shot_2020-12-07_at_1.01.11_pm_160.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_720": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01GQNEAKSM-4234e6bce5\/screen_shot_2020-12-07_at_1.01.11_pm_720.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_720_w": 720,
+                "thumb_720_h": 109,
+                "thumb_800": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01GQNEAKSM-4234e6bce5\/screen_shot_2020-12-07_at_1.01.11_pm_800.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_800_w": 800,
+                "thumb_800_h": 121,
+                "thumb_960": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01GQNEAKSM-4234e6bce5\/screen_shot_2020-12-07_at_1.01.11_pm_960.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_960_w": 960,
+                "thumb_960_h": 145,
+                "thumb_1024": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01GQNEAKSM-4234e6bce5\/screen_shot_2020-12-07_at_1.01.11_pm_1024.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_1024_w": 1024,
+                "thumb_1024_h": 155,
+                "original_w": 2185,
+                "original_h": 330,
+                "thumb_tiny": "AwAHADDO7nNFLRQAmPSkwacKSgBMGkwadRQB\/9k=",
+                "permalink": "https:\/\/tonyelmore.slack.com\/files\/U1APA4MFX\/F01GQNEAKSM\/screen_shot_2020-12-07_at_1.01.11_pm.png",
+                "permalink_public": "https:\/\/slack-files.com\/T1APFPELR-F01GQNEAKSM-9609832ab6",
+                "is_starred": false,
+                "has_rich_preview": false,
+                "file_access": "visible"
+            }
+        ],
+        "upload": false,
+        "user": "U1APA4MFX",
+        "display_as_bot": false,
+        "ts": "1607371413.000300",
+        "thread_ts": "1606856156.000400",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

@@ -1,0 +1,250 @@
+[
+    {
+        "client_msg_id": "fc0f08c1-e248-4f0f-9b1a-022e1b5c5ef7",
+        "type": "message",
+        "text": "Velero backup failed - but can't delete the backup",
+        "user": "U1APA4MFX",
+        "ts": "1633641038.000300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "EIKWh",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Velero backup failed - but can't delete the backup"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1633641038.000300",
+        "reply_count": 4,
+        "reply_users_count": 1,
+        "latest_reply": "1633641228.001000",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1633641114.000400"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1633641161.000600"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1633641180.000800"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1633641228.001000"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1633641228.001000"
+    },
+    {
+        "client_msg_id": "3ffec5bd-9114-4266-8b0d-05846e357240",
+        "type": "message",
+        "text": "This can happen when the failure doesn't create any artifacts.  An example could be when the target is unavailable.",
+        "user": "U1APA4MFX",
+        "ts": "1633641114.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "cW\/",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "This can happen when the failure doesn't create any artifacts.  An example could be when the target is unavailable."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1633641038.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "73ea8661-e2cf-4585-a126-d922650a7d7f",
+        "type": "message",
+        "text": "You can delete the velero backup (either using velero cli or through TMC) ... but it will hang up saying that it will be deleted once all of the associated resources are deleted.",
+        "user": "U1APA4MFX",
+        "ts": "1633641161.000600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "4+\/U8",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "You can delete the velero backup (either using velero cli or through TMC) ... but it will hang up saying that it will be deleted once all of the associated resources are deleted."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1633641038.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "a9c7e2bc-b1cf-48bd-8e78-9d38766e949c",
+        "type": "message",
+        "text": "The problem is that there is a object in the cluster that is not being deleted.",
+        "user": "U1APA4MFX",
+        "ts": "1633641180.000800",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "w6z",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "The problem is that there is a object in the cluster that is not being deleted."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1633641038.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "d95c71fb-8477-4844-887c-697c8e52fd11",
+        "type": "message",
+        "text": "`kubectl delete <http:\/\/backups.velero.io|backups.velero.io> -n velero backup-name` will delete this object and the backup will continue to delete",
+        "user": "U1APA4MFX",
+        "ts": "1633641228.001000",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "=muU",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "kubectl delete ",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/backups.velero.io",
+                                "text": "backups.velero.io",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " -n velero backup-name",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " will delete this object and the backup will continue to delete"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1633641038.000300",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

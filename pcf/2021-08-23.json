@@ -1,0 +1,311 @@
+[
+    {
+        "client_msg_id": "0b48304c-519f-486c-a1ca-36f5d613d16f",
+        "type": "message",
+        "text": "How to know what port a pod is listening on...",
+        "user": "U1APA4MFX",
+        "ts": "1629754964.000300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Ahlvl",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "How to know what port a pod is listening on..."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1629754964.000300",
+        "reply_count": 4,
+        "reply_users_count": 1,
+        "latest_reply": "1629770102.000100",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1629754989.000400"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1629755086.000600"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1629755130.000800"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1629770102.000100"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1629770102.000100"
+    },
+    {
+        "client_msg_id": "15538287-1a09-4a4e-9aef-a609c5335070",
+        "type": "message",
+        "text": "`kubectl get pod &lt;&lt;pod-name&gt;&gt; --template='{{(index (index .spec.containers 0).ports 0).containerPort}}{{\"\\n\"}}'`",
+        "user": "U1APA4MFX",
+        "ts": "1629754989.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "HGY3e",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "kubectl get pod <<pod-name>> --template='{{(index (index .spec.containers 0).ports 0).containerPort}}{{\"\\n\"}}'",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1629754964.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "048d8802-0151-4b2a-bc1b-c500ce3d7f64",
+        "type": "message",
+        "text": "If your pod is listening on port 9080 - you could run a port-forward command on your local machine like this...\n```kubectl port-forward &lt;&lt;pod-name&gt;&gt; &lt;&lt;port&gt;&gt;:&lt;&lt;port&gt;&gt;```\nThe first port is what you will use with `localhost:&lt;&lt;port&gt;&gt;`\nThe second port is the target port that the pod is listening on (from command above)",
+        "user": "U1APA4MFX",
+        "ts": "1629755086.000600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "kzSo",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "If your pod is listening on port 9080 - you could run a port-forward command on your local machine like this...\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "kubectl port-forward <<pod-name>> <<port>>:<<port>>"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "The first port is what you will use with "
+                            },
+                            {
+                                "type": "text",
+                                "text": "localhost:<<port>>",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\nThe second port is the target port that the pod is listening on (from command above)"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "edited": {
+            "user": "U1APA4MFX",
+            "ts": "1629755161.000000"
+        },
+        "thread_ts": "1629754964.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "336ccf75-95b1-499b-93cf-d610e5c16ecc",
+        "type": "message",
+        "text": "If you want to just get a random local port you can leave the first port off...\n```kubectl port-forward &lt;&lt;pod-name&gt;&gt; :&lt;&lt;port&gt;&gt;```\nThen you would access this with the port that is shown in the output",
+        "user": "U1APA4MFX",
+        "ts": "1629755130.000800",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "yEvrG",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "If you want to just get a random local port you can leave the first port off...\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "kubectl port-forward <<pod-name>> :<<port>>"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Then you would access this with the port that is shown in the output"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1629754964.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "9ac08599-2f1a-4706-8680-b43edfee1959",
+        "type": "message",
+        "text": "But to expose it beyond the cluster, you would use a LoadBalancer\n```kubectl expose deployment liberty-spring-music --name=liberty-spring-music --port=80 --target-port=9080 --type=LoadBalancer```\nThe important thing here seems to be that you have to supply *both* the port and target-port.  The target-port is the port that your application is listening on.",
+        "user": "U1APA4MFX",
+        "ts": "1629770102.000100",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "IMPKs",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "But to expose it beyond the cluster, you would use a LoadBalancer\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "kubectl expose deployment liberty-spring-music --name=liberty-spring-music --port=80 --target-port=9080 --type=LoadBalancer"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "The important thing here seems to be that you have to supply "
+                            },
+                            {
+                                "type": "text",
+                                "text": "both",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " the port and target-port.  The target-port is the port that your application is listening on."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1629754964.000300",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

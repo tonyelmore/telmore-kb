@@ -1,0 +1,560 @@
+[
+    {
+        "client_msg_id": "49127251-4396-4f17-83c8-408c149bdb05",
+        "type": "message",
+        "text": "How to do DR",
+        "user": "U1APA4MFX",
+        "ts": "1575586535.000200",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "v=8=n",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "How to do DR"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1575586535.000200",
+        "reply_count": 7,
+        "reply_users_count": 1,
+        "latest_reply": "1575587260.001700",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1575586558.000300"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1575586593.000500"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1575586639.000700"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1575586818.001100"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1575586888.001300"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1575587011.001500"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1575587260.001700"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1575587260.001700"
+    },
+    {
+        "client_msg_id": "42742b91-23ce-467c-aa46-4214100e8fc3",
+        "type": "message",
+        "text": "`cf push` the application to both the prod and DR environments",
+        "user": "U1APA4MFX",
+        "ts": "1575586558.000300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "qlo\/",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "cf push",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " the application to both the prod and DR environments"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1575586535.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "3881e978-41bc-44f0-83e8-fbeab0cadd86",
+        "type": "message",
+        "text": "Add a shared domain to each foundation\n```cf create-shared-domain &lt;http:\/\/telmore.io|telmore.io&gt;```\n",
+        "user": "U1APA4MFX",
+        "ts": "1575586593.000500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "rDpCH",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Add a shared domain to each foundation\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "cf create-shared-domain "
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/telmore.io",
+                                "text": "telmore.io"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "edited": {
+            "user": "U1APA4MFX",
+            "ts": "1575586660.000000"
+        },
+        "thread_ts": "1575586535.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "d5eef81e-45bb-45c4-96b4-e6eb61166a70",
+        "type": "message",
+        "text": "Map the application to the shared domain\n```cf map-route spring-music &lt;http:\/\/telmore.io|telmore.io&gt; -n spring-music```\nThe `-n spring-music` is the _hostname_ but is actually treated as the subdomain.  Therefore, the url created above would be `&lt;http:\/\/spring-music.telmore.io|spring-music.telmore.io&gt;`",
+        "user": "U1APA4MFX",
+        "ts": "1575586639.000700",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "gK=SI",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Map the application to the shared domain\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "cf map-route spring-music "
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/telmore.io",
+                                "text": "telmore.io"
+                            },
+                            {
+                                "type": "text",
+                                "text": " -n spring-music"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "The "
+                            },
+                            {
+                                "type": "text",
+                                "text": "-n spring-music",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " is the "
+                            },
+                            {
+                                "type": "text",
+                                "text": "hostname",
+                                "style": {
+                                    "italic": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " but is actually treated as the subdomain.  Therefore, the url created above would be "
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/spring-music.telmore.io",
+                                "text": "spring-music.telmore.io",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "edited": {
+            "user": "U1APA4MFX",
+            "ts": "1575586760.000000"
+        },
+        "thread_ts": "1575586535.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "3404db75-962b-459b-acc4-93039583bf5c",
+        "type": "message",
+        "text": "The route is added to the application in both foundations - so they will have the same URL.  The route into the application would be controlled via DNS change.",
+        "user": "U1APA4MFX",
+        "ts": "1575586818.001100",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "v\/jx",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "The route is added to the application in both foundations - so they will have the same URL.  The route into the application would be controlled via DNS change."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1575586535.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "95bd77df-29b3-402a-ab88-4a4c9736adfa",
+        "type": "message",
+        "text": "This can be tested by either changing DNS - or just editing \/etc\/hosts file",
+        "user": "U1APA4MFX",
+        "ts": "1575586888.001300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Di6j",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "This can be tested by either changing DNS - or just editing \/etc\/hosts file"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1575586535.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "2052d217-d4d8-48cf-ba1d-11df244232f7",
+        "type": "message",
+        "text": "The benefit of doing this is that consumers (users or other services) do not have to change the endpoint they are using.",
+        "user": "U1APA4MFX",
+        "ts": "1575587011.001500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "umQ",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "The benefit of doing this is that consumers (users or other services) do not have to change the endpoint they are using."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1575586535.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "64394584-bd72-46f2-aaca-c5df00ad61b0",
+        "type": "message",
+        "text": "Helpful Link: &lt;https:\/\/docs.cloudfoundry.org\/devguide\/deploy-apps\/routes-domains.html#shared-domains&gt;",
+        "user": "U1APA4MFX",
+        "ts": "1575587260.001700",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "f+Z=L",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Helpful Link: "
+                            },
+                            {
+                                "type": "link",
+                                "url": "https:\/\/docs.cloudfoundry.org\/devguide\/deploy-apps\/routes-domains.html#shared-domains"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "edited": {
+            "user": "U1APA4MFX",
+            "ts": "1575998621.000000"
+        },
+        "thread_ts": "1575586535.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "d4620167-5df5-4a5c-9dbd-a106fc182051",
+        "type": "message",
+        "text": "Pivotal CloudCache installation problem",
+        "user": "U1APA4MFX",
+        "ts": "1575588143.002100",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "2DT",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Pivotal CloudCache installation problem"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1575588143.002100",
+        "reply_count": 1,
+        "reply_users_count": 1,
+        "latest_reply": "1575588223.002200",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1575588223.002200"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1575588223.002200"
+    },
+    {
+        "client_msg_id": "f18ed868-e0e4-4055-935d-6892ce030948",
+        "type": "message",
+        "text": "Having issues running the smoke test... following documentation here -&gt; <https:\/\/docs.pivotal.io\/p-cloud-cache\/1-9\/prepare-TLS.html> and am not applying change to get the trusted certs installed.  Doing the apply change for all products and doing it manually.  If it works, I'll have to add it the automation.",
+        "user": "U1APA4MFX",
+        "ts": "1575588223.002200",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "piqd",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Having issues running the smoke test... following documentation here -> "
+                            },
+                            {
+                                "type": "link",
+                                "url": "https:\/\/docs.pivotal.io\/p-cloud-cache\/1-9\/prepare-TLS.html"
+                            },
+                            {
+                                "type": "text",
+                                "text": " and am not applying change to get the trusted certs installed.  Doing the apply change for all products and doing it manually.  If it works, I'll have to add it the automation."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1575588143.002100",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

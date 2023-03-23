@@ -1,0 +1,344 @@
+[
+    {
+        "client_msg_id": "4fa7bb0c-ede3-49e7-8e8a-2c14c7a5e251",
+        "type": "message",
+        "text": "DNS Commands",
+        "user": "U1APA4MFX",
+        "ts": "1581950292.000300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "cH9o1",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "DNS Commands"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1581950292.000300",
+        "reply_count": 4,
+        "reply_users_count": 1,
+        "latest_reply": "1581950837.001000",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1581950330.000400"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1581950406.000600"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1581950540.000800"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1581950837.001000"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1581950837.001000"
+    },
+    {
+        "client_msg_id": "47103792-fe73-46dc-8f97-4dd836499e97",
+        "type": "message",
+        "text": "To find if the DNS entries are set up, use nslookup\n`nslookup <http:\/\/www.tonyelmore.com|www.tonyelmore.com>`",
+        "user": "U1APA4MFX",
+        "ts": "1581950330.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "r7LqJ",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "To find if the DNS entries are set up, use nslookup\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "nslookup ",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/www.tonyelmore.com",
+                                "text": "www.tonyelmore.com",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1581950292.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "7911ee05-db2f-4a6e-b596-de23a87d2144",
+        "type": "message",
+        "text": "Since you can have many A records, nslookup for each of them\n`nslookup <http:\/\/tonyelmore.com|tonyelmore.com>`\n`nslookup <http:\/\/sys.sbx.tonyelmore.com|sys.sbx.tonyelmore.com>`",
+        "user": "U1APA4MFX",
+        "ts": "1581950406.000600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Rvw",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Since you can have many A records, nslookup for each of them\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "nslookup ",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/tonyelmore.com",
+                                "text": "tonyelmore.com",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "nslookup ",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/sys.sbx.tonyelmore.com",
+                                "text": "sys.sbx.tonyelmore.com",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1581950292.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "8bd5b1f3-69df-4b75-9ec7-1a4d317055d5",
+        "type": "message",
+        "text": "You can add a TXT record to DNS and find it either using nslookup or dig\n`nslookup -type=txt <http:\/\/txtlabel.tonyelmore.com|txtlabel.tonyelmore.com>`\n`dig -t txt <http:\/\/txtlabel.tonyelmore.com|txtlabel.tonyelmore.com> +short`\nWhere `txtlabel` is the TXT label on the DNS entry\nThe `+short` option on dig command gets rid of all the cruft and just shows the value",
+        "user": "U1APA4MFX",
+        "ts": "1581950540.000800",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "XZc",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "You can add a TXT record to DNS and find it either using nslookup or dig\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "nslookup -type=txt ",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/txtlabel.tonyelmore.com",
+                                "text": "txtlabel.tonyelmore.com",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "dig -t txt ",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/txtlabel.tonyelmore.com",
+                                "text": "txtlabel.tonyelmore.com",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " +short",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\nWhere "
+                            },
+                            {
+                                "type": "text",
+                                "text": "txtlabel",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " is the TXT label on the DNS entry\nThe "
+                            },
+                            {
+                                "type": "text",
+                                "text": "+short",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " option on dig command gets rid of all the cruft and just shows the value"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1581950292.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "352a3727-2eb7-4c27-b556-b7b26ecc85e7",
+        "type": "message",
+        "text": "Difference between dig and nslookup...\nnslookup was the original tool and dig is a replacement\ndig +short will provide only the answer without all the extra output\n\nSeems like either can be used",
+        "user": "U1APA4MFX",
+        "ts": "1581950837.001000",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "0cQ",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Difference between dig and nslookup...\nnslookup was the original tool and dig is a replacement\ndig +short will provide only the answer without all the extra output\n\nSeems like either can be used"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1581950292.000300",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

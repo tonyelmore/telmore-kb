@@ -1,0 +1,40 @@
+[
+    {
+        "client_msg_id": "e2391abe-e8fd-4507-b8e8-22585ca6da8b",
+        "type": "message",
+        "text": "tekton.dev is a ci\/cd product for cross-IaaS ... similar to concourse",
+        "user": "U1APA4MFX",
+        "ts": "1621021224.000600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Mesd",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "tekton.dev is a ci\/cd product for cross-IaaS ... similar to concourse"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    }
+]

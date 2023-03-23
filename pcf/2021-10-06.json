@@ -1,0 +1,372 @@
+[
+    {
+        "client_msg_id": "f773a35f-e8ee-46b2-85e6-00acf72b10ea",
+        "type": "message",
+        "text": "To show metrics from a cluster in `lens`",
+        "user": "U1APA4MFX",
+        "ts": "1633547912.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "3Av6q",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "To show metrics from a cluster in "
+                            },
+                            {
+                                "type": "text",
+                                "text": "lens",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1633547912.000400",
+        "reply_count": 6,
+        "reply_users_count": 1,
+        "latest_reply": "1633548412.001500",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1633547925.000500"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1633547967.000700"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1633547986.000900"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1633548072.001100"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1633548121.001300"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1633548412.001500"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1633548412.001500"
+    },
+    {
+        "client_msg_id": "391737f6-396f-42ee-a9c7-e668e83b552d",
+        "type": "message",
+        "text": "Lens is a graphical utility to browse clusters",
+        "user": "U1APA4MFX",
+        "ts": "1633547925.000500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "cBV",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Lens is a graphical utility to browse clusters"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1633547912.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "1208710e-800d-496a-b6dd-072d94a81867",
+        "type": "message",
+        "text": "After installing prometheus, edit the cluster settings within Lens and select the `Metrics`",
+        "user": "U1APA4MFX",
+        "ts": "1633547967.000700",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "ZCn\/",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "After installing prometheus, edit the cluster settings within Lens and select the "
+                            },
+                            {
+                                "type": "text",
+                                "text": "Metrics",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1633547912.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "e32ae83f-53a6-463a-8aaa-f63aac919c13",
+        "type": "message",
+        "text": "The Prometheus installation type should be set to `helm`",
+        "user": "U1APA4MFX",
+        "ts": "1633547986.000900",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "JNuN",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "The Prometheus installation type should be set to "
+                            },
+                            {
+                                "type": "text",
+                                "text": "helm",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1633547912.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "df3e9ddc-571e-4d67-bc53-d828b0cf6e2b",
+        "type": "message",
+        "text": "The Prometheus Service Address should be the namespace\/service of the prometheus server.  There will likely already be a port-forward set up for that service which forwards port 80 to the prometheus port of 9090.\nExample:\n```tanzu-system-monitoring\/prometheus-server:80```",
+        "user": "U1APA4MFX",
+        "ts": "1633548072.001100",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "igF8Y",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "The Prometheus Service Address should be the namespace\/service of the prometheus server.  There will likely already be a port-forward set up for that service which forwards port 80 to the prometheus port of 9090.\nExample:\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "tanzu-system-monitoring\/prometheus-server:80"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1633547912.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "9044a352-8566-4d6a-831c-392015700358",
+        "type": "message",
+        "text": "Now when you select certain objects (cluster, nodes, pods, etc...) you should see metrics within Lens",
+        "user": "U1APA4MFX",
+        "ts": "1633548121.001300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "L86",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Now when you select certain objects (cluster, nodes, pods, etc...) you should see metrics within Lens"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1633547912.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "type": "message",
+        "text": "",
+        "files": [
+            {
+                "id": "F02GZCQ0KHS",
+                "created": 1633548409,
+                "timestamp": 1633548409,
+                "name": "Screen Shot 2021-10-06 at 2.25.36 PM.png",
+                "title": "Screen Shot 2021-10-06 at 2.25.36 PM.png",
+                "mimetype": "image\/png",
+                "filetype": "png",
+                "pretty_type": "PNG",
+                "user": "U1APA4MFX",
+                "user_team": "T1APFPELR",
+                "editable": false,
+                "size": 210786,
+                "mode": "hosted",
+                "is_external": false,
+                "external_type": "",
+                "is_public": true,
+                "public_url_shared": false,
+                "display_as_bot": false,
+                "username": "",
+                "url_private": "https:\/\/files.slack.com\/files-pri\/T1APFPELR-F02GZCQ0KHS\/screen_shot_2021-10-06_at_2.25.36_pm.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "url_private_download": "https:\/\/files.slack.com\/files-pri\/T1APFPELR-F02GZCQ0KHS\/download\/screen_shot_2021-10-06_at_2.25.36_pm.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "media_display_type": "unknown",
+                "thumb_64": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F02GZCQ0KHS-d3a5e22c28\/screen_shot_2021-10-06_at_2.25.36_pm_64.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_80": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F02GZCQ0KHS-d3a5e22c28\/screen_shot_2021-10-06_at_2.25.36_pm_80.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_360": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F02GZCQ0KHS-d3a5e22c28\/screen_shot_2021-10-06_at_2.25.36_pm_360.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_360_w": 360,
+                "thumb_360_h": 196,
+                "thumb_480": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F02GZCQ0KHS-d3a5e22c28\/screen_shot_2021-10-06_at_2.25.36_pm_480.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_480_w": 480,
+                "thumb_480_h": 261,
+                "thumb_160": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F02GZCQ0KHS-d3a5e22c28\/screen_shot_2021-10-06_at_2.25.36_pm_160.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_720": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F02GZCQ0KHS-d3a5e22c28\/screen_shot_2021-10-06_at_2.25.36_pm_720.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_720_w": 720,
+                "thumb_720_h": 391,
+                "thumb_800": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F02GZCQ0KHS-d3a5e22c28\/screen_shot_2021-10-06_at_2.25.36_pm_800.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_800_w": 800,
+                "thumb_800_h": 434,
+                "thumb_960": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F02GZCQ0KHS-d3a5e22c28\/screen_shot_2021-10-06_at_2.25.36_pm_960.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_960_w": 960,
+                "thumb_960_h": 521,
+                "thumb_1024": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F02GZCQ0KHS-d3a5e22c28\/screen_shot_2021-10-06_at_2.25.36_pm_1024.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_1024_w": 1024,
+                "thumb_1024_h": 556,
+                "original_w": 2088,
+                "original_h": 1134,
+                "thumb_tiny": "AwAaADCln5e35UKeKMcCgUAFFLSUAFFFFACdqUe9JSigAzRRRQAo2Y5LZ9hQcZ+XOPekopgf\/9k=",
+                "permalink": "https:\/\/tonyelmore.slack.com\/files\/U1APA4MFX\/F02GZCQ0KHS\/screen_shot_2021-10-06_at_2.25.36_pm.png",
+                "permalink_public": "https:\/\/slack-files.com\/T1APFPELR-F02GZCQ0KHS-dc3fc7c913",
+                "is_starred": false,
+                "has_rich_preview": false,
+                "file_access": "visible"
+            }
+        ],
+        "upload": false,
+        "user": "U1APA4MFX",
+        "display_as_bot": false,
+        "ts": "1633548412.001500",
+        "client_msg_id": "cad9b63a-2f95-45fe-8c76-b94bab7486e0",
+        "thread_ts": "1633547912.000400",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

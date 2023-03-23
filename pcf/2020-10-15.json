@@ -1,0 +1,201 @@
+[
+    {
+        "client_msg_id": "92592cb0-2fea-47ad-b556-8d2076ecf449",
+        "type": "message",
+        "text": "Enable \/ Disable opsman validators",
+        "user": "U1APA4MFX",
+        "ts": "1602779459.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "oYl",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Enable \/ Disable opsman validators"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1602779459.000400",
+        "reply_count": 3,
+        "reply_users_count": 1,
+        "latest_reply": "1602779585.000900",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1602779501.000500"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1602779554.000700"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1602779585.000900"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1602779585.000900"
+    },
+    {
+        "client_msg_id": "28c56bb3-eb82-4a0d-b749-30fae211b975",
+        "type": "message",
+        "text": "We were having issues with Azure VM creation timing out.  So, we disabled the validators until there was a fix in opsman.",
+        "user": "U1APA4MFX",
+        "ts": "1602779501.000500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "PW\/6a",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "We were having issues with Azure VM creation timing out.  So, we disabled the validators until there was a fix in opsman."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1602779459.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "f8835aeb-b360-4be3-977e-96f516762636",
+        "type": "message",
+        "text": "```om curl -p \/api\/v0\/staged\/director\/verifiers\/install_time\/IaasConfigurationVerifier -x PUT -d '{ \"enabled\": true }'```\n",
+        "user": "U1APA4MFX",
+        "ts": "1602779554.000700",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "FhJyu",
+                "elements": [
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "om curl -p \/api\/v0\/staged\/director\/verifiers\/install_time\/IaasConfigurationVerifier -x PUT -d '{ \"enabled\": true }'"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1602779459.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "b438c9df-d8d0-431d-8186-e671f7039a75",
+        "type": "message",
+        "text": "To see the current status of the validators...\n```om curl -p \/api\/v0\/staged\/director\/verifiers\/install_time```\n",
+        "user": "U1APA4MFX",
+        "ts": "1602779585.000900",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "+Ii0r",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "To see the current status of the validators...\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "om curl -p \/api\/v0\/staged\/director\/verifiers\/install_time"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1602779459.000400",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

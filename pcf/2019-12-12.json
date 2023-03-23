@@ -1,0 +1,215 @@
+[
+    {
+        "client_msg_id": "402015dc-08a5-4dd0-acc0-dc5e85060c23",
+        "type": "message",
+        "text": "How to get credentials from command line",
+        "user": "U1APA4MFX",
+        "ts": "1576192688.000300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Czbd3",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "How to get credentials from command line"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1576192688.000300",
+        "reply_count": 4,
+        "reply_users_count": 1,
+        "latest_reply": "1679513650.952779",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1576192711.000400"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1576192728.000600"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1576192770.000800"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1679513650.952779"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1679513650.952779"
+    },
+    {
+        "client_msg_id": "f2fe86e1-8b5b-4304-8e73-cb70b24dd92e",
+        "type": "message",
+        "text": "Preferred method...\n```om credentials -p cf -c .uaa.admin_credentials -t json | jq .password -r```",
+        "user": "U1APA4MFX",
+        "ts": "1576192711.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "\/HB",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Preferred method...\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "om credentials -p cf -c .uaa.admin_credentials -t json | jq .password -r"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1576192688.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "15af06fd-0e0a-42a1-9699-ed5f2027f378",
+        "type": "message",
+        "text": "If you don't have jq...\n```bosh int &lt;(om credentials -p cf -c .uaa.admin_credentials -t json) --path \/password```",
+        "user": "U1APA4MFX",
+        "ts": "1576192728.000600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "u0n+",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "If you don't have jq...\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "bosh int <(om credentials -p cf -c .uaa.admin_credentials -t json) --path \/password"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1576192688.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "d09a4e9f-4912-4a98-aa97-3ba0dfff485a",
+        "type": "message",
+        "text": "To get a list of all the available credentials...\n```om credential-references -p cf```",
+        "user": "U1APA4MFX",
+        "ts": "1576192770.000800",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "LeO",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "To get a list of all the available credentials...\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "om credential-references -p cf"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1576192688.000300",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

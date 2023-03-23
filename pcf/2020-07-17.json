@@ -1,0 +1,161 @@
+[
+    {
+        "client_msg_id": "bbbd6f6b-39e8-4771-b4b8-5b05f7763adb",
+        "type": "message",
+        "text": "Downloading a file by unsigned developer",
+        "user": "U1APA4MFX",
+        "ts": "1594993497.000500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "rhk",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Downloading a file by unsigned developer"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1594993497.000500",
+        "reply_count": 2,
+        "reply_users_count": 1,
+        "latest_reply": "1594993562.000800",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1594993518.000600"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1594993562.000800"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1594993562.000800"
+    },
+    {
+        "client_msg_id": "e9ea23d6-4923-4ede-bd35-bd58061e9e14",
+        "type": "message",
+        "text": "`spctl --add \/Path\/To\/om`",
+        "user": "U1APA4MFX",
+        "ts": "1594993518.000600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "V7G",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "spctl --add \/Path\/To\/om",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1594993497.000500",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "e814ab29-c775-4c16-8e82-8f5a33f5a932",
+        "type": "message",
+        "text": "When doing for `om` (and maybe others) would have to do a `chmod +x \/Path\/To\/om`",
+        "user": "U1APA4MFX",
+        "ts": "1594993562.000800",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "QTajW",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "When doing for "
+                            },
+                            {
+                                "type": "text",
+                                "text": "om",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " (and maybe others) would have to do a "
+                            },
+                            {
+                                "type": "text",
+                                "text": "chmod +x \/Path\/To\/om",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1594993497.000500",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

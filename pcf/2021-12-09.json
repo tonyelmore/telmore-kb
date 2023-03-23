@@ -1,0 +1,275 @@
+[
+    {
+        "client_msg_id": "a77ad892-f7c9-4353-b9b4-e26ac44825e7",
+        "type": "message",
+        "text": "Work with UAA from opsman to add pks admin\/manage authority",
+        "user": "U1APA4MFX",
+        "ts": "1639085915.000300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "lubu",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Work with UAA from opsman to add pks admin\/manage authority"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "edited": {
+            "user": "U1APA4MFX",
+            "ts": "1639086084.000000"
+        },
+        "thread_ts": "1639085915.000300",
+        "reply_count": 4,
+        "reply_users_count": 1,
+        "latest_reply": "1639086054.001100",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1639085957.000400"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1639085994.000600"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1639086007.000900"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1639086054.001100"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1639086054.001100"
+    },
+    {
+        "client_msg_id": "cabe323f-3898-45fa-bcc7-321fc45a9907",
+        "type": "message",
+        "text": "ssh into opsman\n`ssh -i ~\/.ssh\/opsman-ssh-private-file.pem ubuntu@&lt;opsman url&gt;`",
+        "user": "U1APA4MFX",
+        "ts": "1639085957.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "ZgEDK",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "ssh into opsman\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "ssh -i ~\/.ssh\/opsman-ssh-private-file.pem ubuntu@<opsman url>",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "edited": {
+            "user": "U1APA4MFX",
+            "ts": "1639086102.000000"
+        },
+        "thread_ts": "1639085915.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "ad934590-861b-49bc-821e-18b552208c56",
+        "type": "message",
+        "text": "`uaac target https:\/\/&lt;pks api url&gt;:8443 --skip-ssl-validation`\nThen get the admin client token\n`uaac token client get admin`\nThe password is from the TKGI tile credentials from \"PKS Uaa Management Admin Client\"",
+        "user": "U1APA4MFX",
+        "ts": "1639085994.000600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "cVY+",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "uaac target https:\/\/<pks api url>:8443 --skip-ssl-validation",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\nThen get the admin client token\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "uaac token client get admin",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\nThe password is from the TKGI tile credentials from \"PKS Uaa Management Admin Client\""
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "edited": {
+            "user": "U1APA4MFX",
+            "ts": "1639086183.000000"
+        },
+        "thread_ts": "1639085915.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "45fbde89-dfe8-480f-9e80-f27642d06588",
+        "type": "message",
+        "text": "`uaac group mappings`",
+        "user": "U1APA4MFX",
+        "ts": "1639086007.000900",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "fbHB",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "uaac group mappings",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1639085915.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "0d3719f5-9dc9-4d24-a854-8c2825d4fdd7",
+        "type": "message",
+        "text": "`uaac group map --name pks.clusters.admin \"cn=xxx,ou=yyy\"`  using the LDAP search",
+        "user": "U1APA4MFX",
+        "ts": "1639086054.001100",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "tZbkI",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "uaac group map --name pks.clusters.admin \"cn=xxx,ou=yyy\"",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "  using the LDAP search"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1639085915.000300",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

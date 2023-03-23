@@ -1,0 +1,115 @@
+[
+    {
+        "client_msg_id": "b6608d68-5618-47c4-88c6-737b77c87271",
+        "type": "message",
+        "text": "To display bash messages in different color",
+        "user": "U1APA4MFX",
+        "ts": "1604436406.002300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "BsQ",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "To display bash messages in different color"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1604436406.002300",
+        "reply_count": 1,
+        "reply_users_count": 1,
+        "latest_reply": "1604436423.002400",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1604436423.002400"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1604436423.002400"
+    },
+    {
+        "type": "message",
+        "text": "",
+        "files": [
+            {
+                "id": "F01DRLPM4LE",
+                "created": 1604436420,
+                "timestamp": 1604436420,
+                "name": "Screen Shot 2020-11-03 at 1.44.25 PM.png",
+                "title": "Screen Shot 2020-11-03 at 1.44.25 PM.png",
+                "mimetype": "image\/png",
+                "filetype": "png",
+                "pretty_type": "PNG",
+                "user": "U1APA4MFX",
+                "user_team": "T1APFPELR",
+                "editable": false,
+                "size": 104075,
+                "mode": "hosted",
+                "is_external": false,
+                "external_type": "",
+                "is_public": true,
+                "public_url_shared": false,
+                "display_as_bot": false,
+                "username": "",
+                "url_private": "https:\/\/files.slack.com\/files-pri\/T1APFPELR-F01DRLPM4LE\/screen_shot_2020-11-03_at_1.44.25_pm.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "url_private_download": "https:\/\/files.slack.com\/files-pri\/T1APFPELR-F01DRLPM4LE\/download\/screen_shot_2020-11-03_at_1.44.25_pm.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "media_display_type": "unknown",
+                "thumb_64": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01DRLPM4LE-27ddef3219\/screen_shot_2020-11-03_at_1.44.25_pm_64.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_80": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01DRLPM4LE-27ddef3219\/screen_shot_2020-11-03_at_1.44.25_pm_80.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_360": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01DRLPM4LE-27ddef3219\/screen_shot_2020-11-03_at_1.44.25_pm_360.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_360_w": 360,
+                "thumb_360_h": 124,
+                "thumb_480": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01DRLPM4LE-27ddef3219\/screen_shot_2020-11-03_at_1.44.25_pm_480.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_480_w": 480,
+                "thumb_480_h": 166,
+                "thumb_160": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01DRLPM4LE-27ddef3219\/screen_shot_2020-11-03_at_1.44.25_pm_160.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_720": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01DRLPM4LE-27ddef3219\/screen_shot_2020-11-03_at_1.44.25_pm_720.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_720_w": 720,
+                "thumb_720_h": 249,
+                "thumb_800": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01DRLPM4LE-27ddef3219\/screen_shot_2020-11-03_at_1.44.25_pm_800.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_800_w": 800,
+                "thumb_800_h": 276,
+                "original_w": 840,
+                "original_h": 290,
+                "thumb_tiny": "AwAQADCiMY6U7B\/uU0HFG496AFIP93FNpd1GfagBKKX8KSgD\/9k=",
+                "permalink": "https:\/\/tonyelmore.slack.com\/files\/U1APA4MFX\/F01DRLPM4LE\/screen_shot_2020-11-03_at_1.44.25_pm.png",
+                "permalink_public": "https:\/\/slack-files.com\/T1APFPELR-F01DRLPM4LE-43e54b7f98",
+                "is_starred": false,
+                "has_rich_preview": false,
+                "file_access": "visible"
+            }
+        ],
+        "upload": false,
+        "user": "U1APA4MFX",
+        "display_as_bot": false,
+        "ts": "1604436423.002400",
+        "thread_ts": "1604436406.002300",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

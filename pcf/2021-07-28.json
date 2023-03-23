@@ -1,0 +1,734 @@
+[
+    {
+        "client_msg_id": "faa483a5-3bb9-456a-8958-28b4bf0da9e9",
+        "type": "message",
+        "text": "When using credhub service broker ... where are the credentials really stored?",
+        "user": "U1APA4MFX",
+        "ts": "1627490031.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "LdG",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "When using credhub service broker ... where are the credentials really stored?"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1627490031.000400",
+        "reply_count": 5,
+        "reply_users_count": 1,
+        "latest_reply": "1627490379.001400",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1627490109.000500"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1627490129.000700"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1627490222.000900"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1627490266.001100"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1627490379.001400"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1627490379.001400"
+    },
+    {
+        "client_msg_id": "7e51b231-2178-47d3-b8e2-0a81a1a260c3",
+        "type": "message",
+        "text": "When you `create-service` using the broker, you don't really get anything like you expect",
+        "user": "U1APA4MFX",
+        "ts": "1627490109.000500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "\/q6f",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "When you "
+                            },
+                            {
+                                "type": "text",
+                                "text": "create-service",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " using the broker, you don't really get anything like you expect"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1627490031.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "462a179d-e168-4196-870d-8e876faa675d",
+        "type": "message",
+        "text": "The create-service actually takes the credentials in as parameters - see `<https:\/\/docs.pivotal.io\/credhub-service-broker\/using.html>`",
+        "user": "U1APA4MFX",
+        "ts": "1627490129.000700",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "+QE",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "The create-service actually takes the credentials in as parameters - see "
+                            },
+                            {
+                                "type": "link",
+                                "url": "https:\/\/docs.pivotal.io\/credhub-service-broker\/using.html",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1627490031.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "0ef23ff1-d06a-4cbe-93af-a086ac49f905",
+        "type": "message",
+        "text": "Those are stored in the credhub within TAS and you access them by going thru opsman (I guess you could also do this from your own machine since you are modifying \/etc\/hosts anyway - but the cert is on opsman so it is just easier).  The instructions are here: `<https:\/\/community.pivotal.io\/s\/article\/How-to-access-Ops-Manager-s-CredHub-with-the-CredHub-CLI?language=en_US>`",
+        "user": "U1APA4MFX",
+        "ts": "1627490222.000900",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "GBkKS",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Those are stored in the credhub within TAS and you access them by going thru opsman (I guess you could also do this from your own machine since you are modifying \/etc\/hosts anyway - but the cert is on opsman so it is just easier).  The instructions are here: "
+                            },
+                            {
+                                "type": "link",
+                                "url": "https:\/\/community.pivotal.io\/s\/article\/How-to-access-Ops-Manager-s-CredHub-with-the-CredHub-CLI?language=en_US",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "edited": {
+            "user": "U1APA4MFX",
+            "ts": "1627490299.000000"
+        },
+        "thread_ts": "1627490031.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "6f5358e9-91de-4ea9-adb4-68d813a6618a",
+        "type": "message",
+        "text": "The difference in small footprint TAS is that credhub and uaa do not have their own VM - but are co-located on the Control VM - so use the Control VM IP addresses instead",
+        "user": "U1APA4MFX",
+        "ts": "1627490266.001100",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "\/FT\/s",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "The difference in small footprint TAS is that credhub and uaa do not have their own VM - but are co-located on the Control VM - so use the Control VM IP addresses instead"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1627490031.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "55530927-bc91-4fd9-8620-f51cbb3faf93",
+        "type": "message",
+        "text": "So, in the case of small footprint - the \/etc\/hosts entry looked like this (with the IP address being control vm)\n```192.168.2.13 credhub.service.cf.internal\n192.168.2.13 uaa.service.cf.internal```\n",
+        "user": "U1APA4MFX",
+        "ts": "1627490379.001400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "FH2",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "So, in the case of small footprint - the \/etc\/hosts entry looked like this (with the IP address being control vm)\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "192.168.2.13 credhub.service.cf.internal\n192.168.2.13 uaa.service.cf.internal"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1627490031.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "55b551fc-cb43-4573-a40d-1ded0ded65b4",
+        "type": "message",
+        "text": "If you mess up your opsman security, you can put it into \"rescue\" mode which will bypass any authentication... Here is the link to explain how `<https:\/\/pvtl.force.com\/s\/article\/How-to-put-Ops-Manager-into-Rescue-Mode?language=en_US>`",
+        "user": "U1APA4MFX",
+        "ts": "1627503263.002400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "I13bL",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "If you mess up your opsman security, you can put it into \"rescue\" mode which will bypass any authentication... Here is the link to explain how "
+                            },
+                            {
+                                "type": "link",
+                                "url": "https:\/\/pvtl.force.com\/s\/article\/How-to-put-Ops-Manager-into-Rescue-Mode?language=en_US",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "e510ef56-cf2c-4e47-b0e8-d1832e9d45a4",
+        "type": "message",
+        "text": "With the new Tanzu Observability (which is based on Wavefront) ... there is a wavefront nozzle - but a better approach may be to use the HW2 exporter to get data to TO ... The HW2 team is working on enhancing their solution to follow this pattern - but in the meantime here are instructions -&gt; `<https:\/\/docs.google.com\/document\/d\/10YG6sBDD-6nmGeMSkhKBcLvR-7Xq_I43q6ib8lBPVTM\/edit#heading=h.6bemabx4l0zp>`",
+        "user": "U1APA4MFX",
+        "ts": "1627503364.004000",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "XzT2",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "With the new Tanzu Observability (which is based on Wavefront) ... there is a wavefront nozzle - but a better approach may be to use the HW2 exporter to get data to TO ... The HW2 team is working on enhancing their solution to follow this pattern - but in the meantime here are instructions -> "
+                            },
+                            {
+                                "type": "link",
+                                "url": "https:\/\/docs.google.com\/document\/d\/10YG6sBDD-6nmGeMSkhKBcLvR-7Xq_I43q6ib8lBPVTM\/edit#heading=h.6bemabx4l0zp",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "9280bb81-ddfc-463d-aafe-b76033b3200d",
+        "type": "message",
+        "text": "HW2 - Alert Manager ... you can either look at the Prometheus Alert Manager UI or use amtool (which is on the tsdb VM)",
+        "user": "U1APA4MFX",
+        "ts": "1627511575.004800",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Edk",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "HW2 - Alert Manager ... you can either look at the Prometheus Alert Manager UI or use amtool (which is on the tsdb VM)"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1627511575.004800",
+        "reply_count": 4,
+        "reply_users_count": 1,
+        "latest_reply": "1627513691.005500",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1627511609.004900"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1627511817.005100"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1627513125.005300"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1627513691.005500"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1627513691.005500"
+    },
+    {
+        "client_msg_id": "59498081-d864-48fa-94cc-70b7d4b82ad4",
+        "type": "message",
+        "text": "Here is the doc -&gt; `<https:\/\/docs.pivotal.io\/healthwatch\/2-1\/configuring\/optional-config\/alerting.html>`",
+        "user": "U1APA4MFX",
+        "ts": "1627511609.004900",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "+AJ",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Here is the doc -> "
+                            },
+                            {
+                                "type": "link",
+                                "url": "https:\/\/docs.pivotal.io\/healthwatch\/2-1\/configuring\/optional-config\/alerting.html",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1627511575.004800",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "9bd0163a-63c0-4536-a2a8-87931db46978",
+        "type": "message",
+        "text": "When running the `amtool` commands, you will need to add the alertmanager.url param - so it will look like this:\n```.\/amtool --alertmanager.url <http:\/\/127.0.0.1:10401> -o extended alert\n.\/amtool --alertmanager.url <http:\/\/127.0.0.1:10401> -o extended silence\n.\/amtool --alertmanager.url <http:\/\/127.0.0.1:10401> silence add alertname=TASDiegoMemoryUsed -d 5m -c \"test silencer\"\n.\/amtool --alertmanager.url <http:\/\/127.0.0.1:10401> silence expire ba106a8a-facb-42e3-a8ba-f0c68a302545```",
+        "user": "U1APA4MFX",
+        "ts": "1627511817.005100",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "wXTT",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "When running the "
+                            },
+                            {
+                                "type": "text",
+                                "text": "amtool",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " commands, you will need to add the alertmanager.url param - so it will look like this:\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": ".\/amtool --alertmanager.url "
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/127.0.0.1:10401"
+                            },
+                            {
+                                "type": "text",
+                                "text": " -o extended alert\n.\/amtool --alertmanager.url "
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/127.0.0.1:10401"
+                            },
+                            {
+                                "type": "text",
+                                "text": " -o extended silence\n.\/amtool --alertmanager.url "
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/127.0.0.1:10401"
+                            },
+                            {
+                                "type": "text",
+                                "text": " silence add alertname=TASDiegoMemoryUsed -d 5m -c \"test silencer\"\n.\/amtool --alertmanager.url "
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/127.0.0.1:10401"
+                            },
+                            {
+                                "type": "text",
+                                "text": " silence expire ba106a8a-facb-42e3-a8ba-f0c68a302545"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1627511575.004800",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "d875be38-634e-4c84-83e5-af36a2d35a68",
+        "type": "message",
+        "text": "To avoid having to add the alertmanager.url on every command...\nCreate the \/etc\/amtool directory\nCreate a config.yml file in that directory\nAdd this configuration to that file...\n```# Define the path that `amtool` can find your `alertmanager` instance\nalertmanager.url: \"<http:\/\/localhost:10401>\"```\n",
+        "user": "U1APA4MFX",
+        "ts": "1627513125.005300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "sxN1",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "To avoid having to add the alertmanager.url on every command...\nCreate the \/etc\/amtool directory\nCreate a config.yml file in that directory\nAdd this configuration to that file...\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "# Define the path that `amtool` can find your `alertmanager` instance\nalertmanager.url: \""
+                            },
+                            {
+                                "type": "link",
+                                "url": "http:\/\/localhost:10401"
+                            },
+                            {
+                                "type": "text",
+                                "text": "\""
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1627511575.004800",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "45997c3c-5fa7-4243-ae7e-f860070f882d",
+        "type": "message",
+        "text": "Here are instructions on how to use the Prometheus UI ... it is unable to navigate thru the `Source` link because it redirects to a different port though...\n```<https:\/\/docs.pivotal.io\/healthwatch\/2-1\/troubleshooting.html#viewing-the-alertmanager-ui>```\n",
+        "user": "U1APA4MFX",
+        "ts": "1627513691.005500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Qw4hG",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Here are instructions on how to use the Prometheus UI ... it is unable to navigate thru the "
+                            },
+                            {
+                                "type": "text",
+                                "text": "Source",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " link because it redirects to a different port though...\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "link",
+                                "url": "https:\/\/docs.pivotal.io\/healthwatch\/2-1\/troubleshooting.html#viewing-the-alertmanager-ui"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1627511575.004800",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

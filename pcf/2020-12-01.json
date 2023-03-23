@@ -1,0 +1,387 @@
+[
+    {
+        "client_msg_id": "414de8a7-4387-4fde-8336-316eccadc3ea",
+        "type": "message",
+        "text": "Error with omsagent not starting",
+        "user": "U1APA4MFX",
+        "ts": "1606856156.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "=D0t",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Error with omsagent not starting"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1606856156.000400",
+        "reply_count": 8,
+        "reply_users_count": 1,
+        "latest_reply": "1607371413.000300",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1606856195.000500"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1606856232.000700"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1606856327.000900"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1606856433.001100"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1606856462.001300"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1606856466.001700"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1607371399.000100"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1607371413.000300"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1607371413.000300"
+    },
+    {
+        "client_msg_id": "10292161-db95-4022-ac5e-4d74d130f719",
+        "type": "message",
+        "text": "Instead of using Microsoft's installation of omsagent, NFCU was using the bosh release for the oms agent",
+        "user": "U1APA4MFX",
+        "ts": "1606856195.000500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "dNLIu",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Instead of using Microsoft's installation of omsagent, NFCU was using the bosh release for the oms agent"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1606856156.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "d32dc597-c6f9-4aa7-b1f7-45412ef9b416",
+        "type": "message",
+        "text": "This is done because MS was putting the files in the `\/` partition which was filling that partition because it is only 2.9Gig",
+        "user": "U1APA4MFX",
+        "ts": "1606856232.000700",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "b+0",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "This is done because MS was putting the files in the "
+                            },
+                            {
+                                "type": "text",
+                                "text": "\/",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " partition which was filling that partition because it is only 2.9Gig"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1606856156.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "17d09a98-a976-450f-8164-b925abba4385",
+        "type": "message",
+        "text": "Changing the root partition size would mean a change to the stemcells which we didn't want to do, so we decided to go with the bosh deployment instead.",
+        "user": "U1APA4MFX",
+        "ts": "1606856327.000900",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "zJEp",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Changing the root partition size would mean a change to the stemcells which we didn't want to do, so we decided to go with the bosh deployment instead."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1606856156.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "cee586ca-a444-4eee-9312-43063faa12a8",
+        "type": "message",
+        "text": "For one server, the omsagent service was failing.  We tracked through the pre-start script which indicated there were errors but there didn't seem to really be an error in that script.  Running `monit start` would try to run a process and it was looking for a particular file - which is actually a symlink - that was missing.  We created the symlink and it passed.",
+        "user": "U1APA4MFX",
+        "ts": "1606856433.001100",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "hleY",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "For one server, the omsagent service was failing.  We tracked through the pre-start script which indicated there were errors but there didn't seem to really be an error in that script.  Running "
+                            },
+                            {
+                                "type": "text",
+                                "text": "monit start",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " would try to run a process and it was looking for a particular file - which is actually a symlink - that was missing.  We created the symlink and it passed."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1606856156.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "type": "message",
+        "text": "",
+        "files": [
+            {
+                "id": "F01FQRN4QT0",
+                "created": 1606856444,
+                "timestamp": 1606856444,
+                "name": "Screen Shot 2020-12-01 at 1.55.25 PM.png",
+                "title": "Screen Shot 2020-12-01 at 1.55.25 PM.png",
+                "mimetype": "image\/png",
+                "filetype": "png",
+                "pretty_type": "PNG",
+                "user": "U1APA4MFX",
+                "user_team": "T1APFPELR",
+                "editable": false,
+                "size": 308430,
+                "mode": "hosted",
+                "is_external": false,
+                "external_type": "",
+                "is_public": true,
+                "public_url_shared": false,
+                "display_as_bot": false,
+                "username": "",
+                "url_private": "https:\/\/files.slack.com\/files-pri\/T1APFPELR-F01FQRN4QT0\/screen_shot_2020-12-01_at_1.55.25_pm.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "url_private_download": "https:\/\/files.slack.com\/files-pri\/T1APFPELR-F01FQRN4QT0\/download\/screen_shot_2020-12-01_at_1.55.25_pm.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "media_display_type": "unknown",
+                "thumb_64": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01FQRN4QT0-20f182e3f4\/screen_shot_2020-12-01_at_1.55.25_pm_64.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_80": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01FQRN4QT0-20f182e3f4\/screen_shot_2020-12-01_at_1.55.25_pm_80.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_360": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01FQRN4QT0-20f182e3f4\/screen_shot_2020-12-01_at_1.55.25_pm_360.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_360_w": 360,
+                "thumb_360_h": 82,
+                "thumb_480": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01FQRN4QT0-20f182e3f4\/screen_shot_2020-12-01_at_1.55.25_pm_480.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_480_w": 480,
+                "thumb_480_h": 109,
+                "thumb_160": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01FQRN4QT0-20f182e3f4\/screen_shot_2020-12-01_at_1.55.25_pm_160.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_720": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01FQRN4QT0-20f182e3f4\/screen_shot_2020-12-01_at_1.55.25_pm_720.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_720_w": 720,
+                "thumb_720_h": 164,
+                "thumb_800": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01FQRN4QT0-20f182e3f4\/screen_shot_2020-12-01_at_1.55.25_pm_800.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_800_w": 800,
+                "thumb_800_h": 182,
+                "thumb_960": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01FQRN4QT0-20f182e3f4\/screen_shot_2020-12-01_at_1.55.25_pm_960.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_960_w": 960,
+                "thumb_960_h": 219,
+                "thumb_1024": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01FQRN4QT0-20f182e3f4\/screen_shot_2020-12-01_at_1.55.25_pm_1024.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_1024_w": 1024,
+                "thumb_1024_h": 233,
+                "original_w": 1228,
+                "original_h": 280,
+                "thumb_tiny": "AwAKADDP70UtHegBpX3NJg+v6049aRulADcUYoooA\/\/Z",
+                "permalink": "https:\/\/tonyelmore.slack.com\/files\/U1APA4MFX\/F01FQRN4QT0\/screen_shot_2020-12-01_at_1.55.25_pm.png",
+                "permalink_public": "https:\/\/slack-files.com\/T1APFPELR-F01FQRN4QT0-c9cc6ac6c9",
+                "is_starred": false,
+                "has_rich_preview": false,
+                "file_access": "visible"
+            }
+        ],
+        "upload": false,
+        "user": "U1APA4MFX",
+        "display_as_bot": false,
+        "ts": "1606856462.001300",
+        "thread_ts": "1606856156.000400",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "5c165eb8-bcde-4aeb-88db-c5a20e65345f",
+        "type": "message",
+        "text": "<https:\/\/github.com\/Azure\/oms-agent-for-linux-boshrelease\/blob\/master\/jobs\/omsagent\/templates\/install.erb>",
+        "user": "U1APA4MFX",
+        "ts": "1606856466.001700",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "thV",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "link",
+                                "url": "https:\/\/github.com\/Azure\/oms-agent-for-linux-boshrelease\/blob\/master\/jobs\/omsagent\/templates\/install.erb"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "attachments": [
+            {
+                "service_name": "GitHub",
+                "title": "Azure\/oms-agent-for-linux-boshrelease",
+                "title_link": "https:\/\/github.com\/Azure\/oms-agent-for-linux-boshrelease\/blob\/master\/jobs\/omsagent\/templates\/install.erb",
+                "text": "Bosh release of OMS Agent. Contribute to Azure\/oms-agent-for-linux-boshrelease development by creating an account on GitHub.",
+                "fallback": "GitHub: Azure\/oms-agent-for-linux-boshrelease",
+                "thumb_url": "https:\/\/avatars0.githubusercontent.com\/u\/6844498?s=400&v=4",
+                "from_url": "https:\/\/github.com\/Azure\/oms-agent-for-linux-boshrelease\/blob\/master\/jobs\/omsagent\/templates\/install.erb",
+                "thumb_width": 380,
+                "thumb_height": 380,
+                "service_icon": "https:\/\/a.slack-edge.com\/80588\/img\/unfurl_icons\/github.png",
+                "id": 1,
+                "original_url": "https:\/\/github.com\/Azure\/oms-agent-for-linux-boshrelease\/blob\/master\/jobs\/omsagent\/templates\/install.erb"
+            }
+        ],
+        "thread_ts": "1606856156.000400",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

@@ -1,0 +1,436 @@
+[
+    {
+        "client_msg_id": "66fd8fd3-9157-4983-9f31-ab12749a6462",
+        "type": "message",
+        "text": "How to delete an unresponsive VM",
+        "user": "U1APA4MFX",
+        "ts": "1610401282.000300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "jE7",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "How to delete an unresponsive VM"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1610401282.000300",
+        "reply_count": 3,
+        "reply_users_count": 1,
+        "latest_reply": "1610401382.000800",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1610401323.000400"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1610401327.000600"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1610401382.000800"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1610401382.000800"
+    },
+    {
+        "client_msg_id": "0a216358-4241-4639-b852-0dd7c64ed6a7",
+        "type": "message",
+        "text": "We had an unresponsive VM and `bosh cck` and `bosh recreate` could not remove.  Support gave these instructions to remove the VM from the DB.",
+        "user": "U1APA4MFX",
+        "ts": "1610401323.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "X1H",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "We had an unresponsive VM and "
+                            },
+                            {
+                                "type": "text",
+                                "text": "bosh cck",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " and "
+                            },
+                            {
+                                "type": "text",
+                                "text": "bosh recreate",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " could not remove.  Support gave these instructions to remove the VM from the DB."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1610401282.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "85129981-2bf3-4dcb-a716-49aab73d23a2",
+        "type": "message",
+        "text": "These steps will need to be performed from the bish director vm itself. We're going to use the bosh console to manually remove the vm reference:\n \n• Turn off the bosh resurrector with *bosh update-resurrection off*\n• Log in to the director using <https:\/\/docs.pivotal.io\/ops-manager\/2-10\/install\/trouble-advanced.html>\n• credentials will be found in the opsman director tile under the credentials tab\n• Log in to the bosh console by executing \"*\/var\/vcap\/jobs\/director\/bin\/console*\"\n• Run the following command to get a list of job: diego_brain indices:\n• *Bosh::Director::Models::Instance.where(job: \"diego_brain\").<http:\/\/all.map|all.map>{ |n| \"#{n.job} #{n.index}, #{n.uuid}\" }*\n• Once you see the index and UID of the diego_brain in question, run the following command in order to save the vm reference to a variable. In the below example command I've used the diego brain UID from my environment, but yours will be different:\n• *vm_model = Bosh::Director::Models::Instance.where(job: \"diego_brain\", uuid: \"dfad5127-15c6-48e5-81f9-020b355a7dc2\").<http:\/\/first.active|first.active>_vm*\n• nil the active VM in memory for the instance:\n• *Bosh::Director::Models::Instance.where(job: \"diego_brain\", uuid: \"dfad5127-15c6-48e5-81f9-020b355a7dc2\").<http:\/\/first.active|first.active>_vm = nil*\n• destroy the active vm from the database:\n• *vm_model.destroy*\n• At this point, we should see the vm removed from the lsit of active vms (bosh vms). From the Opsman VM, run *bosh -d &lt;cf-...&gt; deploy \/var\/tempest\/workspaces\/default\/deployments\/cf-....yaml --fix --non-interactive*\n",
+        "user": "U1APA4MFX",
+        "ts": "1610401327.000600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "mYpAG",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "These steps will need to be performed from the bish director vm itself. We're going to use the bosh console to manually remove the vm reference:\n \n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Turn off the bosh resurrector with "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "bosh update-resurrection off",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Log in to the director using "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/docs.pivotal.io\/ops-manager\/2-10\/install\/trouble-advanced.html"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "credentials will be found in the opsman director tile under the credentials tab"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Log in to the bosh console by executing \""
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "\/var\/vcap\/jobs\/director\/bin\/console",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "\""
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Run the following command to get a list of job: diego_brain indices:"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Bosh::Director::Models::Instance.where(job: \"diego_brain\").",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "http:\/\/all.map",
+                                        "text": "all.map",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "{ |n| \"#{n.job} #{n.index}, #{n.uuid}\" }",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Once you see the index and UID of the diego_brain in question, run the following command in order to save the vm reference to a variable. In the below example command I've used the diego brain UID from my environment, but yours will be different:"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "vm_model = Bosh::Director::Models::Instance.where(job: \"diego_brain\", uuid: \"dfad5127-15c6-48e5-81f9-020b355a7dc2\").",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "http:\/\/first.active",
+                                        "text": "first.active",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "_vm",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "nil the active VM in memory for the instance:"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Bosh::Director::Models::Instance.where(job: \"diego_brain\", uuid: \"dfad5127-15c6-48e5-81f9-020b355a7dc2\").",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "http:\/\/first.active",
+                                        "text": "first.active",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "_vm = nil",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "destroy the active vm from the database:"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "vm_model.destroy",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "At this point, we should see the vm removed from the lsit of active vms (bosh vms). From the Opsman VM, run "
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "bosh -d <cf-...> deploy \/var\/tempest\/workspaces\/default\/deployments\/cf-....yaml --fix --non-interactive",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "bullet",
+                        "indent": 0
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1610401282.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "type": "message",
+        "text": "",
+        "files": [
+            {
+                "id": "F01J95A19CN",
+                "created": 1610401378,
+                "timestamp": 1610401378,
+                "name": "Screen Shot 2021-01-11 at 2.42.27 PM.png",
+                "title": "Screen Shot 2021-01-11 at 2.42.27 PM.png",
+                "mimetype": "image\/png",
+                "filetype": "png",
+                "pretty_type": "PNG",
+                "user": "U1APA4MFX",
+                "user_team": "T1APFPELR",
+                "editable": false,
+                "size": 106704,
+                "mode": "hosted",
+                "is_external": false,
+                "external_type": "",
+                "is_public": true,
+                "public_url_shared": false,
+                "display_as_bot": false,
+                "username": "",
+                "url_private": "https:\/\/files.slack.com\/files-pri\/T1APFPELR-F01J95A19CN\/screen_shot_2021-01-11_at_2.42.27_pm.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "url_private_download": "https:\/\/files.slack.com\/files-pri\/T1APFPELR-F01J95A19CN\/download\/screen_shot_2021-01-11_at_2.42.27_pm.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "media_display_type": "unknown",
+                "thumb_64": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01J95A19CN-edbcb700ec\/screen_shot_2021-01-11_at_2.42.27_pm_64.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_80": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01J95A19CN-edbcb700ec\/screen_shot_2021-01-11_at_2.42.27_pm_80.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_360": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01J95A19CN-edbcb700ec\/screen_shot_2021-01-11_at_2.42.27_pm_360.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_360_w": 360,
+                "thumb_360_h": 163,
+                "thumb_480": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01J95A19CN-edbcb700ec\/screen_shot_2021-01-11_at_2.42.27_pm_480.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_480_w": 480,
+                "thumb_480_h": 217,
+                "thumb_160": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01J95A19CN-edbcb700ec\/screen_shot_2021-01-11_at_2.42.27_pm_160.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_720": "https:\/\/files.slack.com\/files-tmb\/T1APFPELR-F01J95A19CN-edbcb700ec\/screen_shot_2021-01-11_at_2.42.27_pm_720.png?t=xoxe-44797796705-5000143663090-4997189105605-079b3fd86c7d972489c5f8e2e002168a",
+                "thumb_720_w": 720,
+                "thumb_720_h": 326,
+                "original_w": 786,
+                "original_h": 356,
+                "thumb_tiny": "AwAVADDQJx2FG72FD9KbkelAC7h6CnAg9qaOfSjH0\/SgB+B6UcelNHXjFOFACMOKbint0ptABkj0\/KlyfakpaAAZPelxQvSloA\/\/2Q==",
+                "permalink": "https:\/\/tonyelmore.slack.com\/files\/U1APA4MFX\/F01J95A19CN\/screen_shot_2021-01-11_at_2.42.27_pm.png",
+                "permalink_public": "https:\/\/slack-files.com\/T1APFPELR-F01J95A19CN-61fd33aea4",
+                "is_starred": false,
+                "has_rich_preview": false,
+                "file_access": "visible"
+            }
+        ],
+        "upload": false,
+        "user": "U1APA4MFX",
+        "display_as_bot": false,
+        "ts": "1610401382.000800",
+        "thread_ts": "1610401282.000300",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

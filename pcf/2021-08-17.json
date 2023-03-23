@@ -1,0 +1,405 @@
+[
+    {
+        "client_msg_id": "514b5708-52db-4a30-9b2b-7955f348e45b",
+        "type": "message",
+        "text": "There is a docker image that has all the carvel tools and kp and kubectl ... <https:\/\/hub.docker.com\/r\/kpack\/kp>",
+        "user": "U1APA4MFX",
+        "ts": "1629226650.000500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Fxf",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "There is a docker image that has all the carvel tools and kp and kubectl ... "
+                            },
+                            {
+                                "type": "link",
+                                "url": "https:\/\/hub.docker.com\/r\/kpack\/kp"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "1ad44267-9d13-49a7-acfe-3dcd517342d3",
+        "type": "message",
+        "text": "See your k8s stuff... with k9s!!!  <https:\/\/k9scli.io\/topics\/commands\/>",
+        "user": "U1APA4MFX",
+        "ts": "1629226773.000900",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "crg",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "See your k8s stuff... with k9s!!!  "
+                            },
+                            {
+                                "type": "link",
+                                "url": "https:\/\/k9scli.io\/topics\/commands\/"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "8619d494-633e-40f3-adf5-220e0fd0a616",
+        "type": "message",
+        "text": "Docker Issues",
+        "user": "U1APA4MFX",
+        "ts": "1629264854.000200",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "m8+",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Docker Issues"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1629264854.000200",
+        "reply_count": 5,
+        "reply_users_count": 1,
+        "latest_reply": "1629265425.001100",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1629264930.000300"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1629264967.000500"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1629265097.000700"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1629265175.000900"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1629265425.001100"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1629265425.001100"
+    },
+    {
+        "client_msg_id": "313a257c-4fbe-44ad-a064-44970dedf7ce",
+        "type": "message",
+        "text": "I'm trying to install Harbor as both a helm chart and as the tile ... when trying to push the image to harbor using `docker push`, I keep getting certificate errors",
+        "user": "U1APA4MFX",
+        "ts": "1629264930.000300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "r9\/",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "I'm trying to install Harbor as both a helm chart and as the tile ... when trying to push the image to harbor using "
+                            },
+                            {
+                                "type": "text",
+                                "text": "docker push",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": ", I keep getting certificate errors"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1629264854.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "31b98645-3562-413f-b4af-179ae9d185d7",
+        "type": "message",
+        "text": "The most common answer was to add the harbor registry to my docker desktop as an insecure-registry... but that didn't seem to fix the problem",
+        "user": "U1APA4MFX",
+        "ts": "1629264967.000500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "KltHq",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "The most common answer was to add the harbor registry to my docker desktop as an insecure-registry... but that didn't seem to fix the problem"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1629264854.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "35c94171-e268-4d07-898a-e22b279404e6",
+        "type": "message",
+        "text": "I got it working for the tile deployed harbor by downloading the cert from the harbor UI (was either on the project page download certificate button or in admin\/config\/system settings ... either will work)... Then adding that cert to the mac keychain via `sudo security add-trusted-cert -d -r trustRoot -k \/Library\/Keychains\/System.keychain ca.crt` ... Then had to `docker login &lt;&lt;harbor url&gt;&gt;`",
+        "user": "U1APA4MFX",
+        "ts": "1629265097.000700",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "tLg04",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "I got it working for the tile deployed harbor by downloading the cert from the harbor UI (was either on the project page download certificate button or in admin\/config\/system settings ... either will work)... Then adding that cert to the mac keychain via "
+                            },
+                            {
+                                "type": "text",
+                                "text": "sudo security add-trusted-cert -d -r trustRoot -k \/Library\/Keychains\/System.keychain ca.crt",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " ... Then had to "
+                            },
+                            {
+                                "type": "text",
+                                "text": "docker login <<harbor url>>",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1629264854.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "cfe16ee7-8919-4821-a514-265e6cc1332d",
+        "type": "message",
+        "text": "This is the link with the answer...\n```<https:\/\/blog.container-solutions.com\/adding-self-signed-registry-certs-docker-mac>```\n",
+        "user": "U1APA4MFX",
+        "ts": "1629265175.000900",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "15dw",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "This is the link with the answer...\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "link",
+                                "url": "https:\/\/blog.container-solutions.com\/adding-self-signed-registry-certs-docker-mac"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1629264854.000200",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "aa5f436f-3420-4a18-8ffc-f2d4d052ef28",
+        "type": "message",
+        "text": "The helm chart deployment is a different error... I get this on the docker login... `x509: cannot validate certificate for 51.143.54.86 because it doesn't contain any IP SANs`",
+        "user": "U1APA4MFX",
+        "ts": "1629265425.001100",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "kGY8",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "The helm chart deployment is a different error... I get this on the docker login... "
+                            },
+                            {
+                                "type": "text",
+                                "text": "x509: cannot validate certificate for 51.143.54.86 because it doesn't contain any IP SANs",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1629264854.000200",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

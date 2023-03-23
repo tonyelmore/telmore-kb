@@ -1,0 +1,358 @@
+[
+    {
+        "client_msg_id": "daa3ea7a-7b66-496e-b710-134bd1885721",
+        "type": "message",
+        "text": "Installing Tanzu Service Broker for GCP",
+        "user": "U1APA4MFX",
+        "ts": "1613598729.000300",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "9zCr",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Installing Tanzu Service Broker for GCP"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1613598729.000300",
+        "reply_count": 6,
+        "reply_users_count": 1,
+        "latest_reply": "1613598926.001400",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1613598737.000400"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1613598791.000600"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1613598828.000800"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1613598846.001000"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1613598912.001200"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1613598926.001400"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1613598926.001400"
+    },
+    {
+        "client_msg_id": "14e70c49-5803-48a0-a73c-e59d4a4851f6",
+        "type": "message",
+        "text": "The issues I had...",
+        "user": "U1APA4MFX",
+        "ts": "1613598737.000400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "ORY6L",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "The issues I had..."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1613598729.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "c51a5e3b-0593-41a2-86cb-08ee9432111d",
+        "type": "message",
+        "text": "Create a mysql instance in GCP - you will need the instance name (telmore-gcp-state) ... but that creates something that you then have databases in ... so create the servicebroker database",
+        "user": "U1APA4MFX",
+        "ts": "1613598791.000600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "M6W4V",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Create a mysql instance in GCP - you will need the instance name (telmore-gcp-state) ... but that creates something that you then have databases in ... so create the servicebroker database"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1613598729.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "862fb23f-7d3a-4548-b547-2d0427297bbf",
+        "type": "message",
+        "text": "Open it up by adding a network of `0.0.0.0\/0` to the authorized networks",
+        "user": "U1APA4MFX",
+        "ts": "1613598828.000800",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "kLex",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Open it up by adding a network of "
+                            },
+                            {
+                                "type": "text",
+                                "text": "0.0.0.0\/0",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " to the authorized networks"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1613598729.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "66792a62-4fb8-4330-b6ca-64d941400ea5",
+        "type": "message",
+        "text": "You should see the services offered in `cf marketplace`",
+        "user": "U1APA4MFX",
+        "ts": "1613598846.001000",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "xD4q",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "You should see the services offered in "
+                            },
+                            {
+                                "type": "text",
+                                "text": "cf marketplace",
+                                "style": {
+                                    "code": true
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1613598729.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "f80925cc-fa3d-44fc-befd-42c61812c7be",
+        "type": "message",
+        "text": "Creating the service using `cf create-service csb-google-mysql small test-sql` but it failed with SERVICE_NETWORKING_NOT_ENABLED ... So enabled that with\n```gcloud services enable <http:\/\/servicenetworking.googleapis.com|servicenetworking.googleapis.com> \\\n    --project=[PSM_PROJECT_NUMBER]```\n",
+        "user": "U1APA4MFX",
+        "ts": "1613598912.001200",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "oNXwX",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Creating the service using "
+                            },
+                            {
+                                "type": "text",
+                                "text": "cf create-service csb-google-mysql small test-sql",
+                                "style": {
+                                    "code": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " but it failed with SERVICE_NETWORKING_NOT_ENABLED ... So enabled that with\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "gcloud services enable servicenetworking.googleapis.com \\\n    --project=[PSM_PROJECT_NUMBER]"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1613598729.000300",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "1fcbdb01-66f5-4984-8e12-f0331790c0c4",
+        "type": "message",
+        "text": "Tried to create service again and it failed with NETWORK_NOT_PEERED",
+        "user": "U1APA4MFX",
+        "ts": "1613598926.001400",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Ji7VE",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Tried to create service again and it failed with NETWORK_NOT_PEERED"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1613598729.000300",
+        "parent_user_id": "U1APA4MFX"
+    }
+]

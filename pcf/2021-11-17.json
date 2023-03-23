@@ -1,0 +1,140 @@
+[
+    {
+        "client_msg_id": "22d520c7-6013-4912-b3f4-f7c5765ef151",
+        "type": "message",
+        "text": "If deploy opsman using IP address ... how to change IP to hostname",
+        "user": "U1APA4MFX",
+        "ts": "1637172961.000500",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "1lpo",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "If deploy opsman using IP address ... how to change IP to hostname"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1637172961.000500",
+        "reply_count": 2,
+        "reply_users_count": 1,
+        "latest_reply": "1637173385.001600",
+        "reply_users": [
+            "U1APA4MFX"
+        ],
+        "replies": [
+            {
+                "user": "U1APA4MFX",
+                "ts": "1637173325.001000"
+            },
+            {
+                "user": "U1APA4MFX",
+                "ts": "1637173385.001600"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": true,
+        "last_read": "1637173385.001600"
+    },
+    {
+        "client_msg_id": "7b3939df-cbba-4f28-9f9f-c33f58fc8a73",
+        "type": "message",
+        "text": "```<https:\/\/community.pivotal.io\/s\/article\/Pivotal-Cloud-Foundry-Being-Associated-with-Internal-IP-Rather-than-FQDN?language=en_US>```",
+        "user": "U1APA4MFX",
+        "ts": "1637173325.001000",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "=e5",
+                "elements": [
+                    {
+                        "type": "rich_text_preformatted",
+                        "elements": [
+                            {
+                                "type": "link",
+                                "url": "https:\/\/community.pivotal.io\/s\/article\/Pivotal-Cloud-Foundry-Being-Associated-with-Internal-IP-Rather-than-FQDN?language=en_US"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1637172961.000500",
+        "parent_user_id": "U1APA4MFX"
+    },
+    {
+        "client_msg_id": "e130b90b-d7f0-42be-8e91-3dcee7fcb8a8",
+        "type": "message",
+        "text": "Then had to change the host name and DNS name within vcenter",
+        "user": "U1APA4MFX",
+        "ts": "1637173385.001600",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "v1q",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Then had to change the host name and DNS name within vcenter"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "team": "T1APFPELR",
+        "user_team": "T1APFPELR",
+        "source_team": "T1APFPELR",
+        "user_profile": {
+            "avatar_hash": "g56119ba1374",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/d56119ba13741cebc8ef2d04f60d2584.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0023-72.png",
+            "first_name": "Tony",
+            "real_name": "Tony Elmore",
+            "display_name": "tony",
+            "team": "T1APFPELR",
+            "name": "tony",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1637172961.000500",
+        "parent_user_id": "U1APA4MFX"
+    }
+]
