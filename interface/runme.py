@@ -14,12 +14,9 @@ while True:
 
     if (user_input == "quit"): break
 
-    print("The current context is: ", context)
-    print("The user_input is: ", user_input)
-    
     # Send request to ChatGPT API with the current context
     response = openai.Completion.create(
-        engine="davinci",
+        engine="text-davinci-003",
         prompt=context + user_input,
         temperature=0.7,
         max_tokens=1024,
